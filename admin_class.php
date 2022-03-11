@@ -17,7 +17,7 @@ Class Action {
 
 	function login(){
 		extract($_POST);
-        //use password_hash($password, PASSWORD_BCRYPT) instead of md5 in the future
+        //use password_verify($password, $hash) instead of md5 in the future
 			$qry = $this->db->query("SELECT *,concat(firstname,' ',lastname) as name FROM users where email = '".$email."' and password = '".md5($password)."'  ");
 		if($qry->num_rows > 0){
 			foreach ($qry->fetch_array() as $key => $value) {
@@ -256,8 +256,8 @@ Class Action {
 			if(!isset($type)){
 				$data .= ", type='2' ";
 			}
-            if(!isset($type_e)){
-                $data .= ", type_e='2' ";
+            if(!isset($type_expedition)){
+                $data .= ", type_expedition='2' ";
             }
 				$data .= ", height='{$height[$k]}' ";
 				$data .= ", width='{$width[$k]}' ";

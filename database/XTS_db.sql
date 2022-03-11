@@ -67,7 +67,7 @@ CREATE TABLE `parcels` (
   `recipient_address` text NOT NULL,
   `recipient_contact` text NOT NULL,
   `type` int(1) NOT NULL COMMENT '1 = Deliver, 2=Pickup',
-  `type_e` int(1) NOT NULL COMMENT '1 = Express, 2=Simple',
+  `type_expedition` int(1) NOT NULL COMMENT '1 = Express, 2=Simple',
   `from_branch_id` varchar(30) NOT NULL,
   `to_branch_id` varchar(30) NOT NULL,
   `weight` varchar(100) NOT NULL,

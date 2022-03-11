@@ -56,8 +56,8 @@
             </div>
               <div class="form-group">
                   <label for="">Type d'Expédition</label>
-                  <input type="checkbox" name="type_e" id=""
-                      <?php echo isset($type_e) && $type_e == 1 ? 'checked' : '' ?>
+                  <input type="checkbox" name="type_expedition" id=""
+                      <?php echo isset($type_expedition) && $type_expedition == 1 ? 'checked' : '' ?>
                          data-bootstrap-switch data-toggle="toggle" data-on="Express" data-off="Simple" class="switch-toggle status_chk"
                          data-size="xs" data-offstyle="info" data-width="5rem" value="1">
                   <small>Express = ............</small>
