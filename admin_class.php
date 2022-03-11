@@ -7,7 +7,7 @@ Class Action {
 	public function __construct() {
 		ob_start();
    	include 'db_connect.php';
-    
+
     $this->db = $conn;
 	}
 	function __destruct() {
@@ -50,7 +50,8 @@ Class Action {
 			}
 		}
 		if(!empty($password)){
-					$data .= ", password=md5('$password') ";
+            $pw = password_hash($password, PASSWORD_BCRYPT);
+					$data .= ", password=('$pw') ";
 
 		}
 		$check = $this->db->query("SELECT * FROM users where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
@@ -298,7 +299,7 @@ Class Action {
 		$update = $this->db->query("UPDATE parcels set status= $status where id = $id");
 		$save = $this->db->query("INSERT INTO parcel_tracks set status= $status , parcel_id = $id");
 		if($update && $save)
-			return 1;  
+			return 1;
 	}
 	function get_parcel_heistory(){
 		extract($_POST);
