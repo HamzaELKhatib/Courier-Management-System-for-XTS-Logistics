@@ -43,7 +43,7 @@
 			end_load()
 		}else{
 			$.ajax({
-				url:'ajax.php?action=get_parcel_heistory',
+				url:'ajax.php?action=get_parcel_history',
 				method:'POST',
 				data:{ref_no:tracking_num},
 				error:err=>{

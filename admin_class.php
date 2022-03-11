@@ -301,7 +301,7 @@ Class Action {
 		if($update && $save)
 			return 1;
 	}
-	function get_parcel_heistory(){
+	function get_parcel_history(){
 		extract($_POST);
 		$data = array();
 		$parcel = $this->db->query("SELECT * FROM parcels where reference_number = '$ref_no'");
