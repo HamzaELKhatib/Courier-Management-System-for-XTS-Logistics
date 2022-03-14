@@ -132,8 +132,7 @@ CREATE TABLE `system_settings` (
   `name` text NOT NULL,
   `email` varchar(200) NOT NULL,
   `contact` varchar(20) NOT NULL,
-  `address` text NOT NULL,
-  `cover_img` text NOT NULL
+  `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -141,7 +140,7 @@ CREATE TABLE `system_settings` (
 --
 
 INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `address`, `cover_img`) VALUES
-(1, '66666666Courier Management System', '666666info@sample.comm', '+6948 8542 623', '2102  Caldwell Road, Rochester, New York, 14608', '');
+(1, 'XTS Logistiques', 'XTS@sample.comm', '+212639493900', '16 avenue el hajeb Lotissement Attar, Mhannech 2 Tétouan 93000, Maroc', '');
 
 -- --------------------------------------------------------
 
@@ -165,10 +164,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `type`, `branch_id`, `date_created`) VALUES
-(1, 'Admin', 'A', 'admin@a.a', '81dc9bdb52d04dc20036dbd8313ed055', 1, 0, '2020-11-26 10:57:04'),
-(4, 'aziz', 'jhimita', 'a@a.a', '0192023a7bbd73250516f069df18b500', 2, 4, '2022-03-02 14:31:54'),
-(5, 'user', 'jhimita', 'u@u.u', '81dc9bdb52d04dc20036dbd8313ed055', 2, 3, '2022-03-02 15:07:51'),
-(6, 'hamid', 'dddd', 'dddd@p.p', 'b59c67bf196a4758191e42f76670ceba', 2, 1, '2022-03-02 15:32:43');
+(1, 'Admin', 'A', 'admin@a.a', '$2y$10$.Ef6aowpbDuYYSB7Se141.J7/mHRUdgn.SZnaW1nqkdeypSH6.9dC', 1, 0, '2020-11-26 10:57:04');
 
 --
 -- Indexes for dumped tables
