@@ -53,7 +53,7 @@ $branch = array();
 			</div>
 			<div class="col-md-6">
 				<div class="callout callout-info">
-					<b class="border-bottom border-primary">Parcel Details</b>
+					<b class="border-bottom border-primary">Details de Colis</b>
 						<div class="row">
 							<div class="col-sm-6">
 								<dl>
@@ -88,41 +88,41 @@ $branch = array();
 							<?php 
 							switch ($status) {
 								case '1':
-									echo "<span class='badge badge-pill badge-info'> Collected</span>";
+									echo "<span class='badge badge-pill badge-info'> Collecté</span>";
 									break;
 								case '2':
-									echo "<span class='badge badge-pill badge-info'> Shipped</span>";
+									echo "<span class='badge badge-pill badge-info'> Expédié</span>";
 									break;
 								case '3':
-									echo "<span class='badge badge-pill badge-primary'> In-Transit</span>";
+									echo "<span class='badge badge-pill badge-primary'> En Transit</span>";
 									break;
 								case '4':
-									echo "<span class='badge badge-pill badge-primary'> Arrived At Destination</span>";
+									echo "<span class='badge badge-pill badge-primary'> Arrivé à destination</span>";
 									break;
 								case '5':
-									echo "<span class='badge badge-pill badge-primary'> Out for Delivery</span>";
+									echo "<span class='badge badge-pill badge-primary'> En cours de livraison</span>";
 									break;
 								case '6':
-									echo "<span class='badge badge-pill badge-primary'> Ready to Pickup</span>";
+									echo "<span class='badge badge-pill badge-primary'> Prêt à ramasser</span>";
 									break;
 								case '7':
-									echo "<span class='badge badge-pill badge-success'>Delivered</span>";
+									echo "<span class='badge badge-pill badge-success'>Livré</span>";
 									break;
 								case '8':
-									echo "<span class='badge badge-pill badge-success'> Picked-up</span>";
+									echo "<span class='badge badge-pill badge-success'> Ramassé</span>";
 									break;
 								case '9':
-									echo "<span class='badge badge-pill badge-danger'> Unsuccessfull Delivery Attempt</span>";
+									echo "<span class='badge badge-pill badge-danger'> Tentative de livraison infructueuse</span>";
 									break;
 								
 								default:
-									echo "<span class='badge badge-pill badge-info'> Item Accepted by Courier</span>";
+									echo "<span class='badge badge-pill badge-info'> Article accepté par courrier</span>";
 									
 									break;
 							}
 
 							?>
-							<span class="btn badge badge-primary bg-gradient-primary" id='update_status'><i class="fa fa-edit"></i> Update Status</span>
+							<span class="btn badge badge-primary bg-gradient-primary" id='update_status'><i class="fa fa-edit"></i> Mettre à jour le statut</span>
 						</dd>
 
 					</dl>
@@ -132,7 +132,7 @@ $branch = array();
 	</div>
 </div>
 <div class="modal-footer display p-0 m-0">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 </div>
 <style>
 	#uni_modal .modal-footer{
@@ -151,11 +151,10 @@ $branch = array();
 		table.table tr,table.table th, table.table td{
 			border:1px solid;
 		}
-		.text-cnter{
+		.text-center{
 			text-align: center;
 		}
 	</style>
-	<h3 class="text-center"><b>Student Result</b></h3>
 </noscript>
 <script>
 	$('#update_status').click(function(){

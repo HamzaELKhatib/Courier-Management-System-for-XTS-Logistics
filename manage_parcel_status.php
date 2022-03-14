@@ -35,12 +35,12 @@
 			data:$(this).serialize(),
 			error:(err)=>{
 				console.log(err)
-				alert_toast('An error occured.',"error")
+				alert_toast('Erreur.',"error")
 				end_load()
 			},
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Parcel's Status successfully updated",'success');
+					alert_toast("Status du Colis est mis-à-jour.",'succés');
 					setTimeout(function(){
 						location.reload()
 					},750)

@@ -98,7 +98,7 @@
           </div>
         </div>
         <hr>
-        <b>Parcel Information</b>
+        <b>Informations sur Colis</b>
         <table class="table table-bordered" id="parcel-items">
           <thead>
             <tr>

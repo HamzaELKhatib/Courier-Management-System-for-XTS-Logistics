@@ -34,11 +34,12 @@ include 'header.php'
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0"><?php echo $title ?></h1>
+                        <!--Page Titles-->
+<!--                        <h1 class="m-0">--><?php //echo $title1 ?><!--</h1>-->
                     </div><!-- /.col -->
 
                 </div><!-- /.row -->
-                <hr class="border-primary">
+<!--                <hr class="border-primary">-->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->

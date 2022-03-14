@@ -28,7 +28,7 @@ if($_SESSION['login_type'] != 1)
               <div class="inner">
                 <h3><?php echo $conn->query("SELECT * FROM parcels")->num_rows; ?></h3>
 
-                <p>Total Parcels</p>
+                <p>Colis Totales</p>
               </div>
               <div class="icon">
                 <i class="fa fa-boxes"></i>

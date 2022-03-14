@@ -108,12 +108,6 @@ class Action
             return 2;
             exit;
         }
-        if (isset($_FILES['img']) && $_FILES['img']['tmp_name'] != '') {
-            $fname = strtotime(date('y-m-d H:i')) . '_' . $_FILES['img']['name'];
-            $move = move_uploaded_file($_FILES['img']['tmp_name'], '../assets/uploads/' . $fname);
-            $data .= ", avatar = '$fname' ";
-
-        }
         if (empty($id)) {
             $save = $this->db->query("INSERT INTO users set $data");
 
@@ -148,12 +142,7 @@ class Action
                 }
             }
         }
-        if ($_FILES['img']['tmp_name'] != '') {
-            $fname = strtotime(date('y-m-d H:i')) . '_' . $_FILES['img']['name'];
-            $move = move_uploaded_file($_FILES['img']['tmp_name'], 'assets/uploads/' . $fname);
-            $data .= ", avatar = '$fname' ";
 
-        }
         $check = $this->db->query("SELECT * FROM users where email ='$email' " . (!empty($id) ? " and id != {$id} " : ''))->num_rows;
         if ($check > 0) {
             return 2;
@@ -170,8 +159,6 @@ class Action
                 if ($key != 'password' && !is_numeric($key))
                     $_SESSION['login_' . $key] = $value;
             }
-            if ($_FILES['img']['tmp_name'] != '')
-                $_SESSION['login_avatar'] = $fname;
             return 1;
         }
     }
@@ -197,12 +184,6 @@ class Action
                 }
             }
         }
-        if ($_FILES['cover']['tmp_name'] != '') {
-            $fname = strtotime(date('y-m-d H:i')) . '_' . $_FILES['cover']['name'];
-            $move = move_uploaded_file($_FILES['cover']['tmp_name'], '../assets/uploads/' . $fname);
-            $data .= ", cover_img = '$fname' ";
-
-        }
         $chk = $this->db->query("SELECT * FROM system_settings");
         if ($chk->num_rows > 0) {
             $save = $this->db->query("UPDATE system_settings set $data where id =" . $chk->fetch_array()['id']);
@@ -214,9 +195,6 @@ class Action
                 if (!is_numeric($k)) {
                     $_SESSION['system'][$k] = $v;
                 }
-            }
-            if ($_FILES['cover']['tmp_name'] != '') {
-                $_SESSION['system']['cover_img'] = $fname;
             }
             return 1;
         }
@@ -342,7 +320,7 @@ class Action
             $parcel = $parcel->fetch_array();
             $data[] = array('status' => 'Item accepted by Courier', 'date_created' => date("M d, Y h:i A", strtotime($parcel['date_created'])));
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
-            $status_arr = array("Item Accepted by Courier", "Collected", "Shipped", "In-Transit", "Arrived At Destination", "Out for Delivery", "Ready to Pickup", "Delivered", "Picked-up", "Unsuccessfull Delivery Attempt");
+            $status_arr = array("Article accepté par courrier", "Collecté", "Expédié", "En Transit", "Arrivé à destination", "En cours de livraison", "Prêt à ramasser", "Livré", "Ramassé", "Tentative de livraison infructueuse");
             while ($row = $history->fetch_assoc()) {
                 $row['date_created'] = date("M d, Y h:i A", strtotime($row['date_created']));
                 $row['status'] = $status_arr[$row['status']];
