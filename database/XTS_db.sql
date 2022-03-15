@@ -40,17 +40,6 @@ CREATE TABLE `branches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `branches`
---
-
-INSERT INTO `branches` (`id`, `branch_code`, `street`, `city`, `state`, `zip_code`, `country`, `contact`, `date_created`) VALUES
-(0, 'g16cp0dBkDAJrNz', 'Admin branche', 'Tetouan', 'Tanger-Tétouan', '93000', 'Maroc', '0666666666', '2022-03-02 15:26:44'),
-(1, 'vzTL0PqMogyOWhF', 'Av. 2', 'sidi ali', 'Casa', '1001', 'Morocco', '+2 123 455 623', '2022-11-26 11:21:41'),
-(3, 'KyIab3mYBgAX71t', 'test', 'test', 'test', '6000', 'Maroc', '+1234567489', '2022-11-26 16:45:05'),
-(4, 'dIbUK5mEh96f0Zc', 'Sample', 'Sample', 'Sample', '123456', 'maroc', '123456', '2022-11-27 13:31:49'),
-(8, 'MYW1rRTXxjVGBla', 'j', 'p', 'p', 'pp', 'ppp', '', '2022-03-02 17:05:04');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `parcels`
@@ -83,16 +72,7 @@ CREATE TABLE `parcels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `parcels`
---
 
-INSERT INTO `parcels` (`id`, `reference_number`, `sender_name`, `sender_address`, `sender_contact`, `recipient_name`, `recipient_address`, `recipient_contact`, `type`, `from_branch_id`, `to_branch_id`, `weight`, `height`, `width`, `length`, `price`, `status`, `date_created`) VALUES
-(7, '249522516531', 'tttt', 'ttttt', 'ttttt', 'ttttt', 'tttttttt', 'tttttttt', 1, '3', '', '1', '1', '2', '2', 245, 0, '2022-03-01 22:22:26'),
-(8, '819435110172', 'brrr', 'rbrrr', 'brrrrrrrrr', 'brrrrrrr', 'rrrrbrrrrrrrrrr', 'brrrr', 1, '1', '3', '4', '5', '5', '4', 122, 0, '2022-03-01 22:23:10'),
-(9, '570501451746', 'brrr', 'rbrrr', 'brrrrrrrrr', 'brrrrrrr', 'rrrrbrrrrrrrrrr', 'brrrr', 1, '1', '3', '1', '1', '12', '1', 25, 0, '2022-03-01 22:23:10'),
-(10, '482018340126', 'aaaaa', '0000', '00000', 'sssssssss', '00000000', '000000', 2, '3', '1', '00', '00', '00', '00', 0, 0, '2022-03-03 16:52:55');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `parcel_tracks`
@@ -105,23 +85,7 @@ CREATE TABLE `parcel_tracks` (
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `parcel_tracks`
---
 
-INSERT INTO `parcel_tracks` (`id`, `parcel_id`, `status`, `date_created`) VALUES
-(1, 2, 1, '2020-11-27 09:53:27'),
-(2, 3, 1, '2020-11-27 09:55:17'),
-(3, 1, 1, '2020-11-27 10:28:01'),
-(4, 1, 2, '2020-11-27 10:28:10'),
-(5, 1, 3, '2020-11-27 10:28:16'),
-(6, 1, 4, '2020-11-27 11:05:03'),
-(7, 1, 5, '2020-11-27 11:05:17'),
-(8, 1, 7, '2020-11-27 11:05:26'),
-(9, 3, 2, '2020-11-27 11:05:41'),
-(10, 6, 1, '2020-11-27 14:06:57');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `system_settings`
@@ -139,10 +103,6 @@ CREATE TABLE `system_settings` (
 -- Dumping data for table `system_settings`
 --
 
-INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `address`, `cover_img`) VALUES
-(1, 'XTS Logistiques', 'XTS@sample.comm', '+212639493900', '16 avenue el hajeb Lotissement Attar, Mhannech 2 Tétouan 93000, Maroc', '');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
@@ -164,7 +124,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `type`, `branch_id`, `date_created`) VALUES
-(1, 'Admin', 'A', 'admin@a.a', '$2y$10$.Ef6aowpbDuYYSB7Se141.J7/mHRUdgn.SZnaW1nqkdeypSH6.9dC', 1, 0, '2020-11-26 10:57:04');
+(1, 'Admin', 'A', 'admin@a.a', '$2y$10$.Ef6aowpbDuYYSB7Se141.J7/mHRUdgn.SZnaW1nqkdeypSH6.9dC', 1, 0, '2022-02-26 10:57:04');
 
 --
 -- Indexes for dumped tables
