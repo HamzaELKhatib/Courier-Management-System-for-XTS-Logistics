@@ -8,19 +8,11 @@
 		</div>
 		<div class="card-body">
 			<table class="table tabe-hover table-bordered" id="list">
-				<!-- <colgroup>
-					<col width="5%">
-					<col width="15%">
-					<col width="25%">
-					<col width="25%">
-					<col width="15%">
-				</colgroup> -->
 				<thead>
 					<tr>
-						<th class="text-center">#</th>
-						<th>Staff</th>
+						<th>Nom</th>
 						<th>Email</th>
-						<th>Branch</th>
+						<th>Branche</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -31,7 +23,6 @@
 					while($row= $qry->fetch_assoc()):
 					?>
 					<tr>
-						<td class="text-center"><?php echo $i++ ?></td>
 						<td><b><?php echo ucwords($row['name']) ?></b></td>
 						<td><b><?php echo ($row['email']) ?></b></td>
 						<td><b><?php echo ucwords($row['baddress']) ?></b></td>

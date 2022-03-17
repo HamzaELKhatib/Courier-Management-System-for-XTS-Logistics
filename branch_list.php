@@ -8,20 +8,13 @@
 		</div>
 		<div class="card-body">
 			<table class="table tabe-hover table-bordered" id="list">
-				<!-- <colgroup>
-					<col width="5%">
-					<col width="15%">
-					<col width="25%">
-					<col width="25%">
-					<col width="15%">
-				</colgroup> -->
+
 				<thead>
 					<tr>
-						<th class="text-center">#</th>
-						<th>Branch Code</th>
-						<th>Street/Building/Brgy.</th>
-						<th>City/State/Zip</th>
-						<th>Country</th>
+
+						<th>Adresse</th>
+						<th>Ville/Region/Zip</th>
+						<th>Pays</th>
 						<th>Contact #</th>
 						<th>Action</th>
 					</tr>
@@ -33,8 +26,6 @@
 					while($row= $qry->fetch_assoc()):
 					?>
 					<tr>
-						<td class="text-center"><?php echo $i++ ?></td>
-						<td class=""><b><?php echo $row['branch_code'] ?></b></td>
 						<td><b><?php echo ucwords($row['street']) ?></b></td>
 						<td><b><?php echo ucwords($row['city'].', '.$row['state'].', '.$row['zip_code']) ?></b></td>
 						<td><b><?php echo ucwords($row['country']) ?></b></td>

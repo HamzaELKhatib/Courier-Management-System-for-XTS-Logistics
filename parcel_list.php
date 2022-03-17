@@ -18,9 +18,9 @@
 				<thead>
 					<tr>
 						<th class="text-center">#</th>
-						<th>Reference Number</th>
-						<th>Sender Name</th>
-						<th>Recipient Name</th>
+						<th>Numéro de suivi</th>
+						<th>Nom de l'expéditeur</th>
+						<th>Nom du destinataire</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -115,7 +115,7 @@
 	$(document).ready(function(){
 		$('#list').dataTable()
 		$('.view_parcel').click(function(){
-			uni_modal("Parcel's Details","view_parcel.php?id="+$(this).attr('data-id'),"large")
+			uni_modal("Détails du colis","view_parcel.php?id="+$(this).attr('data-id'),"large")
 		})
 	$('.delete_parcel').click(function(){
 	_conf("Are you sure to delete this parcel?","delete_parcel",[$(this).attr('data-id')])

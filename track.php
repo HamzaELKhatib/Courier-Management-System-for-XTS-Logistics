@@ -3,9 +3,9 @@
 	<div class="card card-outline card-primary">
 		<div class="card-body">
 			<div class="d-flex w-100 px-1 py-2 justify-content-center align-items-center">
-				<label for="">Enter Tracking Number</label>
+				<label for="">Entrez le numéro de suivi</label>
 				<div class="input-group col-sm-5">
-                    <input type="search" id="ref_no" class="form-control form-control-sm" placeholder="Type the tracking number here">
+                    <input type="search" id="ref_no" class="form-control form-control-sm" placeholder="Tapez le numéro de suivi ici">
                     <div class="input-group-append">
                         <button type="button" id="track-btn" class="btn btn-sm btn-primary btn-gradient-primary">
                             <i class="fa fa-search"></i>
@@ -48,7 +48,7 @@
 				data:{ref_no:tracking_num},
 				error:err=>{
 					console.log(err)
-					alert_toast("An error occured",'error')
+					alert_toast("Une erreur s'est produite",'error')
 					end_load()
 				},
 				success:function(resp){
@@ -64,7 +64,7 @@
 							})
 						}
 					}else if(resp == 2){
-						alert_toast('Unkown Tracking Number.',"error")
+						alert_toast('Numéro de suivi inconnu.',"error")
 					}
 				}
 				,complete:function(){

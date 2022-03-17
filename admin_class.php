@@ -320,7 +320,7 @@ class Action
             $parcel = $parcel->fetch_array();
             $data[] = array('status' => 'Item accepted by Courier', 'date_created' => date("M d, Y h:i A", strtotime($parcel['date_created'])));
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
-            $status_arr = array("Article accepté par courrier", "Collecté", "Expédié", "En Transit", "Arrivé à destination", "En cours de livraison", "Prêt à ramasser", "Livré", "Ramassé", "Tentative de livraison infructueuse");
+            $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Tentative de livraison infructueuse");
             while ($row = $history->fetch_assoc()) {
                 $row['date_created'] = date("M d, Y h:i A", strtotime($row['date_created']));
                 $row['status'] = $status_arr[$row['status']];
@@ -335,7 +335,7 @@ class Action
         extract($_POST);
         $data = array();
         $get = $this->db->query("SELECT * FROM parcels where date(date_created) BETWEEN '$date_from' and '$date_to' " . ($status != 'all' ? " and status = $status " : "") . " order by unix_timestamp(date_created) asc");
-        $status_arr = array("Item Accepted by Courier", "Collected", "Shipped", "In-Transit", "Arrived At Destination", "Out for Delivery", "Ready to Pickup", "Delivered", "Picked-up", "Unsuccessfull Delivery Attempt");
+        $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Tentative de livraison infructueuse");
         while ($row = $get->fetch_assoc()) {
             $row['sender_name'] = ucwords($row['sender_name']);
             $row['recipient_name'] = ucwords($row['recipient_name']);

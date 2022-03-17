@@ -14,7 +14,7 @@ if($_SESSION['login_type'] != 1)
               <div class="inner">
                 <h3><?php echo $conn->query("SELECT * FROM branches")->num_rows; ?></h3>
 
-                <p>Total Branches</p>
+                <p>Branches Totales</p>
               </div>
               <div class="icon">
                 <i class="fa fa-building"></i>
@@ -42,7 +42,7 @@ if($_SESSION['login_type'] != 1)
               <div class="inner">
                 <h3><?php echo $conn->query("SELECT * FROM users where type != 1")->num_rows; ?></h3>
 
-                <p>Total Staff</p>
+                <p>Employés</p>
               </div>
               <div class="icon">
                 <i class="fa fa-users"></i>
@@ -51,16 +51,7 @@ if($_SESSION['login_type'] != 1)
           </div>
           <hr>
           <?php 
-              $status_arr = array("Item Accepted by Courier",
-                  "Collected",
-                  "Shipped",
-                  "In-Transit",
-                  "Arrived At Destination",
-                  "Out for Delivery",
-                  "Ready to Pickup",
-                  "Delivered",
-                  "Picked-up",
-                  "Unsuccessful Delivery Attempt");
+              $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Livraison infructueuse");
                foreach($status_arr as $k =>$v):
           ?>
           <div class="col-12 col-sm-6 col-md-4">

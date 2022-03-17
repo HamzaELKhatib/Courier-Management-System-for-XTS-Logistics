@@ -5,10 +5,10 @@
 		<div class="card-body">
 			<div class="d-flex w-100 px-1 py-2 justify-content-center align-items-center">
 			<?php 
-			$status_arr = array("Item Accepted by Courier","Collected","Shipped","In-Transit","Arrived At Destination","Out for Delivery","Ready to Pickup","Delivered","Picked-up","Unsuccessfull Delivery Attempt"); ?>
+			$status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Tentative de livraison infructueuse"); ?>
 				<label for="date_from" class="mx-1">Status</label>
 				<select name="" id="status" class="custom-select custom-select-sm col-sm-3">
-					<option value="all" <?php echo $status == 'all' ? "selected" :'' ?>>All</option>
+					<option value="all" <?php echo $status == 'all' ? "selected" :'' ?>>Tout</option>
 					<?php foreach($status_arr as $k => $v): ?>
 						<option value="<?php echo $k ?>" <?php echo $status != 'all' && $status == $k ? "selected" :'' ?>><?php echo $v; ?></option>
 					<?php endforeach; ?>
@@ -36,9 +36,9 @@
 							<tr>
 								<th>#</th>
 								<th>Date</th>
-								<th>Sender</th>
-								<th>Recipient</th>
-								<th>Amount</th>
+								<th>Expéditeur</th>
+								<th>Destinataire</th>
+								<th>Montant</th>
 								<th>Status</th>
 							</tr>
 						</thead>
@@ -46,7 +46,8 @@
 							
 						</tbody>
                         <tfoot>
-                        <th colspan="4" class="text-right">Total</th>
+                        <th colspan="3"></th>
+                        <th class="text-right">Total :</th>
                         <th id="tAmount" class="text-right"></th>
                         </tfoot>
 					</table>
@@ -56,7 +57,7 @@
 		</div>
 	</div>
 </div>
-<!---------------Printable Page---------------->
+<!---------------Printable Page (similaire à ctrl+p)---------------->
 <noscript>
 	<style>
 		table.table{
@@ -66,14 +67,14 @@
 		table.table tr,table.table th, table.table td{
 			border:1px solid;
 		}
-		.text-cnter{
+		.text-center{
 			text-align: center;
 		}
 	</style>
-	<h3 class="text-center"><b>Reeeeeport</b></h3>
+	<h3 class="text-cnter"><b>Rapoooooooooort</b></h3>
 </noscript>
 <div class="details d-none">
-		<p><b>Date Range:</b> <span class="drange"></span></p>
+		<p><b>Plage de dates:</b> <span class="drange"></span></p>
 		<p><b>Status:</b> <span class="status-field">All</span></p>
 	</div>
 <script>
@@ -104,7 +105,7 @@
 								tr.append('<td>'+(resp[k].date_created)+'</td>')
 								tr.append('<td>'+(resp[k].sender_name)+'</td>')
 								tr.append('<td>'+(resp[k].recipient_name)+'</td>')
-								tr.append('<td>'+(resp[k].price)+'</td>')
+								tr.append('<td>'+(resp[k].price)+' dh'+'</td>')
 								tr.append('<td>'+(resp[k].status)+'</td>')
 								$('#report-list tbody').append(tr)
                                 //-------------------------------------------
@@ -113,12 +114,14 @@
                                 //console.log(sum)
                                 //-------------------------------------------
 							})
-                            $('#tAmount').append(sum)
+
+                            $('#tAmount').append(sum+" dh")
+
 							$('#print').show()
 						}else{
 							$('#report-list tbody').html('')
 								var tr = $('<tr></tr>')
-								tr.append('<th class="text-center" colspan="6">No result.</th>')
+								tr.append('<th class="text-center" colspan="6">Pas de résultat.</th>')
 								$('#report-list tbody').append(tr)
 							$('#print').hide()
 						}
@@ -130,10 +133,12 @@
 			})
 	}
 $('#view_report').click(function(){
+    $('#tAmount').empty()
 	if($('#date_from').val() == '' || $('#date_to').val() == ''){
-		alert_toast("Please select dates first.","error")
+		alert_toast("Veuillez d'abord sélectionner les dates.","error")
 		return false;
 	}
+
 	load_report()
 	var date_from = $('#date_from').val()
 	var date_to = $('#date_to').val()

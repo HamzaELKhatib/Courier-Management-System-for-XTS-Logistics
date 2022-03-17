@@ -69,8 +69,8 @@ include 'header.php'
                         <div id="delete_content"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continue</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continuer</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>
@@ -85,9 +85,9 @@ include 'header.php'
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" id='submit'
-                                onclick="$('#uni_modal form').submit()">Save
+                                onclick="$('#uni_modal form').submit()">Enregistrer
                         </button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@ include 'header.php'
 
     <!-- Main Footer -->
     <footer class="main-footer">
-        <strong>Copyright &copy; <a>XTS Logistiques</a>.</strong>
+        <strong>Copyright &copy; <a>XTS Logistics</a>.</strong>
         All rights reserved.
 
     </footer>

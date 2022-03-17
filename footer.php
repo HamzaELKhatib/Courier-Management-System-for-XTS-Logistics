@@ -18,7 +18,7 @@
 <script>
 	$(document).ready(function(){
 	  $('.select2').select2({
-	    placeholder:"Please select here",
+	    placeholder:"Veuillez sélectionner ici",
 	    width: "100%"
 	  });
   })

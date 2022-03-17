@@ -15,29 +15,29 @@
 
             <div class="row">
               <div class="col-sm-6 form-group ">
-                <label for="" class="control-label">Street/Building</label>
+                <label for="" class="control-label">Adresse</label>
                 <textarea name="street" id="" cols="30" rows="2" class="form-control"><?php echo isset($street) ? $street : '' ?></textarea>
               </div>
               <div class="col-sm-6 form-group ">
-                <label for="" class="control-label">City</label>
+                <label for="" class="control-label">Ville</label>
                 <textarea name="city" id="" cols="30" rows="2" class="form-control"><?php echo isset($city) ? $city : '' ?></textarea>
               </div>
             </div>
 
             <div class="row">
               <div class="col-sm-6 form-group ">
-                <label for="" class="control-label">State</label>
+                <label for="" class="control-label">Region</label>
                 <textarea name="state" id="" cols="30" rows="2" class="form-control"><?php echo isset($state) ? $state : '' ?></textarea>
               </div>
               <div class="col-sm-6 form-group ">
-                <label for="" class="control-label">Zip Code/ Postal Code</label>
+                <label for="" class="control-label">Code Postal</label>
                 <textarea name="zip_code" id="" cols="30" rows="2" class="form-control"><?php echo isset($zip_code) ? $zip_code : '' ?></textarea>
               </div>
             </div>
 
             <div class="row">
               <div class="col-sm-6 form-group ">
-                <label for="" class="control-label">Country</label>
+                <label for="" class="control-label">Pays</label>
                 <textarea name="country" id="" cols="30" rows="2" class="form-control"><?php echo isset($country) ? $country : '' ?></textarea>
               </div>
               <div class="col-sm-6 form-group ">
@@ -52,8 +52,8 @@
   	</div>
   	<div class="card-footer border-top border-info">
   		<div class="d-flex w-100 justify-content-center align-items-center">
-  			<button class="btn btn-flat  bg-gradient-primary mx-2" form="manage-branch">Save</button>
-  			<a class="btn btn-flat bg-gradient-secondary mx-2" href="./index.php?page=branch_list">Cancel</a>
+  			<button class="btn btn-flat  bg-gradient-primary mx-2" form="manage-branch">Enregistrer</button>
+  			<a class="btn btn-flat bg-gradient-secondary mx-2" href="./index.php?page=branch_list">Annuler</a>
   		</div>
   	</div>
 	</div>
@@ -80,14 +80,4 @@
 			}
 		})
 	})
-  function displayImgCover(input,_this) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            $('#cover').attr('src', e.target.result);
-          }
-
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
 </script>
