@@ -248,7 +248,7 @@ class Action
         foreach ($price as $k => $v) {
             $data = "";
             foreach ($_POST as $key => $val) {
-                if (!in_array($key, array('id', 'weight', 'height', 'width', 'length', 'price')) && !is_numeric($key)) {
+                if (!in_array($key, array('id', 'weight', 'number', 'price')) && !is_numeric($key)) {
                     if (empty($data)) {
                         $data .= " $key='$val' ";
                     } else {
@@ -262,22 +262,22 @@ class Action
             if (!isset($type_expedition)) {
                 $data .= ", type_expedition='2' ";
             }
-            $data .= ", height='{$height[$k]}' ";
-            $data .= ", width='{$width[$k]}' ";
-            $data .= ", length='{$length[$k]}' ";
+
+            $data .= ", number='{$number[$k]}' ";
+
             $data .= ", weight='{$weight[$k]}' ";
             $price[$k] = str_replace(',', '', $price[$k]);
             $data .= ", price='{$price[$k]}' ";
             if (empty($id)) {
                 $i = 0;
                 while ($i == 0) {
-                    $ref = sprintf("%'012d", mt_rand(0, 999999999999));
-                    $chk = $this->db->query("SELECT * FROM parcels where reference_number = '$ref'")->num_rows;
+                    $ref = sprintf("%'06d", mt_rand(0, 999999));
+                    $chk = $this->db->query("SELECT * FROM parcels where br_dec = '$ref'")->num_rows;
                     if ($chk <= 0) {
                         $i = 1;
                     }
                 }
-                $data .= ", reference_number='$ref' ";
+                $data .= ", br_dec='$ref' ";
                 if ($save[] = $this->db->query("INSERT INTO parcels set $data"))
                     $ids[] = $this->db->insert_id;
             } else {
@@ -313,7 +313,7 @@ class Action
     {
         extract($_POST);
         $data = array();
-        $parcel = $this->db->query("SELECT * FROM parcels where reference_number = '$ref_no'");
+        $parcel = $this->db->query("SELECT * FROM parcels where br_dec = '$ref_no'");
         if ($parcel->num_rows <= 0) {
             return 2;
         } else {

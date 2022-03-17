@@ -11,12 +11,12 @@
 
 				<thead>
 					<tr>
-
+                        <th>Action</th>
 						<th>Adresse</th>
 						<th>Ville/Region/Zip</th>
 						<th>Pays</th>
 						<th>Contact #</th>
-						<th>Action</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -26,20 +26,21 @@
 					while($row= $qry->fetch_assoc()):
 					?>
 					<tr>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a href="index.php?page=edit_branch&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-flat delete_branch" data-id="<?php echo $row['id'] ?>">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
 						<td><b><?php echo ucwords($row['street']) ?></b></td>
 						<td><b><?php echo ucwords($row['city'].', '.$row['state'].', '.$row['zip_code']) ?></b></td>
 						<td><b><?php echo ucwords($row['country']) ?></b></td>
 						<td><b><?php echo $row['contact'] ?></b></td>
-						<td class="text-center">
-		                    <div class="btn-group">
-		                        <a href="index.php?page=edit_branch&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
-		                          <i class="fas fa-edit"></i>
-		                        </a>
-		                        <button type="button" class="btn btn-danger btn-flat delete_branch" data-id="<?php echo $row['id'] ?>">
-		                          <i class="fas fa-trash"></i>
-		                        </button>
-	                      </div>
-						</td>
+
 					</tr>	
 				<?php endwhile; ?>
 				</tbody>
@@ -54,7 +55,9 @@
 </style>
 <script>
 	$(document).ready(function(){
-		$('#list').dataTable()
+		$('#list').DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)')
 		$('.view_branch').click(function(){
 			uni_modal("branch's Details","view_branch.php?id="+$(this).attr('data-id'),"large")
 		})

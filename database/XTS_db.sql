@@ -47,25 +47,26 @@ CREATE TABLE `branches` (
 
 CREATE TABLE `parcels` (
   `id` int(30) NOT NULL,
-  `reference_number` varchar(100) NOT NULL,
+  `br_dec` varchar(100) NOT NULL,
   `expedition_number` varchar(100) NOT NULL,
-  `br_dec_number` varchar(100) NOT NULL,
-  `recipient_cin` varchar(100) NOT NULL,
+
   `sender_name` text NOT NULL,
   `sender_id` varchar(100) NOT NULL,
+  `sender_city` varchar(100) NOT NULL,
   `sender_address` text,
   `sender_contact` text NOT NULL,
+
   `recipient_name` text NOT NULL,
+  `recipient_cin` varchar(100) NOT NULL,
+  `recipient_city` text NOT NULL,
   `recipient_address` text NOT NULL,
   `recipient_contact` text NOT NULL,
-  `type` int(1) NOT NULL COMMENT '1=Deliver, 2=Pickup',
+
+  `type` int(1) NOT NULL COMMENT '1=Domicile, 2=Agence',
   `type_expedition` int(1) NOT NULL COMMENT '1=Express, 2=Simple',
   `from_branch_id` varchar(30) NOT NULL,
   `to_branch_id` varchar(30) NOT NULL,
   `weight` float NOT NULL,
-  `height` float NOT NULL,
-  `width` float NOT NULL,
-  `length` float NOT NULL,
   `number` int NOT NULL,
   `taxateur` int NOT NULL,
   `code_ramasseur` varchar(20) NOT NULL,

@@ -21,7 +21,7 @@ if($to_branch_id > 0 || $from_branch_id > 0){
                 <div class="callout callout-info">
                     <dl>
                         <dt>Numéro de suivi:</dt>
-                        <dd> <h4><b><?php echo $reference_number ?></b></h4></dd>
+                        <dd> <h4><b><?php echo $br_dec ?></b></h4></dd>
                     </dl>
                 </div>
             </div>
@@ -59,20 +59,16 @@ if($to_branch_id > 0 || $from_branch_id > 0){
                             <dl>
                                 <dt>Poids:</dt>
                                 <dd><?php echo $weight ?></dd>
-                                <dt>Hauteur:</dt>
-                                <dd><?php echo $height ?></dd>
+                                <dt>Nombre:</dt>
+                                <dd><?php echo $number ?></dd>
                                 <dt>Prix:</dt>
                                 <dd><?php echo number_format($price,2) ?></dd>
                             </dl>
                         </div>
                         <div class="col-sm-6">
                             <dl>
-                                <dt>Largeur:</dt>
-                                <dd><?php echo $width ?></dd>
-                                <dt>Longueur:</dt>
-                                <dd><?php echo $length ?></dd>
                                 <dt>Type:</dt>
-                                <dd><?php echo $type == 1 ? "<span class='badge badge-primary'>Livrer au destinataire</span>":"<span class='badge badge-info'>reprise</span>" ?></dd>
+                                <dd><?php echo $type == 1 ? "<span class='badge badge-primary'>Livrer au destinataire</span>":"<span class='badge badge-info'>Récupérer</span>" ?></dd>
                             </dl>
                         </div>
                     </div>
@@ -137,6 +133,6 @@ if($to_branch_id > 0 || $from_branch_id > 0){
 
 <script>
     $('#update_status').click(function(){
-        uni_modal("Mettre à jour le statut de: <?php echo $reference_number ?>","manage_parcel_status.php?id=<?php echo $id ?>&cs=<?php echo $status ?>","")
+        uni_modal("Mettre à jour le statut de: <?php echo $br_dec ?>","manage_parcel_status.php?id=<?php echo $id ?>&cs=<?php echo $status ?>","")
     })
 </script>

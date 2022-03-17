@@ -100,7 +100,10 @@
                             </a>
                         </li>
                         <?php
-                        $status_arr = array("Article accepté<br/>par courrier", "Collecté", "Expédié", "En Transit", "Arrivé à<br/>Destination", "En cours de livraison", "Prêt à ramasser", "Livré", "Ramassé", "Tentative de<br/>Livraison infructueuse");
+                        $status_arr = array("Article accepté<br/>par courrier", "Collecté",
+                            "Expédié", "En Transit", "Arrivé à<br/>Destination", "En cours de livraison",
+                            "Prêt à ramasser", "Livré", "Ramassé",
+                            "Tentative de<br/>Livraison infructueuse");
                         foreach ($status_arr as $k => $v):
                             ?>
                             <li class="nav-item">
@@ -121,6 +124,7 @@
                         </p>
                     </a>
                 </li>
+                <?php if ($_SESSION['login_type'] == 1): ?>
                 <li class="nav-item dropdown">
                     <a href="./index.php?page=reports" class="nav-link nav-reports">
                         <i class="nav-icon fas fa-file"></i>
@@ -129,6 +133,7 @@
                         </p>
                     </a>
                 </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>

@@ -10,10 +10,11 @@
 			<table class="table tabe-hover table-bordered" id="list">
 				<thead>
 					<tr>
+                        <th>Action</th>
 						<th>Nom</th>
 						<th>Email</th>
 						<th>Branche</th>
-						<th>Action</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -23,19 +24,20 @@
 					while($row= $qry->fetch_assoc()):
 					?>
 					<tr>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a href="index.php?page=edit_staff&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-flat delete_user" data-id="<?php echo $row['id'] ?>">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
 						<td><b><?php echo ucwords($row['name']) ?></b></td>
 						<td><b><?php echo ($row['email']) ?></b></td>
 						<td><b><?php echo ucwords($row['baddress']) ?></b></td>
-						<td class="text-center">
-		                    <div class="btn-group">
-		                        <a href="index.php?page=edit_staff&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
-		                          <i class="fas fa-edit"></i>
-		                        </a>
-		                        <button type="button" class="btn btn-danger btn-flat delete_user" data-id="<?php echo $row['id'] ?>">
-		                          <i class="fas fa-trash"></i>
-		                        </button>
-	                      </div>
-						</td>
+
 					</tr>	
 				<?php endwhile; ?>
 				</tbody>
@@ -50,7 +52,9 @@
 </style>
 <script>
 	$(document).ready(function(){
-		$('#list').dataTable()
+		$('#list').DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)')
 		$('.view_staff').click(function(){
 			uni_modal("staff's Details","view_staff.php?id="+$(this).attr('data-id'),"large")
 		})
