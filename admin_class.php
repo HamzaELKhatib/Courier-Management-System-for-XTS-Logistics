@@ -318,7 +318,7 @@ class Action
             return 2;
         } else {
             $parcel = $parcel->fetch_array();
-            $data[] = array('status' => 'Item accepted by Courier', 'date_created' => date("M d, Y h:i A", strtotime($parcel['date_created'])));
+            $data[] = array('status' => 'Article accepté par courrier', 'date_created' => date("M d, Y h:i A", strtotime($parcel['date_created'])));
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
             $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Tentative de livraison infructueuse");
             while ($row = $history->fetch_assoc()) {

@@ -72,6 +72,8 @@
                 </div>
                 <hr>
                 <div class="row">
+
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="dtype">Type de Livraison &nbsp;: &nbsp;&nbsp;</label>
@@ -79,21 +81,24 @@
                                 <?php echo isset($type) && $type == 1 ? 'checked' : '' ?>
                                    data-bootstrap-switch data-toggle="toggle" data-on="Domicile" data-off="Agence"
                                    class="switch-toggle status_chk"
-                                   data-size="xs" data-offstyle="success" data-width="5rem" value="1">
+                                   data-size="xs" data-offstyle="info" data-width="6.5rem" data-height="2rem" value="1">
                             <!--<small>Domicile = ............</small>
                             <small>, Agence = ............</small>-->
                         </div>
+
                         <div class="form-group">
                             <label for="">Type d'Expédition : &nbsp;&nbsp;</label>
                             <input type="checkbox" name="type_expedition" id=""
                                 <?php echo isset($type_expedition) && $type_expedition == 1 ? 'checked' : '' ?>
                                    data-bootstrap-switch data-toggle="toggle" data-on="Express" data-off="Simple"
                                    class="switch-toggle status_chk"
-                                   data-size="xs" data-offstyle="success" data-width="5rem" value="1">
+                                   data-size="xs" data-offstyle="info" data-width="6.5rem" data-height="2rem" value="1">
                             <!--<small>Express = ............</small>
                             <small>, Simple = ............</small>-->
                         </div>
                     </div>
+
+
                     <div class="col-md-6" id="" <?php echo isset($type) && $type == 1 ? 'style="display: none"' : '' ?>>
                         <?php if ($_SESSION['login_branch_id'] <= 0): ?>
                             <div class="form-group" id="fbi-field">
@@ -106,7 +111,7 @@
                                     while ($row = $branches->fetch_assoc()):
                                         ?>
                                         <option value="<?php echo $row['id'] ?>" <?php echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected" : '' ?>>
-                                            <?php echo (ucwords($row['address'])) ?></option>
+                                            <?php echo(ucwords($row['address'])) ?></option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
@@ -123,7 +128,7 @@
                                 while ($row = $branches->fetch_assoc()):
                                     ?>
                                     <option value="<?php echo $row['id'] ?>" <?php echo isset($to_branch_id) && $to_branch_id == $row['id'] ? "selected" : '' ?>>
-                                        <?php echo  (ucwords($row['address'])) ?></option>
+                                        <?php echo(ucwords($row['address'])) ?></option>
                                 <?php endwhile; ?>
                             </select>
                         </div>

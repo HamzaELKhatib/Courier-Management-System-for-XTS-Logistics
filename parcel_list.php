@@ -22,17 +22,24 @@
 				<tbody>
 					<?php
 					$i = 1;
+
 					$where = "";
+
 					if(isset($_GET['s'])){
 						$where = " where status = {$_GET['s']} ";
 					}
 					if($_SESSION['login_type'] != 1 ){
-						if(empty($where))
-							$where = " where ";
-						else
-							$where .= " and ";
+
+						if(empty($where)) {
+                            $where = " where ";
+                        }
+						else {
+                            $where .= " and ";
+                        }
 						$where .= " (from_branch_id = {$_SESSION['login_branch_id']} or to_branch_id = {$_SESSION['login_branch_id']}) ";
 					}
+
+
 					$qry = $conn->query("SELECT * from parcels $where order by  unix_timestamp(date_created) desc ");
 					while($row= $qry->fetch_assoc()):
 					?>
