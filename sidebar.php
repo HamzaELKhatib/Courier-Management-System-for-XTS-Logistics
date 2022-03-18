@@ -94,26 +94,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index.php?page=parcel_list" class="nav-link nav-parcel_list nav-sall tree-item">
+                            <a href="./index.php?page=parcel_list" class="nav-link nav-parcel_list nav-all tree-item">
                                 <i class="fas fa-angle-right nav-icon"></i>
                                 <p>Lister</p>
                             </a>
                         </li>
-                        <?php
-                        $status_arr = array("Article accepté<br/>par courrier", "Collecté",
-                            "Expédié", "En Transit", "Arrivé à<br/>Destination", "En cours de livraison",
-                            "Prêt à ramasser", "Livré", "Ramassé",
-                            "Tentative de<br/>Livraison infructueuse");
-                        foreach ($status_arr as $k => $v):
-                            ?>
-                            <li class="nav-item">
-                                <a href="./index.php?page=parcel_list&s=<?php echo $k ?>"
-                                   class="nav-link nav-parcel_list_<?php echo $k ?> tree-item">
-                                    <i class="fas fa-angle-right nav-icon"></i>
-                                    <p><?php echo $v ?></p>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

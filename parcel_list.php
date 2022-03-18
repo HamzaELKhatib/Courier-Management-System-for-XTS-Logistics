@@ -2,6 +2,24 @@
 <div class="col-lg-12">
 	<div class="card card-outline card-primary">
 		<div class="card-header">
+            <div class="btn-group dropright">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Status
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="./index.php?page=parcel_list">All</a>
+                    <?php
+                    $status_arr = array("Item Accepted by Courier", "Collected", "Shipped", "In-Transit", "Arrived At Destination",
+                        "Out for Delivery", "Ready to Pickup", "Delivered", "Picked-up", "Unsuccessful Delivery Attempt");
+                    foreach ($status_arr as $k => $v):?>
+                        <a class="dropdown-item"
+                           href="./index.php?page=parcel_list<?php if ($k != '') echo "&s=" . $k ?>">
+                            <p><?php echo $v ?></p>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
 			<div class="card-tools">
 				<a class="btn btn-block btn-sm btn-default btn-flat border-primary " href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Add New</a>
 			</div>
