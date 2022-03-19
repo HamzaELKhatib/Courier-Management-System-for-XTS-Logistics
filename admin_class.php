@@ -172,7 +172,6 @@ class Action
     }
 
 
-
     function save_branch()
     {
         extract($_POST);
@@ -301,17 +300,24 @@ class Action
 
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
 
-            $status_arr = array("Article accepté par courrier","Collecté","Expédié",
-                "En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser",
-                "Livré","Ramassé","Tentative de livraison infructueuse");
+            $status_arr = array("Article accepté par courrier", "Collecté", "Expédié",
+                "En Transit", "Arrivé à destination", "En cours de livraison", "Prêt à ramasser",
+                "Livré", "Ramassé", "Tentative de livraison infructueuse");
             while ($row = $history->fetch_assoc()) {
-                $username = $this->db->query("SELECT concat(firstname,' ',lastname) FROM users where id = {$row['user_id']}");
+
+                $username = $this->db->query("SELECT concat(firstname,' ',lastname) as name FROM users where id = {$row['user_id']}");
                 $username = mysqli_fetch_all($username);
 
+                $branchid = $this->db->query("SELECT branch_id FROM users where id = {$row['user_id']}");
+                $branchid = mysqli_fetch_row($branchid);
+
+                $city = $this->db->query("SELECT city FROM branches where id = $branchid[0]");
+                $city = mysqli_fetch_all($city);
 
                 $row['date_created'] = date("M d, Y h:i A", strtotime($row['date_created']));
                 $row['status'] = $status_arr[$row['status']];
-                $row['username'] = ($username);
+                $row['username'] = ($username[0]);
+                $row['city'] = ($city[0]);
 
                 $data[] = $row;
 
@@ -325,7 +331,7 @@ class Action
         extract($_POST);
         $data = array();
         $get = $this->db->query("SELECT * FROM parcels where date(date_created) BETWEEN '$date_from' and '$date_to' " . ($status != 'all' ? " and status = $status " : "") . " order by unix_timestamp(date_created) asc");
-        $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Tentative de livraison infructueuse");
+        $status_arr = array("Article accepté par courrier", "Collecté", "Expédié", "En Transit", "Arrivé à destination", "En cours de livraison", "Prêt à ramasser", "Livré", "Ramassé", "Tentative de livraison infructueuse");
         while ($row = $get->fetch_assoc()) {
             $row['sender_name'] = ucwords($row['sender_name']);
             $row['recipient_name'] = ucwords($row['recipient_name']);

@@ -29,11 +29,14 @@
         <i class="fas fa-box bg-blue"></i>
         <div class="timeline-item">
 
-            <span class="time"><i class="fas fa-clock"></i> <span class="dtime">12:05</span></span>
-            <div class="timeline-body">
-                asdasd
-            </div>
-            <span class="text"><i class="fas fa-head-side-cough"></i> <span class="uname">hello</span></span>
+            <span class="time"><i class="fas fa-clock"></i> <span class="dtime"></span></span>
+
+            <div class="timeline-body"></div>
+
+            <span class="text"><i class="fas fa-person-booth"></i> <span class="uname"></span></span>
+
+            <span class="text float-right"><i class="fas fa-city"></i> <span class="city"></span></span>
+
         </div>
     </div>
 </div>
@@ -64,6 +67,7 @@
                                 tl.find('.dtime').text(resp[k].date_created)
                                 tl.find('.timeline-body').text(resp[k].status)
                                 tl.find('.uname').text(resp[k].username)
+                                tl.find('.city').text(resp[k].city)
                                 $('#parcel_history').append(tl)
                             })
                         }
