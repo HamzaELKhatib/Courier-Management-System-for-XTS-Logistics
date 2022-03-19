@@ -3,15 +3,16 @@
 	<div class="card card-outline card-primary">
 		<div class="card-header">
             <div class="btn-group dropright">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                     Status
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="./index.php?page=parcel_list">All</a>
+                    <a class="dropdown-item" href="./index.php?page=parcel_list">Tout</a>
                     <?php
-                    $status_arr = array("Item Accepted by Courier", "Collected", "Shipped", "In-Transit", "Arrived At Destination",
-                        "Out for Delivery", "Ready to Pickup", "Delivered", "Picked-up", "Unsuccessful Delivery Attempt");
+                    $status_arr = array("Article accepté par courrier","Collecté","Expédié",
+                        "En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser",
+                        "Livré","Ramassé","Tentative de livraison infructueuse");
                     foreach ($status_arr as $k => $v):?>
                         <a class="dropdown-item"
                            href="./index.php?page=parcel_list<?php if ($k != '') echo "&s=" . $k ?>">
@@ -64,7 +65,10 @@
 					<tr>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-info btn-flat view_parcel" data-id="<?php echo $row['id'] ?>">
+                                <a href="./index.php?page=track" class="btn btn-outline-primary btn-flat ">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                                <button type="button" class="btn btn-primary btn-flat view_parcel" data-id="<?php echo $row['id'] ?>">
                                     <i class="fas fa-eye"></i>
                                 </button>
                                 <a href="index.php?page=edit_parcel&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">

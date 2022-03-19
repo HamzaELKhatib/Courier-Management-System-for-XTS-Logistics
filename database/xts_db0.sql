@@ -71,25 +71,21 @@ INSERT INTO `parcels` (`id`, `br_dec`, `expedition_number`, `sender_name`, `send
 (13, '658043', '', 'N', 'N1', 'N3', 'N2', '2222', 'n', 'n1', 'n3', 'n2', '3333', 2, 1, '9', '10', 1, 2, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 8, '2022-03-17 22:33:17'),
 (14, '117187', '', 'S', 'S1', 'S3', 'S2', '4444', 's', 's1', 's3', 's2', '5555', 1, 1, '10', '', 20, 4, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50.2, 0, 5, '2022-03-17 22:36:10'),
 (15, '397535', '', 'S', 'S1', 'S3', 'S2', '4444', 's', 's1', 's3', 's2', '5555', 1, 1, '10', '', 40, 1, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10.4, 0, 3, '2022-03-17 22:36:10'),
-(16, '533980', '', 'y', 'y', 'y', 'y', '8888', 'y', 'y', 'y', 'y', '8888', 2, 1, '10', '9', 10, 2, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, 7, '2022-03-17 22:42:34');
+(16, '533980', '', 'y', 'y', 'y', 'y', '8888', 'y', 'y', 'y', 'y', '8888', 2, 1, '10', '9', 10, 2, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, 3, '2022-03-17 22:42:34');
 
 CREATE TABLE `parcel_tracks` (
   `id` int(30) NOT NULL,
   `parcel_id` int(30) NOT NULL,
   `status` int(2) NOT NULL,
-  `user_id` int(11) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `parcel_tracks` (`id`, `parcel_id`, `status`, `user_id`, `date_created`) VALUES
-(11, 14, 5, 1, '2022-03-17 22:36:23'),
-(12, 15, 3, 1, '2022-03-17 22:36:30'),
-(13, 11, 6, 1, '2022-03-17 22:36:37'),
-(14, 13, 8, 1, '2022-03-17 22:36:49'),
-(15, 16, 3, 1, '2022-03-17 22:42:49'),
-(16, 16, 6, 1, '2022-03-19 16:08:08'),
-(17, 16, 5, 1, '2022-03-19 16:14:04'),
-(18, 16, 7, 8, '2022-03-19 16:14:33');
+INSERT INTO `parcel_tracks` (`id`, `parcel_id`, `status`, `date_created`) VALUES
+(11, 14, 5, '2022-03-17 22:36:23'),
+(12, 15, 3, '2022-03-17 22:36:30'),
+(13, 11, 6, '2022-03-17 22:36:37'),
+(14, 13, 8, '2022-03-17 22:36:49'),
+(15, 16, 3, '2022-03-17 22:42:49');
 
 CREATE TABLE `system_settings` (
   `id` int(30) NOT NULL,
@@ -143,7 +139,7 @@ ALTER TABLE `parcels`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 ALTER TABLE `parcel_tracks`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 ALTER TABLE `system_settings`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

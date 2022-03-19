@@ -303,8 +303,9 @@ class Action
     function update_parcel()
     {
         extract($_POST);
+        $user_id = ($_SESSION['login_id']);
         $update = $this->db->query("UPDATE parcels set status= $status where id = $id");
-        $save = $this->db->query("INSERT INTO parcel_tracks set status= $status , parcel_id = $id");
+        $save = $this->db->query("INSERT INTO parcel_tracks set status= $status , parcel_id = $id , user_id = $user_id ");
         if ($update && $save)
             return 1;
     }
@@ -320,7 +321,9 @@ class Action
             $parcel = $parcel->fetch_array();
             $data[] = array('status' => 'Article accepté par courrier', 'date_created' => date("M d, Y h:i A", strtotime($parcel['date_created'])));
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
-            $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Tentative de livraison infructueuse");
+            $status_arr = array("Article accepté par courrier","Collecté","Expédié",
+                "En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser",
+                "Livré","Ramassé","Tentative de livraison infructueuse");
             while ($row = $history->fetch_assoc()) {
                 $row['date_created'] = date("M d, Y h:i A", strtotime($row['date_created']));
                 $row['status'] = $status_arr[$row['status']];
