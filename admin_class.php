@@ -218,6 +218,7 @@ class Action
     function save_parcel()
     {
         extract($_POST);
+        $user_id = ($_SESSION['login_id']);
         foreach ($price as $k => $v) {
             $data = "";
             foreach ($_POST as $key => $val) {
@@ -260,7 +261,10 @@ class Action
         }
         if (isset($save) && isset($ids)) {
             // return json_encode(array('ids'=>$ids,'status'=>1));
-            return 1;
+            $saveu = $this->db->query("INSERT INTO parcel_tracks set status= 0 , parcel_id = last_insert_id() , user_id = $user_id ");
+            if ($saveu) {
+                return 1;
+            }
         }
     }
 
@@ -288,19 +292,29 @@ class Action
         extract($_POST);
         $data = array();
         $parcel = $this->db->query("SELECT * FROM parcels where br_dec = '$ref_no'");
+
+
         if ($parcel->num_rows <= 0) {
             return 2;
         } else {
             $parcel = $parcel->fetch_array();
-            $data[] = array('status' => 'Article accepté par courrier', 'date_created' => date("M d, Y h:i A", strtotime($parcel['date_created'])));
+
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
+
             $status_arr = array("Article accepté par courrier","Collecté","Expédié",
                 "En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser",
                 "Livré","Ramassé","Tentative de livraison infructueuse");
             while ($row = $history->fetch_assoc()) {
+                $username = $this->db->query("SELECT concat(firstname,' ',lastname) FROM users where id = {$row['user_id']}");
+                $username = mysqli_fetch_all($username);
+
+
                 $row['date_created'] = date("M d, Y h:i A", strtotime($row['date_created']));
                 $row['status'] = $status_arr[$row['status']];
+                $row['username'] = ($username);
+
                 $data[] = $row;
+
             }
             return json_encode($data);
         }
