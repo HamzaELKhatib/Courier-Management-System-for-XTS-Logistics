@@ -91,17 +91,6 @@ INSERT INTO `parcel_tracks` (`id`, `parcel_id`, `status`, `user_id`, `date_creat
 (17, 16, 5, 1, '2022-03-19 16:14:04'),
 (18, 16, 7, 8, '2022-03-19 16:14:33');
 
-CREATE TABLE `system_settings` (
-  `id` int(30) NOT NULL,
-  `name` text NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `contact` varchar(20) NOT NULL,
-  `address` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `address`) VALUES
-(1, 'XTS Logistics', 'a@a.a', '+212639493900', 'aaaaa');
-
 CREATE TABLE `users` (
   `id` int(30) NOT NULL,
   `firstname` varchar(200) NOT NULL,
@@ -129,9 +118,6 @@ ALTER TABLE `parcels`
 ALTER TABLE `parcel_tracks`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `system_settings`
-  ADD PRIMARY KEY (`id`);
-
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
@@ -145,9 +131,6 @@ ALTER TABLE `parcels`
 ALTER TABLE `parcel_tracks`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
-ALTER TABLE `system_settings`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 ALTER TABLE `users`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
@@ -155,3 +138,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
