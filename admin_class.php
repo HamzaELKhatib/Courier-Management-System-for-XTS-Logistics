@@ -171,34 +171,7 @@ class Action
             return 1;
     }
 
-    function save_system_settings()
-    {
-        extract($_POST);
-        $data = '';
-        foreach ($_POST as $k => $v) {
-            if (!is_numeric($k)) {
-                if (empty($data)) {
-                    $data .= " $k='$v' ";
-                } else {
-                    $data .= ", $k='$v' ";
-                }
-            }
-        }
-        $chk = $this->db->query("SELECT * FROM system_settings");
-        if ($chk->num_rows > 0) {
-            $save = $this->db->query("UPDATE system_settings set $data where id =" . $chk->fetch_array()['id']);
-        } else {
-            $save = $this->db->query("INSERT INTO system_settings set $data");
-        }
-        if ($save) {
-            foreach ($_POST as $k => $v) {
-                if (!is_numeric($k)) {
-                    $_SESSION['system'][$k] = $v;
-                }
-            }
-            return 1;
-        }
-    }
+
 
     function save_branch()
     {
