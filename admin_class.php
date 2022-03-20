@@ -316,8 +316,8 @@ class Action
 
                 $row['date_created'] = date("M d, Y h:i A", strtotime($row['date_created']));
                 $row['status'] = $status_arr[$row['status']];
-                $row['username'] = ($username[0]);
-                $row['city'] = ($city[0]);
+                $row['username'] = ($username);
+                $row['city'] = ($city);
 
                 $data[] = $row;
 
