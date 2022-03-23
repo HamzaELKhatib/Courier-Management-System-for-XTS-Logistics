@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="card-body">
-			<table class="table table-hover table-bordered" id="list">
+			<table class="table table-bordered table-striped" id="list">
 
 				<thead>
 					<tr>
@@ -74,9 +74,11 @@
                                 <a href="index.php?page=edit_parcel&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button type="button" class="btn btn-danger btn-flat delete_parcel" data-id="<?php echo $row['id'] ?>">
+
+                                <a href="index.php?page=delete_parcel&id=<?php echo $row['id'] ?>" class="btn btn-danger btn-flat " onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce colis?')">
                                     <i class="fas fa-trash"></i>
-                                </button>
+                                </a>
+
                             </div>
                         </td>
 						<td><b><?php echo ($row['br_dec']) ?></b></td>
@@ -138,15 +140,15 @@
 	$(document).ready(function(){
 		$('#list').DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)')
+        }).buttons().container().appendTo('#list_wrapper .col-md-6:eq(0)')
 		$('.view_parcel').click(function(){
 			uni_modal("Détails du colis","view_parcel.php?id="+$(this).attr('data-id'),"large")
 		})
-	$('.delete_parcel').click(function(){
+	/*$('.delete_parcel').click(function(){
 	_conf("Are you sure to delete this parcel?","delete_parcel",[$(this).attr('data-id')])
+	})*/
 	})
-	})
-	function delete_parcel($id){
+/*	function delete_parcel($id){
 		start_load()
 		$.ajax({
 			url:'ajax.php?action=delete_parcel',
@@ -162,5 +164,5 @@
 				}
 			}
 		})
-	}
+	}*/
 </script>
