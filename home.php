@@ -50,8 +50,8 @@ if($_SESSION['login_type'] != 1)
             </div>
           </div>
           <hr>
-          <?php 
-              $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Livraison infructueuse");
+          <?php
+          $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
                foreach($status_arr as $k =>$v):
           ?>
           <div class="col-12 col-sm-6 col-md-4">

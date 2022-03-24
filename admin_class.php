@@ -300,9 +300,7 @@ class Action
 
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
 
-            $status_arr = array("Article accepté par courrier", "Collecté", "Expédié",
-                "En Transit", "Arrivé à destination", "En cours de livraison", "Prêt à ramasser",
-                "Livré", "Ramassé", "Tentative de livraison infructueuse");
+            $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
             while ($row = $history->fetch_assoc()) {
 
                 $username = $this->db->query("SELECT concat(firstname,' ',lastname) as name FROM users where id = {$row['user_id']}");
@@ -331,7 +329,7 @@ class Action
         extract($_POST);
         $data = array();
         $get = $this->db->query("SELECT * FROM parcels where date(date_created) BETWEEN '$date_from' and '$date_to' " . ($status != 'all' ? " and status = $status " : "") . " order by unix_timestamp(date_created) asc");
-        $status_arr = array("Article accepté par courrier", "Collecté", "Expédié", "En Transit", "Arrivé à destination", "En cours de livraison", "Prêt à ramasser", "Livré", "Ramassé", "Tentative de livraison infructueuse");
+        $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
         while ($row = $get->fetch_assoc()) {
             $row['sender_name'] = ucwords($row['sender_name']);
             $row['recipient_name'] = ucwords($row['recipient_name']);

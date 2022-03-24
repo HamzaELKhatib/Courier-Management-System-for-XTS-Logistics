@@ -10,9 +10,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="./index.php?page=parcel_list">Tout</a>
                     <?php
-                    $status_arr = array("Article accepté par courrier","Collecté","Expédié",
-                        "En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser",
-                        "Livré","Ramassé","Tentative de livraison infructueuse");
+                    $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
                     foreach ($status_arr as $k => $v):?>
                         <a class="dropdown-item"
                            href="./index.php?page=parcel_list<?php if ($k != '') echo "&s=" . $k ?>">
@@ -85,38 +83,20 @@
 						<td><b><?php echo ucwords($row['sender_name']) ?></b></td>
 						<td><b><?php echo ucwords($row['recipient_name']) ?></b></td>
 						<td class="text-center">
-							<?php 
+							<?php
+                            $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
 							switch ($row['status']) {
                                 case '1':
-                                    echo "<span class='badge badge-pill badge-info'> Collecté</span>";
+                                    echo "<span class='badge badge-pill badge-info'> Envoyé</span>";
                                     break;
                                 case '2':
-                                    echo "<span class='badge badge-pill badge-info'> Expédié</span>";
+                                    echo "<span class='badge badge-pill badge-info'> Livré en gars</span>";
                                     break;
                                 case '3':
-                                    echo "<span class='badge badge-pill badge-primary'> En Transit</span>";
+                                    echo "<span class='badge badge-pill badge-primary'> Livré à domicile</span>";
                                     break;
-                                case '4':
-                                    echo "<span class='badge badge-pill badge-primary'> Arrivé à destination</span>";
-                                    break;
-                                case '5':
-                                    echo "<span class='badge badge-pill badge-primary'> En cours de livraison</span>";
-                                    break;
-                                case '6':
-                                    echo "<span class='badge badge-pill badge-primary'> Prêt à ramasser</span>";
-                                    break;
-                                case '7':
-                                    echo "<span class='badge badge-pill badge-success'>Livré</span>";
-                                    break;
-                                case '8':
-                                    echo "<span class='badge badge-pill badge-success'> Ramassé</span>";
-                                    break;
-                                case '9':
-                                    echo "<span class='badge badge-pill badge-danger'> Tentative de livraison infructueuse</span>";
-                                    break;
-
                                 default:
-                                    echo "<span class='badge badge-pill badge-info'> Article accepté par courrier</span>";
+                                    echo "<span class='badge badge-pill badge-info'> Enregistré</span>";
 									
 									break;
 							}

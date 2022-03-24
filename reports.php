@@ -5,13 +5,10 @@
         <div class="card-body">
             <div class="d-flex w-100 px-1 py-2 justify-content-center align-items-center">
                 <?php
-                $status_arr = array("Article accepté par courrier",
-                    "Collecté", "Expédié", "En Transit", "Arrivé à destination",
-                    "En cours de livraison", "Prêt à ramasser", "Livré", "Ramassé",
-                    "Tentative de livraison infructueuse"); ?>
+                $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile"); ?>
                 <label for="date_from" class="mx-1">Status</label>
                 <select name="" id="status" class="custom-select custom-select-sm col-sm-3">
-                    <option value="all" <?php echo $status == 'all' ? "selected" : '' ?>>Tout</option>
+                    <option value="all" <?php echo $status == 'all' ? "selected" : '' ?>>Tout<br> </option>
                     <?php foreach ($status_arr as $k => $v): ?>
                         <option value="<?php echo $k ?>" <?php echo $status != 'all' && $status == $k ? "selected" : '' ?>><?php echo $v; ?></option>
                     <?php endforeach; ?>

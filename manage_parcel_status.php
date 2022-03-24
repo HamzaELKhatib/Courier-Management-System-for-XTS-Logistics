@@ -3,7 +3,7 @@
 		<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
 		<div class="form-group">
 			<label for="">Mettre à jour le statut</label>
-			<?php $status_arr = array("Article accepté par courrier","Collecté","Expédié","En Transit","Arrivé à destination","En cours de livraison","Prêt à ramasser","Livré","Ramassé","Tentative de livraison infructueuse"); ?>
+			<?php $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile"); ?>
 			<select name="status" id="" class="custom-select custom-select-sm">
 				<?php foreach($status_arr as $k => $v): ?>
 					<option value="<?php echo $k ?>" <?php echo $_GET['cs'] == $k ? "selected" :'' ?>><?php echo $v; ?></option>
