@@ -20,7 +20,8 @@
                 </div>
             </div>
 			<div class="card-tools">
-				<a class="btn btn-block btn-sm btn-default btn-flat border-primary " href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Add New</a>
+				<a class="btn btn-block btn-sm btn-default btn-flat border-primary "
+                   href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Ajouter Nouveau</a>
 			</div>
 		</div>
 		<div class="card-body">
@@ -63,19 +64,25 @@
 					<tr>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="./index.php?page=track" class="btn btn-outline-primary btn-flat ">
+                                <?php if($row['status']==0): ?>
+                                <button type="button" class="btn btn-danger btn-flat send_parcel" data-id="<?php echo $row['id'] ?>">
+                                    <i class="fas fa-location-arrow"></i>
+                                </button>
+                                <?php endif; ?>
+
+                                <a href="./index.php?page=track" class="btn btn-primary btn-flat ">
                                     <i class="fas fa-search"></i>
                                 </a>
-                                <button type="button" class="btn btn-primary btn-flat view_parcel" data-id="<?php echo $row['id'] ?>">
+                                <button type="button" class="btn btn-outline-primary btn-flat view_parcel" data-id="<?php echo $row['id'] ?>">
                                     <i class="fas fa-eye"></i>
                                 </button>
                                 <a href="index.php?page=edit_parcel&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
                                     <i class="fas fa-edit"></i>
                                 </a>
 
-                                <a href="index.php?page=delete_parcel&id=<?php echo $row['id'] ?>" class="btn btn-danger btn-flat " onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce colis?')">
+                                <button type="button" class="btn btn-danger btn-flat delete_parcel" data-id="<?php echo $row['id'] ?>">
                                     <i class="fas fa-trash"></i>
-                                </a>
+                                </button>
 
                             </div>
                         </td>
@@ -118,17 +125,18 @@
 </style>
 <script>
 	$(document).ready(function(){
-		$('#list').DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false
-        }).buttons().container().appendTo('#list_wrapper .col-md-6:eq(0)')
+
 		$('.view_parcel').click(function(){
 			uni_modal("Détails du colis","view_parcel.php?id="+$(this).attr('data-id'),"large")
 		})
-	/*$('.delete_parcel').click(function(){
-	_conf("Are you sure to delete this parcel?","delete_parcel",[$(this).attr('data-id')])
-	})*/
+	$('.delete_parcel').click(function(){
+	_conf("Êtes-vous sûr de supprimer ce colis?","delete_parcel",[$(this).attr('data-id')])
 	})
-/*	function delete_parcel($id){
+        $('.send_parcel').click(function(){
+            _conf("Voulez-vous envoyer ce colis?","send_parcel",[$(this).attr('data-id')])
+        })
+	})
+	function delete_parcel($id){
 		start_load()
 		$.ajax({
 			url:'ajax.php?action=delete_parcel',
@@ -136,7 +144,7 @@
 			data:{id:$id},
 			success:function(resp){
 				if(resp==1){
-					alert_toast("Data successfully deleted",'success')
+					alert_toast("Colis supprimer",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
@@ -144,5 +152,44 @@
 				}
 			}
 		})
-	}*/
+	}
+    function send_parcel($id){
+        start_load()
+        $.ajax({
+            url:'ajax.php?action=update_parcel_send',
+            method:'POST',
+            data:{id:$id},
+            success:function(resp){
+                if(resp==1){
+                    alert_toast("Colis mis-à envoyer",'success')
+                    setTimeout(function(){
+                        location.reload()
+                    },1500)
+
+                }
+            }
+        })
+    }
+    $('#update_status').submit(function(e){
+        e.preventDefault()
+        start_load()
+        $.ajax({
+            url:'ajax.php?action=update_parcel',
+            method:'POST',
+            data:$(this).serialize(),
+            error:(err)=>{
+                console.log(err)
+                alert_toast('Erreur.',"error")
+                end_load()
+            },
+            success:function(resp){
+                if(resp==1){
+                    alert_toast("Status du Colis est mis-à-jour.",'succés');
+                    setTimeout(function(){
+                        location.reload()
+                    },750)
+                }
+            }
+        })
+    })
 </script>

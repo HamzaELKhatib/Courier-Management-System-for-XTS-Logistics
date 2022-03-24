@@ -285,6 +285,15 @@ class Action
         if ($update && $save)
             return 1;
     }
+    function update_parcel_send()
+    {
+        extract($_POST);
+        $user_id = ($_SESSION['login_id']);
+        $update = $this->db->query("UPDATE parcels set status=1 where id = $id");
+        $save = $this->db->query("INSERT INTO parcel_tracks set status=1 , parcel_id = $id , user_id = $user_id ");
+        if ($update && $save)
+            return 1;
+    }
 
     function get_parcel_history()
     {

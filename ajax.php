@@ -71,6 +71,11 @@ if($action == 'update_parcel'){
 	if($save)
 		echo $save;
 }
+if($action == 'update_parcel_send'){
+	$save = $crud->update_parcel_send();
+	if($save)
+		echo $save;
+}
 if($action == 'get_parcel_history'){
 	$get = $crud->get_parcel_history();
 	if($get)
