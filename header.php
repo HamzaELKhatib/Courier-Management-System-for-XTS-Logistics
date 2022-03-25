@@ -44,5 +44,6 @@
   <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
  <!-- summernote -->
   <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.min.css">
-  
+    <link rel="icon" type="image/x-icon" href="assets/dist/img/pic1.png">
+
 </head>
