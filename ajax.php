@@ -76,6 +76,16 @@ if($action == 'update_parcel_send'){
 	if($save)
 		echo $save;
 }
+if($action == 'arrived_parcel_domicile'){
+	$save = $crud->arrived_parcel_domicile();
+	if($save)
+		echo $save;
+}
+if($action == 'arrived_parcel_agence'){
+	$save = $crud->arrived_parcel_agence();
+	if($save)
+		echo $save;
+}
 if($action == 'get_parcel_history'){
 	$get = $crud->get_parcel_history();
 	if($get)

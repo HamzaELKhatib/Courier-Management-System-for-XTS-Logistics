@@ -285,6 +285,7 @@ class Action
         if ($update && $save)
             return 1;
     }
+
     function update_parcel_send()
     {
         extract($_POST);
@@ -295,6 +296,24 @@ class Action
             return 1;
     }
 
+    function arrived_parcel_domicile()
+    {
+        extract($_POST);
+        $user_id = ($_SESSION['login_id']);
+        $update = $this->db->query("UPDATE parcels set status=3 where id = $id");
+        $save = $this->db->query("INSERT INTO parcel_tracks set status=3 , parcel_id = $id , user_id = $user_id ");
+        if ($update && $save)
+            return 1;
+    }
+    function arrived_parcel_agence()
+    {
+        extract($_POST);
+        $user_id = ($_SESSION['login_id']);
+        $update = $this->db->query("UPDATE parcels set status=2 where id = $id");
+        $save = $this->db->query("INSERT INTO parcel_tracks set status=2 , parcel_id = $id , user_id = $user_id ");
+        if ($update && $save)
+            return 1;
+    }
     function get_parcel_history()
     {
         extract($_POST);
@@ -309,7 +328,7 @@ class Action
 
             $history = $this->db->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
 
-            $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
+            $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
             while ($row = $history->fetch_assoc()) {
 
                 $username = $this->db->query("SELECT concat(firstname,' ',lastname) as name FROM users where id = {$row['user_id']}");
@@ -338,7 +357,7 @@ class Action
         extract($_POST);
         $data = array();
         $get = $this->db->query("SELECT * FROM parcels where date(date_created) BETWEEN '$date_from' and '$date_to' " . ($status != 'all' ? " and status = $status " : "") . " order by unix_timestamp(date_created) asc");
-        $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
+        $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
         while ($row = $get->fetch_assoc()) {
             $row['sender_name'] = ucwords($row['sender_name']);
             $row['recipient_name'] = ucwords($row['recipient_name']);
