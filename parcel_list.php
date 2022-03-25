@@ -2,6 +2,8 @@
 <div class="col-lg-12">
     <div class="card card-outline card-primary">
         <div class="card-header">
+
+            <br>
             <div class="btn-group dropright">
                 <!--<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -10,13 +12,13 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="./index.php?page=parcel_list">Tout</a>
                     <?php
-/*                    $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
-                    foreach ($status_arr as $k => $v):*/?>
+                /*                    $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
+                                    foreach ($status_arr as $k => $v):*/ ?>
                         <a class="dropdown-item"
-                           href="./index.php?page=parcel_list<?php /*if ($k != '') echo "&s=" . $k */?>">
-                            <p><?php /*echo $v */?></p>
+                           href="./index.php?page=parcel_list<?php /*if ($k != '') echo "&s=" . $k */ ?>">
+                            <p><?php /*echo $v */ ?></p>
                         </a>
-                    <?php /*endforeach; */?>
+                    <?php /*endforeach; */ ?>
                 </div>-->
                 <div id="myBtnContainer">
 
@@ -60,25 +62,26 @@
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3"> Livré à domicile</a>
 
                     <?php endif; ?>
-
-
                 </div>
             </div>
             <div class="card-tools">
-                <a class="btn btn-block btn-sm btn-default btn-flat border-primary "
+                <a class="btn btn-primary"
                    href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Ajouter Nouveau</a>
             </div>
         </div>
+        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
         <div class="card-body">
             <table class="table table-bordered table-striped" id="list">
 
                 <thead>
                 <tr>
-                    <th style="width: 10px;">Action</th>
+                    <th style="width: 100px;">Nouveau Status</th>
+
                     <th>Numéro de suivi</th>
                     <th>Nom de l'expéditeur</th>
                     <th>Nom du destinataire</th>
                     <th style="width: 10px;">Status</th>
+                    <th style="width: 250px;">Action</th>
 
                 </tr>
                 </thead>
@@ -104,82 +107,95 @@
 
                 $qry = $conn->query("SELECT * from parcels $where order by  unix_timestamp(date_created) desc ");
                 while ($row = $qry->fetch_assoc()):
-                    ?>
-                    <tr>
-                        <td class="text-right">
-                            <div class="btn-group">
-                                <?php if ($row['status'] == 0): ?>
-                                    <button type="button" class="btn btn-danger btn-flat send_parcel"
-                                            data-id="<?php echo $row['id'] ?>">
-                                        <i class="fas fa-location-arrow"></i>
-                                    </button>
-                                <?php endif; ?>
-                                <?php if ($row['status'] == 1 && $row['type'] == 1): ?>
-                                    <button type="button" class="btn btn-success btn-flat arrived_parcel_domicile"
-                                            data-id="<?php echo $row['id'] ?>">
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                <?php endif; ?>
-                                <?php if ($row['status'] == 1 && $row['type'] == 2): ?>
-                                    <button type="button" class="btn btn-success btn-flat arrived_parcel_agence"
-                                            data-id="<?php echo $row['id'] ?>">
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                <?php endif; ?>
-
-                                <a href="./index.php?page=track_br&br=<?php echo $row['br_dec'] ?>"
-                                   class="btn btn-primary btn-flat ">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <button type="button" class="btn btn-outline-primary btn-flat view_parcel"
+                ?>
+                <tr>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <?php if ($row['status'] == 0): ?>
+                                <button type="button" class="btn btn-primary btn-flat send_parcel"
                                         data-id="<?php echo $row['id'] ?>">
-                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-arrow-right"></i>
                                 </button>
-                                <a href="index.php?page=edit_parcel&id=<?php echo $row['id'] ?>"
-                                   class="btn btn-primary btn-flat ">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                            <?php endif; ?>
 
-                                <button type="button" class="btn btn-danger btn-flat delete_parcel"
+                            <?php if ($row['status'] == 1): ?>
+                                <button type="button" class="btn btn-info btn-flat save_parcel_agence"
                                         data-id="<?php echo $row['id'] ?>">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-plus"></i>
                                 </button>
+                            <?php endif; ?>
 
-                            </div>
-                        </td>
-                        <td><b><?php echo($row['br_dec']) ?></b></td>
-                        <td><b><?php echo ucwords($row['sender_name']) ?></b></td>
-                        <td><b><?php echo ucwords($row['recipient_name']) ?></b></td>
-                        <td class="text-center">
-                            <?php
-                            $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
-                            switch ($row['status']) {
-                                case '1':
-                                    echo "<span class='badge badge-pill badge-danger'> Envoyé</span>";
-                                    break;
-                                case '2':
-                                    echo "<span class='badge badge-pill badge-success'> Livré en gars</span>";
-                                    break;
-                                case '3':
-                                    echo "<span class='badge badge-pill badge-success'> Livré à domicile</span>";
-                                    break;
-                                default:
-                                    echo "<span class='badge badge-pill badge-primary'> Enregistré</span>";
+                            <?php if ($row['status'] == 1 && $row['type'] == 1): ?>
+                                <button type="button" class="btn btn-success btn-flat arrived_parcel_domicile"
+                                        data-id="<?php echo $row['id'] ?>">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            <?php endif; ?>
+                            <?php if ($row['status'] == 1 && $row['type'] == 2): ?>
+                                <button type="button" class="btn btn-success btn-flat arrived_parcel_agence"
+                                        data-id="<?php echo $row['id'] ?>">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            <?php endif; ?>
+                    </td>
 
-                                    break;
-                            }
+        <td><b><?php echo($row['br_dec']) ?></b></td>
+        <td><b><?php echo ucwords($row['sender_name']) ?></b></td>
+        <td><b><?php echo ucwords($row['recipient_name']) ?></b></td>
+        <td class="text-center">
+            <?php
+            $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
+            switch ($row['status']) {
+                case '1':
+                    echo "<span class='badge badge-pill badge-primary'> Envoyé</span>";
+                    break;
+                case '2':
+                    echo "<span class='badge badge-pill badge-success'> Livré en gars</span>";
+                    break;
+                case '3':
+                    echo "<span class='badge badge-pill badge-success'> Livré à domicile</span>";
+                    break;
+                default:
+                    echo "<span class='badge badge-pill badge-info'> Enregistré</span>";
 
-                            ?>
-                        </td>
+                    break;
+            }
 
-                    </tr>
-                <?php endwhile; ?>
-                </tbody>
-            </table>
+            ?>
+        </td>
+                    <td class="text-center">
+                        <a href="./index.php?page=track_br&br=<?php echo $row['br_dec'] ?>"
+                           class="btn btn-primary btn-flat ">
+                            <i class="fas fa-map-marked"></i>
+                        </a>
+                        <button type="button" class="btn btn-primary btn-flat view_parcel"
+                                data-id="<?php echo $row['id'] ?>">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <a href="index.php?page=edit_parcel&id=<?php echo $row['id'] ?>"
+                           class="btn btn-primary btn-flat ">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <button type="button" class="btn btn-danger btn-flat delete_parcel"
+                                data-id="<?php echo $row['id'] ?>">
+                            <i class="fas fa-trash"></i>
+                        </button>
+
         </div>
+        </td>
+        </tr>
+        <?php endwhile; ?>
+        </tbody>
+        </table>
     </div>
 </div>
+</div>
 <style>
+    ::-webkit-input-placeholder {
+        text-align: center;
+    }
+
     table td {
         vertical-align: middle !important;
     }
@@ -218,6 +234,9 @@
         })
         $('.arrived_parcel_agence').click(function () {
             _conf("Le colis est-il arrivé à destination?", "arrived_parcel_agence", [$(this).attr('data-id')])
+        })
+        $('.save_parcel_agence').click(function () {
+            _conf("Le colis est-il arrivé à l'agence?", "save_parcel_agence", [$(this).attr('data-id')])
         })
     })
 
@@ -293,6 +312,24 @@
         })
     }
 
+    function save_parcel_agence($id) {
+        start_load()
+        $.ajax({
+            url: 'ajax.php?action=save_parcel_agence',
+            method: 'POST',
+            data: {id: $id},
+            success: function (resp) {
+                if (resp == 1) {
+                    alert_toast("Colis enregistré", 'success')
+                    setTimeout(function () {
+                        location.reload()
+                    }, 1500)
+
+                }
+            }
+        })
+    }
+
     $('#update_status').submit(function (e) {
         e.preventDefault()
         start_load()
@@ -324,4 +361,14 @@
             this.className += " active";
         });
     }
+
+    var $rows = $('#list tbody tr');
+    $('#search').keyup(function () {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $rows.show().filter(function () {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    });
 </script>

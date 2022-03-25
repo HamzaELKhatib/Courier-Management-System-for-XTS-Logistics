@@ -314,6 +314,15 @@ class Action
         if ($update && $save)
             return 1;
     }
+    function save_parcel_agence()
+    {
+        extract($_POST);
+        $user_id = ($_SESSION['login_id']);
+        $update = $this->db->query("UPDATE parcels set status=0 where id = $id");
+        $save = $this->db->query("INSERT INTO parcel_tracks set status=0 , parcel_id = $id , user_id = $user_id ");
+        if ($update && $save)
+            return 1;
+    }
     function get_parcel_history()
     {
         extract($_POST);

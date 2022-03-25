@@ -17,14 +17,7 @@
         <button class="btn btn-primary" form="update_status">Mettre à jour</button>
         <button type="button" class="btn btn-secondary" onclick="uni_modal('Parcel\'s Details','view_parcel.php?id=<?php echo $_GET['id'] ?>','large')">Fermer</button>
 </div>
-<style>
-	#uni_modal .modal-footer{
-		display: none
-	}
-	#uni_modal .modal-footer.display{
-		display: flex
-	}
-</style>
+
 <script>
 	$('#update_status').submit(function(e){
 		e.preventDefault()

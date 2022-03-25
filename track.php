@@ -34,9 +34,9 @@ include 'db_connect.php' ;
 
             <span class="time"><i class="fas fa-clock"></i> <span class="dtime"></span></span>
 
-            <div class="timeline-body"></div>
+            <div class="timeline-body" style="font-weight: bold; color: #0069D9"></div>
 
-            <span class="text"><i class="fas fa-person-booth"></i> <span class="uname"></span></span>
+            <span class="text">&nbsp;&nbsp;<i class="fas fa-male"></i> <span class="uname"></span></span>
 
             <span class="text float-right"><i class="fas fa-city"></i> <span class="city"></span></span>
 

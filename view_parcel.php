@@ -68,7 +68,7 @@ if($to_branch_id > 0 || $from_branch_id > 0){
                         <div class="col-sm-6">
                             <dl>
                                 <dt>Type:</dt>
-                                <dd><?php echo $type == 1 ? "<span class='badge badge-primary'>Livrer au destinataire</span>":"<span class='badge badge-info'>Récupérer</span>" ?></dd>
+                                <dd><?php echo $type == 1 ? "<span class='badge badge-warning'>Livraison à Domicile</span>":"<span class='badge badge-success'>Livraison à l'Agence</span>" ?></dd>
                             </dl>
                         </div>
                     </div>
