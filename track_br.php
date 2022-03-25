@@ -32,8 +32,6 @@ $num = $_GET['br'];
         start_load()
 
        var tracking_num = (("<?php echo ($num); ?>"))
-       console.log(tracking_num)
-
         if (tracking_num === '') {
             $('#parcel_history').html('')
             end_load()

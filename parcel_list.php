@@ -3,20 +3,65 @@
     <div class="card card-outline card-primary">
         <div class="card-header">
             <div class="btn-group dropright">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                <!--<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                     Status
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="./index.php?page=parcel_list">Tout</a>
                     <?php
-                    $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
-                    foreach ($status_arr as $k => $v):?>
+/*                    $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
+                    foreach ($status_arr as $k => $v):*/?>
                         <a class="dropdown-item"
-                           href="./index.php?page=parcel_list<?php if ($k != '') echo "&s=" . $k ?>">
-                            <p><?php echo $v ?></p>
+                           href="./index.php?page=parcel_list<?php /*if ($k != '') echo "&s=" . $k */?>">
+                            <p><?php /*echo $v */?></p>
                         </a>
-                    <?php endforeach; ?>
+                    <?php /*endforeach; */?>
+                </div>-->
+                <div id="myBtnContainer">
+
+
+                    <?php if (isset($_GET['s'])): ?>
+
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list"> Tout</a>
+
+                        <?php if ($_GET['s'] == 0): ?>
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=0"> Enregistré</a>
+                        <?php else: ?>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0"> Enregistré</a>
+                        <?php endif; ?>
+
+                        <?php if ($_GET['s'] == 1): ?>
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=1"> Envoyé</a>
+                        <?php else: ?>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1"> Envoyé</a>
+                        <?php endif; ?>
+
+                        <?php if ($_GET['s'] == 2): ?>
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=2"> Livré en
+                                gars</a>
+                        <?php else: ?>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2"> Livré en gars</a>
+                        <?php endif; ?>
+
+                        <?php if ($_GET['s'] == 3): ?>
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=3"> Livré à
+                                domicile</a>
+                        <?php else: ?>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3"> Livré à domicile</a>
+                        <?php endif; ?>
+
+                    <?php else: ?>
+
+                        <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list"> Tout</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0"> Enregistré</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1"> Envoyé</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2"> Livré en gars</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3"> Livré à domicile</a>
+
+                    <?php endif; ?>
+
+
                 </div>
             </div>
             <div class="card-tools">
@@ -138,6 +183,23 @@
     table td {
         vertical-align: middle !important;
     }
+
+    #btnf {
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    #btnf:hover {
+        background-color: #ddd;
+    }
+
+    #btnf.active {
+        background-color: #0069D9;
+        color: white;
+    }
 </style>
 <script>
     $(document).ready(function () {
@@ -194,6 +256,7 @@
             }
         })
     }
+
     function arrived_parcel_domicile($id) {
         start_load()
         $.ajax({
@@ -211,6 +274,7 @@
             }
         })
     }
+
     function arrived_parcel_agence($id) {
         start_load()
         $.ajax({
@@ -228,6 +292,7 @@
             }
         })
     }
+
     $('#update_status').submit(function (e) {
         e.preventDefault()
         start_load()
@@ -250,4 +315,13 @@
             }
         })
     })
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btnf");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
 </script>
