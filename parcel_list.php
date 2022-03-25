@@ -169,7 +169,7 @@
                             <i class="fas fa-map-marked"></i>
                         </a>
                         <button type="button" class="btn btn-primary btn-flat view_parcel"
-                                data-id="<?php echo $row['id'] ?>">
+                                data-bs-dismiss="<?php echo $row['id'] ?>">
                             <i class="fas fa-eye"></i>
                         </button>
                         <a href="index.php?page=edit_parcel&id=<?php echo $row['id'] ?>"
@@ -219,9 +219,17 @@
 </style>
 <script>
     $(document).ready(function () {
-
+        $('#list').DataTable({
+            "paging": false,
+            "responsive": false,
+            "lengthChange": false,
+            "autoWidth": false,
+            "searching": false,
+            "ordering":  false,
+        })
         $('.view_parcel').click(function () {
             uni_modal("Détails du colis", "view_parcel.php?id=" + $(this).attr('data-id'), "large")
+            console.log($(this).attr('data-id'))
         })
         $('.delete_parcel').click(function () {
             _conf("Êtes-vous sûr de supprimer ce colis?", "delete_parcel", [$(this).attr('data-id')])
