@@ -254,7 +254,7 @@
                 if (resp == 1) {
                     alert_toast('info sauvegardé par succés', "success");
                     setTimeout(function () {
-                        location.href = 'index.php?page=parcel_list';
+                        location.href = 'index.php?page=parcel_list&s=0&p=1';
                     }, 2000)
 
                 }

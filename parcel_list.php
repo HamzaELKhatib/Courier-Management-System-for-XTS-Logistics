@@ -1,5 +1,9 @@
-<?php include 'db_connect.php' ?>
-<div class="col-lg-12">
+<?php include 'db_connect.php';
+$num_page = $_GET['p'];
+$num_page = ($num_page - 1)*10;
+echo $num_page;
+?>
+<div class="col-xl-auto">
     <div class="card card-outline card-primary">
         <div class="card-header">
 
@@ -25,41 +29,41 @@
 
                     <?php if (isset($_GET['s'])): ?>
 
-                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list"> Tout</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&p=1"> Tout</a>
 
                         <?php if ($_GET['s'] == 0): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=0"> Enregistré</a>
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] ?>"> Enregistré</a>
                         <?php else: ?>
-                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0"> Enregistré</a>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0&p=1"> Enregistré</a>
                         <?php endif; ?>
 
                         <?php if ($_GET['s'] == 1): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=1"> Envoyé</a>
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] ?>"> Envoyé</a>
                         <?php else: ?>
-                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1"> Envoyé</a>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1&p=1"> Envoyé</a>
                         <?php endif; ?>
 
                         <?php if ($_GET['s'] == 2): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=2"> Livré en
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] ?>"> Livré en
                                 gars</a>
                         <?php else: ?>
-                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2"> Livré en gars</a>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2&p=1"> Livré en gars</a>
                         <?php endif; ?>
 
                         <?php if ($_GET['s'] == 3): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=3"> Livré à
+                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] ?>"> Livré à
                                 domicile</a>
                         <?php else: ?>
-                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3"> Livré à domicile</a>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3&p=1"> Livré à domicile</a>
                         <?php endif; ?>
 
                     <?php else: ?>
 
-                        <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list"> Tout</a>
-                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0"> Enregistré</a>
-                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1"> Envoyé</a>
-                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2"> Livré en gars</a>
-                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3"> Livré à domicile</a>
+                        <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&p=1?>"> Tout</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0&p=1"> Enregistré</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1&p=1"> Envoyé</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2&p=1"> Livré en gars</a>
+                        <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3&p=1"> Livré à domicile</a>
 
                     <?php endif; ?>
                 </div>
@@ -75,18 +79,18 @@
 
                 <thead>
                 <tr>
-                    <th class="text-center bg-primary" style="width: 10px;font-size: small">Modifier</th>
-                    <th class="text-center bg-primary" style="font-size: small">N°DEC/BR</th>
+                    <th class="text-center bg-primary" style="width: 80px;font-size: small">Modifier</th>
+                    <th class="text-center bg-primary" style="width: 60px;font-size: small">N°DEC/BR</th>
 
-                    <th class="text-center bg-info" style="font-size: medium">Expéditeur</th>
-                    <th class="text-center bg-info" style="font-size: medium">CIN E</th>
-                    <th class="text-center bg-info" style="font-size: medium">Ville</th>
+                    <th class="text-center bg-info" style="width: 150px;font-size: medium">Expéditeur</th>
+                    <th class="text-center bg-info" style="width: 70px;font-size: medium">CIN E</th>
+                    <th class="text-center bg-info" style="width: 90px;font-size: medium">Ville</th>
 
-                    <th class="text-center bg-success" style="font-size: medium">Destinataire</th>
-                    <th class="text-center bg-success" style="font-size: medium">CIN D</th>
-                    <th class="text-center bg-gradient-success" style="font-size: medium">Ville</th>
+                    <th class="text-center bg-success" style="width: 150px;font-size: medium">Destinataire</th>
+                    <th class="text-center bg-success" style="width: 70px;font-size: medium">CIN D</th>
+                    <th class="text-center bg-gradient-success" style="width: 90px;font-size: medium">Ville</th>
 
-                    <th class="text-center bg-primary" style="width: 10px;font-size: small">Status</th>
+                    <th class="text-center bg-primary" style="width: 90px;font-size: small">Status</th>
                     <th class="text-center bg-primary" style="width: 200px;font-size: small">Action</th>
 
                 </tr>
@@ -111,13 +115,13 @@
                 }
 
 
-                $qry = $conn->query("SELECT * from parcels $where order by  unix_timestamp(date_created) desc ");
+                $qry = $conn->query("SELECT * from parcels $where  order by unix_timestamp(date_created) desc LIMIT $num_page,10");
                 while ($row = $qry->fetch_assoc()):
                     ?>
                     <tr>
 
                         <td class="text-center">
-                            <div class="btn-group">
+                            <div class="btn-group fixed">
                                 <?php if ($row['status'] == 0): ?>
                                     <button type="button" class="btn btn-primary btn-flat send_parcel"
                                             data-id="<?php echo $row['id'] ?>">
@@ -153,6 +157,7 @@
                         <td><b><?php echo ucwords($row['recipient_cin']) ?></b></td>
                         <td><b><?php echo ucwords($row['recipient_city']) ?></b></td>
                         <td class="text-center">
+                            <?php for ($i = 0 ; $i<=($num_page*10) ; $i++) ?>
                             <?php
                             $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
                             switch ($row['status']) {
@@ -199,6 +204,13 @@
     </div>
 </div>
 <style>
+    td{
+        font-size: 15px;
+    }
+    table
+    {
+        table-layout: fixed;
+    }
     ::-webkit-input-placeholder {
         text-align: center;
     }

@@ -1,8 +1,10 @@
 <?php include 'db_connect.php' ;
 $num = $_GET['br'];
 ?>
-<div class="col-lg-12">
+<div>
 
+</div>
+<div class="col-lg-12">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="timeline" id="parcel_history">
