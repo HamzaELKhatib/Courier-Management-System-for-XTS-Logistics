@@ -69,33 +69,25 @@
                    href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Ajouter Nouveau</a>
             </div>
         </div>
-        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
-        <div class="card-body">
+<!--        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
+-->        <div class="card-body">
             <table class="table table-bordered table-striped" id="list">
 
                 <thead>
                 <tr>
-                    <th style="color:white ;width: 100px;border-bottom: 1px solid #000000;
-                    border-left: 1px solid #ffffff;
-                    border-right: 1px solid #ffffff" height="25" align="center" valign=middle bgcolor="#002060">Nouveau Status</th>
-                    <th style="color:white ; border-bottom: 1px solid #000000;
-                    border-left: 1px solid #ffffff;
-                    border-right: 1px solid #ffffff" height="25" align="center" valign=middle bgcolor="#002060">N° DEC/BR</th>
+                    <th class="text-center bg-primary" style="width: 10px;font-size: small">Modifier</th>
+                    <th class="text-center bg-primary" style="font-size: small">N°DEC/BR</th>
 
-                    <th style="border-bottom: 1px solid #000000;
-                    border-left: 1px solid #ffffff;
-                    border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0">Nom de l'expéditeur</th>
-                    <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0">CIN E</th>
-                    <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0">Ville</th>
-                    <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050">Nom du destinataire</th>
-                    <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050">CIN D</th>
-                    <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050">Ville</th>
-                    <th style="color:white ;width: 10px;border-bottom: 1px solid #000000;
-                    border-left: 1px solid #ffffff;
-                    border-right: 1px solid #ffffff" height="25" align="center" valign=middle bgcolor="#002060">Status</th>
-                    <th style="color:white ;width: 250px;border-bottom: 1px solid #000000;
-                    border-left: 1px solid #ffffff;
-                    border-right: 1px solid #ffffff" height="25" align="center" valign=middle bgcolor="#002060">Action</th>
+                    <th class="text-center bg-info" style="font-size: medium">Expéditeur</th>
+                    <th class="text-center bg-info" style="font-size: medium">CIN E</th>
+                    <th class="text-center bg-info" style="font-size: medium">Ville</th>
+
+                    <th class="text-center bg-success" style="font-size: medium">Destinataire</th>
+                    <th class="text-center bg-success" style="font-size: medium">CIN D</th>
+                    <th class="text-center bg-gradient-success" style="font-size: medium">Ville</th>
+
+                    <th class="text-center bg-primary" style="width: 10px;font-size: small">Status</th>
+                    <th class="text-center bg-primary" style="width: 200px;font-size: small">Action</th>
 
                 </tr>
                 </thead>
@@ -186,7 +178,7 @@
                                 <i class="fas fa-map-marked"></i>
                             </a>
                             <button type="button" class="btn btn-primary btn-flat view_parcel"
-                                    data-bs-dismiss="<?php echo $row['id'] ?>">
+                                    data-id="<?php echo $row['id'] ?>">
                                 <i class="fas fa-eye"></i>
                             </button>
                             <a href="index.php?page=edit_parcel&id=<?php echo $row['id'] ?>"
@@ -239,7 +231,7 @@
             "responsive": false,
             "lengthChange": false,
             "autoWidth": false,
-            "searching": false,
+            "searching": true,
             "ordering": false,
         })
         $('.view_parcel').click(function () {
