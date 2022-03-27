@@ -67,18 +67,23 @@ if($to_branch_id > 0 || $from_branch_id > 0){
                         </div>
                         <div class="col-sm-6">
                             <dl>
-                                <dt>Type:</dt>
+                                <dt>Type de livraison:</dt>
                                 <dd><?php echo $type == 1 ? "<span class='badge badge-warning'>Livraison à Domicile</span>":"<span class='badge badge-success'>Livraison à l'Agence</span>" ?></dd>
+                            </dl>
+
+                            <dl>
+                                <dt>Type d'expédition:</dt>
+                                <dd><?php echo $type_expedition == 1 ? "<span class='badge badge-warning'>Express</span>":"<span class='badge badge-success'>Simple</span>" ?></dd>
                             </dl>
                         </div>
                     </div>
                     <dl>
                         <dt>Branche qui a accepté le colis:</dt>
                         <dd><?php echo ucwords($branch[$from_branch_id]) ?></dd>
-                        <?php if($type == 2): ?>
+<!--                        --><?php /*if($type == 2): */?>
                             <dt>Branche la plus proche du destinataire pour le ramassage:</dt>
                             <dd><?php echo ucwords($branch[$to_branch_id]) ?></dd>
-                        <?php endif; ?>
+<!--                        --><?php /*endif; */?>
                         <dt>Status:</dt>
                         <dd>
                             <?php
@@ -108,9 +113,7 @@ if($to_branch_id > 0 || $from_branch_id > 0){
         </div>
     </div>
 </div>
-<div class="modal-footer display p-0 m-0">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-</div>
+
 
 <script>
     $('#update_status').click(function(){

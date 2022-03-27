@@ -99,28 +99,28 @@
                     </div>
 
 
-                    <div class="col-md-6" id="" <?php echo isset($type) && $type == 1 ? 'style="display: none"' : '' ?>>
-                        <?php if ($_SESSION['login_branch_id'] <= 0): ?>
+                    <div class="col-md-6" id="">
+<!--                        <?php /*if ($_SESSION['login_branch_id'] <= 0): */?>
                             <div class="form-group" id="fbi-field">
                                 <label for="" class="control-label">Branche qui a traité</label>
                                 <select name="from_branch_id" id="from_branch_id" class="form-control select2"
                                         required="">
                                     <option value=""></option>
                                     <?php
-                                    $branches = $conn->query("SELECT *,concat(street,', ',city,', ',state,', ',zip_code,', ',country) as address FROM branches");
+/*                                    $branches = $conn->query("SELECT *,concat(street,', ',city,', ',state,', ',zip_code,', ',country) as address FROM branches");
                                     while ($row = $branches->fetch_assoc()):
-                                        ?>
-                                        <option value="<?php echo $row['id'] ?>" <?php echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected" : '' ?>>
-                                            <?php echo(ucwords($row['address'])) ?></option>
-                                    <?php endwhile; ?>
+                                        */?>
+                                        <option value="<?php /*echo $row['id'] */?>" <?php /*echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected" : '' */?>>
+                                            <?php /*echo(ucwords($row['address'])) */?></option>
+                                    <?php /*endwhile; */?>
                                 </select>
                             </div>
-                        <?php else: ?>
+                        --><?php /*else: */?>
                             <input type="hidden" name="from_branch_id"
                                    value="<?php echo $_SESSION['login_branch_id'] ?>">
-                        <?php endif; ?>
+<!--                        --><?php //endif; ?>
                         <div class="form-group" id="tbi-field">
-                            <label for="" class="control-label">Branche de ramassage</label>
+                            <label for="" class="control-label">Branche de destination</label>
                             <select name="to_branch_id" id="to_branch_id" class="form-control select2">
                                 <option value=""></option>
                                 <?php
@@ -188,7 +188,7 @@
         <div class="card-footer border-top border-info">
             <div class="d-flex w-100 justify-content-center align-items-center">
                 <button class="btn btn-flat  bg-gradient-primary mx-2" form="manage-parcel">Sauvegarder</button>
-                <a class="btn btn-flat bg-gradient-secondary mx-2" href="./index.php?page=parcel_list">Annuler</a>
+                <a class="btn btn-flat bg-gradient-secondary mx-2" href="./index.php?page=parcel_list&p=1">Annuler</a>
             </div>
         </div>
     </div>
@@ -208,13 +208,13 @@
     </table>
 </div>
 <script>
-    $('#dtype').change(function () {
-        if ($(this).prop('checked') == true) {
-            $('#tbi-field').hide()
-        } else {
-            $('#tbi-field').show()
-        }
-    })
+    // $('#dtype').change(function () {
+    //     if ($(this).prop('checked') == true) {
+    //         $('#tbi-field').hide()
+    //     } else {
+    //         $('#tbi-field').show()
+    //     }
+    // })
     $('[name="price[]"]').keyup(function () {
         calc()
     })
