@@ -1,7 +1,7 @@
 <?php include 'db_connect.php';
 $num_page = $_GET['p'];
 $num_page = ($num_page - 1)*10;
-echo $num_page;
+
 ?>
 <div class="col-xl-auto">
     <div class="card card-outline card-primary">
@@ -59,7 +59,7 @@ echo $num_page;
 
                     <?php else: ?>
 
-                        <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&p=1?>"> Tout</a>
+                        <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&p=1"> Tout</a>
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0&p=1"> Enregistré</a>
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1&p=1"> Envoyé</a>
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2&p=1"> Livré en gars</a>
@@ -73,8 +73,8 @@ echo $num_page;
                    href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Ajouter Nouveau</a>
             </div>
         </div>
-<!--        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
--->        <div class="card-body">
+        <!--        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
+        -->        <div class="card-body">
             <table class="table table-bordered table-striped" id="list">
 
                 <thead>
@@ -158,7 +158,7 @@ echo $num_page;
                         <td><b><?php echo ucwords($row['recipient_city']) ?></b></td>
                         <td class="text-center">
                             <?php for ($i = 0 ; $i<=($num_page*10) ; $i++) ?>
-                            <?php
+                                <?php
                             $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
                             switch ($row['status']) {
                                 case '1':
@@ -198,8 +198,87 @@ echo $num_page;
                         </td>
                     </tr>
                 <?php endwhile; ?>
+
                 </tbody>
             </table>
+
+            <?php if (isset($_GET['s'])): ?>
+
+
+                <?php if ($_GET['s'] == 0): ?>
+                    <nav aria-label="page-buttons">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=1"><<</a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php if ($_GET['p'] > 1) {
+                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
+                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 1 ?>">> </a></li>
+                        </ul>
+                    </nav>
+                <?php endif; ?>
+
+                <?php if ($_GET['s'] == 1): ?>
+                    <nav aria-label="page-buttons">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=1"><< </a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php if ($_GET['p'] > 1) {
+                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"> <</a></li>
+                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 1 ?>">> </a></li>
+                        </ul>
+                    </nav>
+                <?php endif; ?>
+
+                <?php if ($_GET['s'] == 2): ?>
+                    <nav aria-label="page-buttons">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=1"><< </a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php if ($_GET['p'] > 1) {
+                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
+                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=1"><?php echo $_GET['p'] ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 1 ?>">> </a></li>
+                        </ul>
+                    </nav>
+                <?php endif; ?>
+
+                <?php if ($_GET['s'] == 3): ?>
+                    <nav aria-label="page-buttons">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=1"><<</a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php if ($_GET['p'] > 1) {
+                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
+                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=1"><?php echo $_GET['p'] ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 1 ?>">></a></li>
+                        </ul>
+                    </nav>
+                <?php endif; ?>
+
+
+            <?php else: ?>
+
+                <nav aria-label="page-buttons">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=1"><<</a></li>
+                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php if ($_GET['p'] > 1) {
+                                echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
+                        <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a></li>
+                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
+                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
+                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 1 ?>">></a></li>
+                    </ul>
+                </nav>
+
+            <?php endif; ?>
+
+
         </div>
     </div>
 </div>
