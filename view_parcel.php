@@ -21,7 +21,7 @@ if($to_branch_id > 0 || $from_branch_id > 0){
                 <div class="callout callout-info">
                     <dl>
                         <dt>Numéro de suivi:</dt>
-                        <dd> <h4><b><?php echo $br_dec ?></b></h4></dd>
+                        <dd> <h4><b><?php echo $reference ?></b></h4></dd>
                     </dl>
                 </div>
             </div>
@@ -117,6 +117,6 @@ if($to_branch_id > 0 || $from_branch_id > 0){
 
 <script>
     $('#update_status').click(function(){
-        uni_modal("Mettre à jour le statut de: <?php echo $br_dec ?>","manage_parcel_status.php?id=<?php echo $id ?>&cs=<?php echo $status ?>","")
+        uni_modal("Mettre à jour le statut de: <?php echo $reference ?>","manage_parcel_status.php?id=<?php echo $id ?>&cs=<?php echo $status ?>","")
     })
 </script>

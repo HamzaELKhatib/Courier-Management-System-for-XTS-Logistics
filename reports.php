@@ -31,20 +31,47 @@
                     <div class="row">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-success float-right" style="display: none" id="print">
-                                <i class="fa fa-print"></i> Print
+                                <i class="fa fa-print"></i> Imprimer
                             </button>
+                            <br>
                         </div>
                     </div>
 
-                    <table class="table table-bordered" id="report-list">
+
+                    <table class="table table-bordered" align="left" cellspacing="0" border="1" id="report-list">
+                        <colgroup width="62"></colgroup>
+                        <colgroup width="107"></colgroup>
+                        <colgroup width="189"></colgroup>
+                        <colgroup width="80"></colgroup>
+                        <colgroup width="88"></colgroup>
+                        <colgroup width="172"></colgroup>
+                        <colgroup width="88"></colgroup>
+                        <colgroup width="84"></colgroup>
+                        <colgroup width="86"></colgroup>
+                        <colgroup width="85"></colgroup>
+                        <colgroup width="83"></colgroup>
+                        <colgroup width="68"></colgroup>
+                        <colgroup width="71"></colgroup>
+                        <colgroup span="2" width="77"></colgroup>
+                        <colgroup width="97"></colgroup>
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Date</th>
-                            <th>Expéditeur</th>
-                            <th>Destinataire</th>
-                            <th>Montant</th>
-                            <th>Status</th>
+                            <th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="25" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">N&deg; DEC/BR</font></b></th>
+                            <th style="border-bottom: 1px solid #000000" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">DATE EXP.</font></b></th>
+                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">EXPEDITEUR</font></b></th>
+                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">CIN</font></b></th>
+                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">VILLE</font></b></th>
+                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DESTINAIRE</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">CIN D</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DESTINATION</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DATE LIV.</font></b></th>
+                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">COLIS</font></b></th>
+                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">POIDS</font></b></th>
+                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. PAY&Eacute;</font></b></th>
+                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. D&Ucirc;</font></b></th>
+                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#385724"><b><font face="Arial" color="#FFFFFF">R. Fonds</font></b></th>
+                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#BF9000"><b><font face="Arial" color="#FFFFFF">R. BL</font></b></th>
+                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#C00000"><b><font face="Arial" color="#FFFFFF">NOTE</font></b></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -64,7 +91,13 @@
 </div>
 <!---------------Printable Page (similaire à ctrl+p)---------------->
 <noscript>
-    <style>
+    <style type="text/css">
+        body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Calibri"; font-size:x-small }
+        a.comment-indicator:hover + comment { background:#ffd; position:absolute; display:block; border:1px solid black; padding:0.5em;  }
+        a.comment-indicator { background:red; display:inline-block; border:1px solid black; width:0.5em; height:0.5em;  }
+        comment { display:none;  }
+        .sorttable_sorted,.sorttable_sorted_reverse,table.sortable thead td:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort) { white-space: nowrap; cursor: pointer; }
+        table.sortable thead td:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { content:" \25B4\25BE"; }
         table.table {
             width: 100%;
             border-collapse: collapse;
@@ -78,7 +111,118 @@
             text-align: center;
         }
     </style>
-    <h3 class="text-cnter"><b>Rapoooooooooort</b></h3>
+
+    <table align="left" cellspacing="0" border="0">
+        <colgroup width="62"></colgroup>
+        <colgroup width="107"></colgroup>
+        <colgroup width="189"></colgroup>
+        <colgroup width="80"></colgroup>
+        <colgroup width="88"></colgroup>
+        <colgroup width="172"></colgroup>
+        <colgroup width="88"></colgroup>
+        <colgroup width="84"></colgroup>
+        <colgroup width="86"></colgroup>
+        <colgroup width="85"></colgroup>
+        <colgroup width="83"></colgroup>
+        <colgroup width="68"></colgroup>
+        <colgroup width="71"></colgroup>
+        <colgroup span="2" width="77"></colgroup>
+        <colgroup width="97"></colgroup>
+        <tr>
+            <td colspan=3 rowspan=3 height="64" align="left" valign=bottom><font face="Arial" size=1
+                                                                                 color="#000000"><br><img
+                            src="Tables%20to%20print/result_htm_56a5069f99260b80.png" width=287 height=53 hspace=37 vspace=7>
+                </font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+        </tr>
+        <tr>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td colspan=6 align="center" valign=middle><b><u><font face="Arial" size=5 color="#203864">ETAT DE COMPTE
+                            MENSUELLE</font></u></b></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="right" valign=bottom sdnum="1033;0;@"><b><u><font face="Arial" color="#002060">Période :</font></u></b>
+            </td>
+            <td colspan=5 align="left" valign=bottom sdnum="1033;0;@"><font face="Arial" size=3 color="#000000">NOVEMBRE
+                    2021</font></td>
+
+
+        </tr>
+        <tr>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+        </tr>
+        <tr>
+            <td height="21" align="left" valign=bottom><b><u><font face="Arial" color="#002060">AGENCE :</font></u></b></td>
+            <td colspan=2 align="left" valign=bottom><font face="Arial" color="#000000">NEJME CHAMAL TETOUAN</font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font face="Arial" color="#000000"><br></font></td>
+            <td colspan=2 align="left" valign=bottom sdnum="1033;1033;M/D/YYYY"><font face="Arial"
+                                                                                      color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td colspan=2 align="right" valign=bottom><b><u><font face="Arial" size=3 color="#002060">COMPTE
+                            :</font></u></b></td>
+            <td colspan=3 align="left" valign=bottom bgcolor="#0070C0"><b><font face="Arial" size=3 color="#FFFFFF">RECEPTION</font></b>
+            </td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+        </tr>
+
+        <tr>
+            <td height="7" align="left" valign=bottom><font face="Arial" color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font face="Arial" color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+            <td align="left" valign=bottom><font color="#000000"><br></font></td>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
 </noscript>
 <div class="details d-none">
     <p><b>Plage de dates:</b> <span class="drange"></span></p>
@@ -108,12 +252,22 @@
                         var i = 1;
                         Object.keys(resp).map(function (k) {
                             var tr = $('<tr></tr>')
-                            tr.append('<td>' + (i++) + '</td>')
-                            tr.append('<td>' + (resp[k].date_created) + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
                             tr.append('<td>' + (resp[k].sender_name) + '</td>')
+                            tr.append('<td>' + (resp[k].sender_id) + '</td>')
+                            tr.append('<td>' + (resp[k].sender_city) + '</td>')
                             tr.append('<td>' + (resp[k].recipient_name) + '</td>')
-                            tr.append('<td>' + (resp[k].price) + ' dh' + '</td>')
-                            tr.append('<td>' + (resp[k].status) + '</td>')
+                            tr.append('<td>' + (resp[k].recipient_cin) + '</td>')
+                            tr.append('<td>' + (resp[k].recipient_city) + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + (resp[k].number) + '</td>')
+                            tr.append('<td>' + (resp[k].weight) + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + 'inconnu' + '</td>')
                             $('#report-list tbody').append(tr)
                             //-------------------------------------------
                             //Sum of colomn numbers

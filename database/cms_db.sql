@@ -56,7 +56,7 @@ INSERT INTO `branches` (`id`, `branch_code`, `street`, `city`, `state`, `zip_cod
 
 CREATE TABLE `parcels` (
   `id` int(30) NOT NULL,
-  `br_dec` varchar(100) NOT NULL,
+  `reference` varchar(100) NOT NULL,
   `sender_name` text NOT NULL,
   `sender_address` text NOT NULL,
   `sender_contact` text NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE `parcels` (
 -- Dumping data for table `parcels`
 --
 
-INSERT INTO `parcels` (`id`, `br_dec`, `sender_name`, `sender_address`, `sender_contact`, `recipient_name`, `recipient_address`, `recipient_contact`, `type`, `from_branch_id`, `to_branch_id`, `weight`, `height`, `width`, `length`, `price`, `status`, `date_created`) VALUES
+INSERT INTO `parcels` (`id`, `reference`, `sender_name`, `sender_address`, `sender_contact`, `recipient_name`, `recipient_address`, `recipient_contact`, `type`, `from_branch_id`, `to_branch_id`, `weight`, `height`, `width`, `length`, `price`, `status`, `date_created`) VALUES
 (1, '201406231415', 'John Smith', 'Sample', '+123456', 'Claire Blake', 'Sample', 'Sample', 1, '1', '0', '30kg', '12in', '12in', '15in', 2500, 7, '2020-11-26 16:15:46'),
 (2, '117967400213', 'John Smith', 'Sample', '+123456', 'Claire Blake', 'Sample', 'Sample', 2, '1', '3', '30kg', '12in', '12in', '15in', 2500, 1, '2020-11-26 16:46:03'),
 (3, '983186540795', 'John Smith', 'Sample', '+123456', 'Claire Blake', 'Sample', 'Sample', 2, '1', '3', '20Kg', '10in', '10in', '10in', 1500, 2, '2020-11-26 16:46:03'),

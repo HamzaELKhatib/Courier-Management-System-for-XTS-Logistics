@@ -245,12 +245,12 @@ class Action
                 $i = 0;
                 while ($i == 0) {
                     $ref = sprintf("%'06d", mt_rand(0, 999999));
-                    $chk = $this->db->query("SELECT * FROM parcels where br_dec = '$ref'")->num_rows;
+                    $chk = $this->db->query("SELECT * FROM parcels where reference = '$ref'")->num_rows;
                     if ($chk <= 0) {
                         $i = 1;
                     }
                 }
-                $data .= ", br_dec='$ref' ";
+                $data .= ", reference='$ref' ";
                 if ($save[] = $this->db->query("INSERT INTO parcels set $data"))
                     $ids[] = $this->db->insert_id;
             } else {
@@ -327,7 +327,7 @@ class Action
     {
         extract($_POST);
         $data = array();
-        $parcel = $this->db->query("SELECT * FROM parcels where br_dec = '$ref_no'");
+        $parcel = $this->db->query("SELECT * FROM parcels where reference = '$ref_no'");
 
 
         if ($parcel->num_rows <= 0) {

@@ -20,7 +20,7 @@ CREATE TABLE `branches` (
 
 CREATE TABLE `parcels` (
   `id` int(30) NOT NULL,
-  `br_dec` varchar(100) NOT NULL,
+  `reference` varchar(100) NOT NULL,
   `expedition_number` varchar(100) NOT NULL,
   `sender_name` text NOT NULL,
   `sender_id` varchar(100) NOT NULL,

@@ -28,7 +28,7 @@ INSERT INTO `branches` (`id`, `branch_code`, `street`, `city`, `state`, `zip_cod
 
 CREATE TABLE `parcels` (
   `id` int(30) NOT NULL,
-  `br_dec` varchar(100) NOT NULL,
+  `reference` varchar(100) NOT NULL,
   `expedition_number` varchar(100) NOT NULL,
   `sender_name` text NOT NULL,
   `sender_id` varchar(100) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `parcels` (
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `parcels` (`id`, `br_dec`, `expedition_number`, `sender_name`, `sender_id`, `sender_city`, `sender_address`, `sender_contact`, `recipient_name`, `recipient_cin`, `recipient_city`, `recipient_address`, `recipient_contact`, `type`, `type_expedition`, `from_branch_id`, `to_branch_id`, `weight`, `number`, `taxateur`, `code_ramasseur`, `type_retour_de_fond`, `price_retour_de_fond`, `price_retour_bl`, `transport`, `manutention`, `declared_value`, `ramassage`, `delivery`, `avis`, `enregistrement`, `autre_frais`, `price`, `paid_price`, `status`, `date_created`) VALUES
+INSERT INTO `parcels` (`id`, `reference`, `expedition_number`, `sender_name`, `sender_id`, `sender_city`, `sender_address`, `sender_contact`, `recipient_name`, `recipient_cin`, `recipient_city`, `recipient_address`, `recipient_contact`, `type`, `type_expedition`, `from_branch_id`, `to_branch_id`, `weight`, `number`, `taxateur`, `code_ramasseur`, `type_retour_de_fond`, `price_retour_de_fond`, `price_retour_bl`, `transport`, `manutention`, `declared_value`, `ramassage`, `delivery`, `avis`, `enregistrement`, `autre_frais`, `price`, `paid_price`, `status`, `date_created`) VALUES
 (11, '657503', '', 'D', 'D1', 'D3', 'D2', '0000', 'C', 'C1', 'C3', 'C2', '1111', 2, 2, '9', '10', 10, 22, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.5, 0, 6, '2022-03-17 22:31:46'),
 (12, '382486', '', 'D', 'D1', 'D3', 'D2', '0000', 'C', 'C1', 'C3', 'C2', '1111', 2, 2, '9', '10', 11, 2, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.7, 0, 0, '2022-03-17 22:31:46'),
 (13, '658043', '', 'N', 'N1', 'N3', 'N2', '2222', 'n', 'n1', 'n3', 'n2', '3333', 2, 1, '9', '10', 1, 2, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 8, '2022-03-17 22:33:17'),

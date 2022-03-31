@@ -80,7 +80,7 @@ $num_page = ($num_page - 1)*10;
                 <thead>
                 <tr>
                     <th class="text-center bg-primary" style="width: 80px;font-size: small">Modifier</th>
-                    <th class="text-center bg-primary" style="width: 60px;font-size: small">N°DEC/BR</th>
+                    <th class="text-center bg-primary" style="width: 60px;font-size: small">Réference</th>
 
                     <th class="text-center bg-info" style="width: 150px;font-size: medium">Expéditeur</th>
                     <th class="text-center bg-info" style="width: 70px;font-size: medium">CIN E</th>
@@ -149,7 +149,7 @@ $num_page = ($num_page - 1)*10;
                                     </button>
                                 <?php endif; ?>
                         </td>
-                        <td><b><?php echo($row['br_dec']) ?></b></td>
+                        <td><b><?php echo($row['reference']) ?></b></td>
                         <td><b><?php echo ucwords($row['sender_name']) ?></b></td>
                         <td><b><?php echo ucwords($row['sender_id']) ?></b></td>
                         <td><b><?php echo ucwords($row['sender_city']) ?></b></td>
@@ -178,7 +178,7 @@ $num_page = ($num_page - 1)*10;
                             ?>
                         </td>
                         <td class="text-center">
-                            <a href="./index.php?page=track_br&br=<?php echo $row['br_dec'] ?>"
+                            <a href="./index.php?page=track_br&br=<?php echo $row['reference'] ?>"
                                class="btn btn-primary btn-flat ">
                                 <i class="fas fa-map-marked"></i>
                             </a>
