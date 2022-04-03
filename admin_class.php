@@ -368,11 +368,42 @@ class Action
         $get = $this->db->query("SELECT * FROM parcels where date(date_created) BETWEEN '$date_from' and '$date_to' " . ($status != 'all' ? " and status = $status " : "") . " order by unix_timestamp(date_created) asc");
         $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
         while ($row = $get->fetch_assoc()) {
-            $row['sender_name'] = ucwords($row['sender_name']);
-            $row['recipient_name'] = ucwords($row['recipient_name']);
-            $row['date_created'] = date("M d, Y", strtotime($row['date_created']));
-            $row['status'] = $status_arr[$row['status']];
-            $row['price'] = number_format($row['price'], 2);
+            $sender_name = ucwords($row['sender_name']);
+            $recipient_name = ucwords($row['recipient_name']);
+            $date_created = date("M d, Y", strtotime($row['date_created']));
+            $status = $status_arr[$row['status']];
+            $price = number_format($row['price'], 2);
+
+            $exp_query = $this->db->query("
+SELECT parcel_tracks.date_created 
+FROM parcel_tracks,parcels 
+WHERE parcel_tracks.parcel_id = {$row['id']} 
+  and parcels.id={$row['id']} 
+  and parcels.status!=0 
+  and parcel_tracks.status=1
+ORDER BY parcel_tracks.id DESC LIMIT 1");
+            $exp_query = (mysqli_fetch_all($exp_query));
+            $exp_date= ($exp_query);
+
+            $liv_query = $this->db->query("
+SELECT parcel_tracks.date_created 
+FROM parcel_tracks,parcels 
+WHERE parcel_tracks.parcel_id = {$row['id']} 
+  and parcels.id={$row['id']} 
+  and parcels.status IN (2,3) 
+  and parcel_tracks.status IN (2,3)
+ORDER BY parcel_tracks.id DESC LIMIT 1");
+            $liv_query = (mysqli_fetch_all($liv_query));
+            $liv_date= ($liv_query);
+
+            $row['sender_name'] = $sender_name;
+            $row['recipient_name'] = $recipient_name;
+            $row['date_created'] = $date_created;
+            $row['status'] = $status;
+            $row['price'] = $price;
+            $row['exp_date'] = $exp_date;
+            $row['liv_date'] = $liv_date;
+
             $data[] = $row;
         }
         return json_encode($data);
