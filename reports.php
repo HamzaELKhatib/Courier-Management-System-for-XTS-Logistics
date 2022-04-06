@@ -39,39 +39,25 @@
 
 
                     <table class="table table-bordered" align="left" cellspacing="0" border="1" id="report-list">
-                        <colgroup width="62"></colgroup>
-                        <colgroup width="107"></colgroup>
-                        <colgroup width="189"></colgroup>
-                        <colgroup width="80"></colgroup>
-                        <colgroup width="88"></colgroup>
-                        <colgroup width="172"></colgroup>
-                        <colgroup width="88"></colgroup>
-                        <colgroup width="84"></colgroup>
-                        <colgroup width="86"></colgroup>
-                        <colgroup width="85"></colgroup>
-                        <colgroup width="83"></colgroup>
-                        <colgroup width="68"></colgroup>
-                        <colgroup width="71"></colgroup>
-                        <colgroup span="2" width="77"></colgroup>
-                        <colgroup width="97"></colgroup>
+
                         <thead>
                         <tr>
-                            <th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="25" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">N&deg; DEC/BR</font></b></th>
-                            <th style="border-bottom: 1px solid #000000" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">DATE EXP.</font></b></th>
-                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">EXPEDITEUR</font></b></th>
-                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">CIN</font></b></th>
-                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">VILLE</font></b></th>
-                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DESTINAIRE</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" height="25" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">N&deg; DEC/BR</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">DATE EXP.</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">EXPEDITEUR</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">CIN</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#0070C0"><b><font face="Arial" color="#FFFFFF">VILLE</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DESTINAIRE</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">CIN D</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DESTINATION</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DATE LIV.</font></b></th>
-                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">COLIS</font></b></th>
-                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">POIDS</font></b></th>
-                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. PAY&Eacute;</font></b></th>
-                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. D&Ucirc;</font></b></th>
-                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#385724"><b><font face="Arial" color="#FFFFFF">R. Fonds</font></b></th>
-                            <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#BF9000"><b><font face="Arial" color="#FFFFFF">R. BL</font></b></th>
-                            <th style="border-bottom: 1px solid #000000; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#C00000"><b><font face="Arial" color="#FFFFFF">NOTE</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">COLIS</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">POIDS</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. PAY&Eacute;</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. D&Ucirc;</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#385724"><b><font face="Arial" color="#FFFFFF">R. Fonds</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#BF9000"><b><font face="Arial" color="#FFFFFF">R. BL</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#C00000"><b><font face="Arial" color="#FFFFFF">NOTE</font></b></th>
                         </tr>
                         </thead>
                         <tbody>
