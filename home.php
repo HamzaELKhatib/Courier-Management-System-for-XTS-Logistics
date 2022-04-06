@@ -79,3 +79,11 @@ if($_SESSION['login_type'] != 1)
       </div>
           
 <?php endif; ?>
+
+<!--BARCODE-->
+
+<script src="assets/JsBarcode.code128.min.js"></script>
+<svg id="barcode"></svg>
+<script>
+    JsBarcode("#barcode", "Hi!");
+</script>

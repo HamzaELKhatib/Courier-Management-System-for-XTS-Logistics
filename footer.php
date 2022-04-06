@@ -154,5 +154,7 @@ $('.number').on('input keyup keypress',function(){
 <script src="assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="assets/JsBarcode.code128.min.js"></script>
+
 
 
