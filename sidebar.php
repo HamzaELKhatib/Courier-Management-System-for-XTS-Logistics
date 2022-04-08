@@ -119,6 +119,16 @@
                     </a>
                 </li>
                 <?php endif; ?>
+                <?php if ($_SESSION['login_type'] == 1): ?>
+                    <li class="nav-item dropdown">
+                        <a href="./index.php?page=feuille_de_chargement" class="nav-link nav-chargement">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>
+                                Feuille de chargement
+                            </p>
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>
