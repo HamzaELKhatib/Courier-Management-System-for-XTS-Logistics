@@ -175,6 +175,8 @@ class Action
     function save_branch()
     {
         extract($_POST);
+        $street = addslashes($_POST['street']);
+        $_POST['street'] = $street;
         $data = "";
         foreach ($_POST as $k => $v) {
             if (!in_array($k, array('id')) && !is_numeric($k)) {

@@ -16,7 +16,7 @@
             <div class="row">
               <div class="col-sm-6 form-group ">
                 <label for="" class="control-label">Adresse</label>
-                <textarea name="street" id="" cols="30" rows="2" class="form-control"><?php echo isset($street) ? $street : '' ?></textarea>
+                <textarea name="street" id="" cols="30" rows="2" class="form-control"><?php echo isset($street)?></textarea>
               </div>
               <div class="col-sm-6 form-group ">
                 <label for="" class="control-label">Ville</label>
