@@ -246,7 +246,7 @@ class Action
             if (empty($id)) {
                 $i = 0;
                 while ($i == 0) {
-                    $ref = sprintf("%'06d", mt_rand(0, 999999));
+                    $ref = sprintf("%'06d", mt_rand(0, 999999999999));
                     $chk = $this->db->query("SELECT * FROM parcels where reference = '$ref'")->num_rows;
                     if ($chk <= 0) {
                         $i = 1;
@@ -412,6 +412,7 @@ ORDER BY parcel_tracks.id DESC LIMIT 1");
                 $liv_date =date("d/m/Y", strtotime($liv_query1['date_created']));
                 $row['liv_date'] = $liv_date;
             }
+
 
             $row['sender_name'] = $sender_name;
             $row['recipient_name'] = $recipient_name;

@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="d-flex w-100 px-1 py-2 justify-content-center align-items-center">
                 <h1 class="align-content-center">Feuille de chargement</h1>
-                    </div>
+            </div>
         </div>
     </div>
 </div>
@@ -14,7 +14,7 @@
     <div class="card card-outline card-primary">
         <div class="card-body">
             <div class="d-flex w-100 px-1 py-2 justify-content-center align-items-center">
-                <h2 class="align-content-center"> </h2>
+                <h2 class="align-content-center"></h2>
             </div>
             <div class="d-flex w-100 px-1 py-2 justify-content-center align-items-center">
 
@@ -25,8 +25,45 @@
                                id="table1" style="table-layout: fixed;">
 
                             <thead>
-                            <tr>
 
+
+                            <style>
+                                .row {
+                                    max-width: 1000px;
+                                    margin: 0 auto;
+                                    padding: 20px 20px;
+                                    text-align: center;
+                                }
+                                span#inputs {
+
+                                    display: inline-block;
+                                    margin: 10px 10px;
+                                }
+                            </style>
+                            <h5 style="color: grey"><i>• Veuiller remplir ces informations: </i></h5>
+                            <div class="row">
+                    <span id="inputs">
+                                <input type="text" name="chauffeur" id="chauffeur" placeholder="Chauffeur">
+</span>
+                                <span id="inputs">
+                                <input type="text" name="depart" id="depart" placeholder="Agence de départ">
+                    </span>
+                                <span id="inputs">
+                                <input type="text" name="arrive" id="arrive" placeholder="Agence d'arrivée">
+                    </span>
+                                <span id="inputs">
+                                <input type="text" name="heure" id="heure" placeholder="Heure véhicule">
+                    </span>
+                            </div>
+
+                            <?php if (isset($_POST['chauffeur']) && isset($_POST['depart']) && isset($_POST['arrive']) && isset($_POST['heure'])) {
+                                $chauffeur = $_POST['chauffeur'] ?? '';
+                                $depart = $_POST['depart'];
+                                $arrive = $_POST['arrive'] ;
+                                $heure = $_POST['heure'] ;
+                            } ?>
+                            <h5 style="color: grey"><i>• Choisir les colis à envoyer: </i></h5>
+                            <tr>
                                 <th class="text-center bg-primary" style="width: 60px;font-size: small">Réference</th>
                                 <th class="text-center bg-info" style="width: 150px;font-size: medium">Expéditeur</th>
                                 <th class="text-center bg-info" style="width: 70px;font-size: medium">CIN E</th>
@@ -140,21 +177,53 @@
                     <colgroup width="80"></colgroup>
                     <colgroup width="80"></colgroup>
                     <tr>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" size=2 color="#FFFFFF">N&deg; EXP.</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" size=2 color="#FFFFFF">N&deg; DEC/BR</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060" sdnum="1033;0;0.00"><b><font face="Arial" size=2 color="#FFFFFF">DESTINATION</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" size=2 color="#FFFFFF">EXPEDITEUR</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" size=2 color="#FFFFFF">DESTINAIRE</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">COLIS</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">POIDS</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PORT PAY&Eacute;</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PORT D&Ucirc;</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">R. Fonds</font></b></th>
-                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">R. BL</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#002060"><b><font face="Arial" size=2 color="#FFFFFF">N&deg;
+                                    EXP.</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#002060"><b><font face="Arial" size=2 color="#FFFFFF">N&deg;
+                                    DEC/BR</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#002060" sdnum="1033;0;0.00"><b><font face="Arial" size=2
+                                                                                         color="#FFFFFF">DESTINATION</font></b>
+                        </th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#002060"><b><font face="Arial" size=2
+                                                                     color="#FFFFFF">EXPEDITEUR</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#002060"><b><font face="Arial" size=2
+                                                                     color="#FFFFFF">DESTINAIRE</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2
+                                                                     color="#FFFFFF">COLIS</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2
+                                                                     color="#FFFFFF">POIDS</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PORT PAY&Eacute;</font></b>
+                        </th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PORT
+                                    D&Ucirc;</font></b></th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">R. Fonds</font></b>
+                        </th>
+                        <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">R.
+                                    BL</font></b></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php for ($j = 0; $j < count($checked_array); $j++): ?>
+                    <?php
+
+                    $total_number = 0;
+                    $total_weight = 0;
+                    $total_price = 0;
+                    $total_due_price = 0;
+                    $total_price_retour_de_fond = 0;
+                    $total_price_retour_bl = 0;
+
+                    for ($j = 0; $j < count($checked_array); $j++): ?>
                         <?php
                         $id = intval($checked_array[$j]);
                         $i = 1;
@@ -180,21 +249,36 @@
                             ?>
                             <tr>
 
-                                <td><b>inconnu</b></td>
-                                <td><b>inconnu</b></td>
+                                <td><b><?php echo ucwords($row['expedition_number']) ?></b></td>
+                                <td><b><?php echo ucwords($row['br_dec']) ?></b></td>
                                 <td><b><?php echo ucwords($row['recipient_city']) ?></b></td>
                                 <td><b><?php echo ucwords($row['sender_name']) ?></b></td>
                                 <td><b><?php echo ucwords($row['recipient_name']) ?></b></td>
                                 <td><b><?php echo ucwords($row['number']) ?></b></td>
                                 <td><b><?php echo ucwords($row['weight']) ?></b></td>
                                 <td><b><?php echo ucwords($row['price']) ?></b></td>
-                                <td><b><?php echo ucwords($row['paid_price']) ?></b></td>
-                                <td><b>inconnu</b></td>
-                                <td><b>inconnu</b></td>
+                                <td><b><?php echo ucwords($row['due_price']) ?></b></td>
+                                <td><b><?php echo ucwords($row['price_retour_de_fond']) ?></b></td>
+                                <td><b><?php echo ucwords($row['price_retour_bl']) ?></b></td>
                             </tr>
-                        <?php endwhile;
-                        ?>
-                    <?php endfor; ?>
+
+                            <?php
+                            $total_number += floatval($row['number']);
+                            $total_weight += floatval($row['weight']);
+                            $total_price += floatval($row['price']);
+                            $total_due_price += floatval($row['due_price']);
+                            $total_price_retour_de_fond += floatval($row['price_retour_de_fond']);
+                            $total_price_retour_bl += floatval($row['price_retour_bl']);
+                        endwhile;
+                    endfor; ?>
+                    <td colspan="4"></td>
+                    <td>Total:</td>
+                    <td><b><?php echo $total_number ?></b></td>
+                    <td><b><?php echo $total_weight ?></b></td>
+                    <td><b><?php echo $total_price ?></b></td>
+                    <td><b><?php echo $total_due_price ?></b></td>
+                    <td><b><?php echo $total_price_retour_de_fond ?></b></td>
+                    <td><b><?php echo $total_price_retour_bl ?></b></td>
                     </tbody>
                 </table>
             </div>
@@ -257,10 +341,11 @@
             <td align="left" valign=bottom><font color="#000000"><br></font></td>
         </tr>
         <tr>
-            <td align="left" valign=bottom><b><font face="Arial" size=1>AGENCE DEPART : TETOUAN</font></b></td>
-            <td align="left" valign=bottom><font face="Arial">CHAUFFEUR : </font></td>
+            <td align="left" valign=bottom><b><font face="Arial" size=1>AGENCE DEPART : <?php echo $depart?></font></b></td>
+            <td align="left" valign=bottom><font face="Arial">CHAUFFEUR : <?php echo $chauffeur?></font></td>
             <td colspan=2 align="left" valign=bottom><font face="Arial">TOTAL COLIS :</font></td>
-            <td align="left" valign=bottom sdval="1" sdnum="1033;"><font face="Arial">1</font></td>
+            <td align="left" valign=bottom sdval="1" sdnum="1033;"><font
+                        face="Arial"> <?php echo $total_number ?> </font></td>
             <td align="left" valign=bottom><br></td>
             <td align="left" valign=bottom><br></td>
             <td align="left" valign=bottom><br></td>
@@ -271,14 +356,20 @@
                         49 39 00</font></b></td>
             <td align="left" valign=bottom><b><font face="Arial" color="#000000"><br></font></b></td>
             <td align="left" valign=bottom><font color="#000000"><br></font></td>
-            <td align="left" valign=bottom><b><font face="Arial" size=1>AGENCE ARRIVEE : NADOR</font></b></td>
-            <td align="left" valign=bottom><font face="Arial">HEURE VEHICULE : 20:00 H</font></td>
+            <td align="left" valign=bottom><b><font face="Arial" size=1>AGENCE ARRIVEE : <?php echo $arrive?></font></b></td>
+            <td align="left" valign=bottom><font face="Arial">HEURE VEHICULE : <?php echo $heure?> H</font></td>
             <td colspan=2 align="left" valign=bottom><font face="Arial">TOTAL POIDS :</font></td>
-            <td align="left" valign=bottom sdval="10" sdnum="1033;"><font face="Arial">10 Kg</font></td>
+            <td align="left" valign=bottom sdval="10" sdnum="1033;"><font
+                        face="Arial"><?php echo $total_weight . " kg" ?></font></td>
             <td align="left" valign=bottom><font face="Arial"></font></td>
             <td align="left" valign=bottom><font color="#000000"><br></font></td>
             <td align="right" valign=bottom sdnum="1033;0;@"><font face="Arial">DATE :</font></td>
-            <td align="right" valign=bottom sdval="44531" sdnum="1033;1033;M/D/YYYY"><font face="Arial">12/1/2021</font>
+            <td align="right" valign=bottom sdval="44531" sdnum="1033;1033;M/D/YYYY"><font face="Arial">
+                    <?php
+                    date_default_timezone_set("Africa/Casablanca");
+                    echo date("d/m/Y");
+                    ?>
+                </font>
             </td>
         </tr>
         <tr>
@@ -313,8 +404,6 @@
         ns.append(details)
 
 
-
-
         var nw = window.open('', '', 'height=700,width=900')
         nw.document.write(ns.html())
         nw.document.close()
@@ -326,21 +415,5 @@
 
     })
 
-    function load_report() {
-        start_load()
-        var date_from = $('#date_from').val()
-        var date_to = $('#date_to').val()
-        var status = $('#status').val()
-        let sum = 0
-
-
-        //-------------------------------------------
-        //Sum of colomn numbers
-        // sum = sum + parseFloat(resp[k].price.replace(/\,/g, ''), 10)
-        //console.log(sum)
-        //-------------------------------------------
-        // $('#tAmount').append(sum + " dh")
-
-    }
 
 </script>

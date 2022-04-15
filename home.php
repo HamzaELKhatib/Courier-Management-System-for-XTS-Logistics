@@ -85,7 +85,7 @@ if($_SESSION['login_type'] != 1)
 <script src="assets/JsBarcode.all.min.js"></script>
 <svg id="barcode"></svg>
 <script>
-    JsBarcode("#barcode", "Hi!", {
+    JsBarcode("#barcode", "N BR/DEC", {
         format: "code128",
         lineColor: "red",
         /*width: 4,

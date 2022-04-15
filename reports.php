@@ -57,16 +57,21 @@
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. D&Ucirc;</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#385724"><b><font face="Arial" color="#FFFFFF">R. Fonds</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#BF9000"><b><font face="Arial" color="#FFFFFF">R. BL</font></b></th>
-                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#C00000"><b><font face="Arial" color="#FFFFFF">NOTE</font></b></th>
+
                         </tr>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                        <th colspan="3"></th>
+                        <th colspan="8"></th>
                         <th class="text-right">Total :</th>
+                        <th id="nColis" class="text-right"></th>
+                        <th id="cWeight" class="text-right"></th>
                         <th id="tAmount" class="text-right"></th>
+                        <th id="dAmount" class="text-right"></th>
+                        <th id="Rfond" class="text-right"></th>
+                        <th id="Rbl" class="text-right"></th>
                         </tfoot>
                     </table>
                 </div>
@@ -75,7 +80,7 @@
         </div>
     </div>
 </div>
-<!---------------Printable Page (similaire à ctrl+p)---------------->
+<!------------------------------->
 <noscript>
     <style type="text/css">
         body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Calibri"; font-size:x-small }
@@ -138,10 +143,10 @@
             <td colspan=6 align="center" valign=middle><b><u><font face="Arial" size=5 color="#203864">ETAT DE COMPTE
                             MENSUELLE</font></u></b></td>
             <td align="left" valign=bottom><font color="#000000"><br></font></td>
-            <td align="right" valign=bottom sdnum="1033;0;@"><b><u><font face="Arial" color="#002060">Période :</font></u></b>
+            <td align="right" valign=bottom sdnum="1033;0;@"><b><u><font face="Arial" color="#002060"></font></u></b>
             </td>
-            <td colspan=5 align="left" valign=bottom sdnum="1033;0;@"><font face="Arial" size=3 color="#000000">NOVEMBRE
-                    2021</font></td>
+            <td colspan=5 align="left" valign=bottom sdnum="1033;0;@"><font face="Arial" size=3 color="#000000">
+                    </font></td>
 
 
         </tr>
@@ -211,8 +216,7 @@
 
 </noscript>
 <div class="details d-none">
-    <p><b>Plage de dates:</b> <span class="drange"></span></p>
-    <p><b>Status:</b> <span class="status-field">All</span></p>
+    <p><b><u><font face="Arial" color="#002060">Période :</font></u></b> <span class="drange" style="font-size: 10px"></span></p>
 </div>
 <script>
     function load_report() {
@@ -220,7 +224,12 @@
         var date_from = $('#date_from').val()
         var date_to = $('#date_to').val()
         var status = $('#status').val()
-        let sum = 0
+        let total_number = 0
+        let total_weight = 0
+        let sum_price = 0
+        let sum_due_price = 0
+        let sum_fond = 0
+        let sum_bl = 0
         $.ajax({
             url: 'ajax.php?action=get_report',
             method: 'POST',
@@ -238,7 +247,7 @@
                         var i = 1;
                         Object.keys(resp).map(function (k) {
                             var tr = $('<tr></tr>')
-                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + (resp[k].br_dec) + '</td>')
                             tr.append('<td>' + (resp[k].exp_date) + '</td>')
                             tr.append('<td>' + (resp[k].sender_name) + '</td>')
                             tr.append('<td>' + (resp[k].sender_id) + '</td>')
@@ -249,20 +258,29 @@
                             tr.append('<td>' + (resp[k].liv_date) + '</td>')
                             tr.append('<td>' + (resp[k].number) + '</td>')
                             tr.append('<td>' + (resp[k].weight) + '</td>')
-                            tr.append('<td>' + 'inconnu' + '</td>')
-                            tr.append('<td>' + 'inconnu' + '</td>')
-                            tr.append('<td>' + 'inconnu' + '</td>')
-                            tr.append('<td>' + 'inconnu' + '</td>')
-                            tr.append('<td>' + 'inconnu' + '</td>')
+                            tr.append('<td>' + (resp[k].price) + '</td>')
+                            tr.append('<td>' + (resp[k].due_price) + '</td>')
+                            tr.append('<td>' + (resp[k].price_retour_de_fond) + '</td>')
+                            tr.append('<td>' + (resp[k].price_retour_bl) + '</td>')
                             $('#report-list tbody').append(tr)
                             //-------------------------------------------
                             //Sum of colomn numbers
-                            sum = sum + parseFloat(resp[k].price.replace(/\,/g, ''), 10)
+                            total_number = total_number + parseFloat(resp[k].number.replace(/\,/g, ''), 10)
+                            total_weight = total_weight + parseFloat(resp[k].weight.replace(/\,/g, ''), 10)
+                            sum_price = sum_price + parseFloat(resp[k].price.replace(/\,/g, ''), 10)
+                            sum_due_price = sum_due_price + parseFloat(resp[k].due_price.replace(/\,/g, ''), 10)
+                            sum_fond = sum_fond + parseFloat(resp[k].price_retour_de_fond.replace(/\,/g, ''), 10)
+                            sum_bl = sum_bl + parseFloat(resp[k].price_retour_bl.replace(/\,/g, ''), 10)
                             //console.log(sum)
                             //-------------------------------------------
                         })
 
-                        $('#tAmount').append(sum + " dh")
+                        $('#nColis').append(total_number)
+                        $('#cWeight').append(total_weight + " kg")
+                        $('#tAmount').append(sum_price + " dh")
+                        $('#dAmount').append(sum_due_price + " dh")
+                        $('#Rfond').append(sum_fond + " dh")
+                        $('#Rbl').append(sum_bl + " dh")
 
                         $('#print').show()
                     } else {
@@ -309,7 +327,7 @@
         var status = $('#status').val()
         var stat_arr = '<?php echo json_encode($status_arr) ?>';
         stat_arr = JSON.parse(stat_arr);
-        details.find('.drange').text(date_from + " to " + date_to)
+        details.find('.drange').text(date_from + " au " + date_to)
         if (status > -1)
             details.find('.status-field').text(stat_arr[status])
         ns.append(details)
