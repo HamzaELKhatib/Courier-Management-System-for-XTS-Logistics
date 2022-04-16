@@ -200,10 +200,10 @@
                             valign=middle bgcolor="#00B050"><b><font face="Arial" size=2
                                                                      color="#FFFFFF">POIDS</font></b></th>
                         <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
-                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PORT PAY&Eacute;</font></b>
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PRIX PAY&Eacute;</font></b>
                         </th>
                         <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
-                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PORT
+                            valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">PRIX
                                     D&Ucirc;</font></b></th>
                         <th style="border-left: 1px solid #ffffff; border-right: 1px solid #ffffff" align="center"
                             valign=middle bgcolor="#00B050"><b><font face="Arial" size=2 color="#FFFFFF">R. Fonds</font></b>
@@ -223,9 +223,22 @@
                     $total_price_retour_de_fond = 0;
                     $total_price_retour_bl = 0;
 
+                    $empty_feuille = $conn->query("SELECT * FROM feuille_chargement ");
+                    if ($empty_feuille->num_rows == 0){
+                        $new_feuille_id = 2022000000;
+                    }else{
+                        $notemptyfeuille = $conn->query("SELECT feuille_id FROM feuille_chargement ORDER BY feuille_id DESC LIMIT 1")->fetch_assoc();
+                        $new_feuille_id = $notemptyfeuille['feuille_id'] + 1;
+                    }
+
                     for ($j = 0; $j < count($checked_array); $j++): ?>
                         <?php
                         $id = intval($checked_array[$j]);
+                        $ref = '';
+
+                            $feuille_query = $conn->query("
+INSERT into feuille_chargement (feuille_id, parcel_id, chauffeur, depart, arrive, heure_vehicule)  VALUES ('$new_feuille_id', '$id', '$chauffeur', '$depart', '$arrive', '$heure')");
+
                         $i = 1;
 
                         $where = "";
@@ -334,7 +347,7 @@
             <td colspan=3 align="center" valign=bottom><b><u><font face="Arial" size=2 color="#002060">FEUILLE DE
                             CHARGEMENT N&deg; :</font></u></b></td>
             <td colspan=3 align="left" valign=bottom sdval="2021120388" sdnum="1033;0;0"><b><font face="Arial" size=2
-                                                                                                  color="#203864">2021120388</font></b>
+                                                                                                  color="#203864"> <?php echo $new_feuille_id ?> </font></b>
             </td>
             <td align="left" valign=bottom><font color="#000000"><br></font></td>
             <td align="left" valign=bottom><font color="#000000"><br></font></td>

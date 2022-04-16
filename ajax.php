@@ -102,5 +102,11 @@ if($action == 'get_report'){
 	if($get)
 		echo $get;
 }
+
+if($action == 'save_feuille_chargement'){
+	$save = $crud->save_feuille_chargement();
+	if($save)
+		echo $save;
+}
 ob_end_flush();
 ?>
