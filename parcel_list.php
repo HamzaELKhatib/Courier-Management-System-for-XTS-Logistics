@@ -1,6 +1,6 @@
 <?php include 'db_connect.php';
 $num_page = $_GET['p'];
-$num_page = ($num_page - 1)*10;
+$num_page = ($num_page - 1) * 10;
 
 ?>
 <div class="col-xl-auto">
@@ -32,29 +32,41 @@ $num_page = ($num_page - 1)*10;
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&p=1"> Tout</a>
 
                         <?php if ($_GET['s'] == 0): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] ?>"> Enregistré</a>
+                            <a id="btnf" class="btn btnf active"
+                               href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] ?>"> Enregistré</a>
                         <?php else: ?>
                             <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=0&p=1"> Enregistré</a>
                         <?php endif; ?>
 
                         <?php if ($_GET['s'] == 1): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] ?>"> Envoyé</a>
+                            <a id="btnf" class="btn btnf active"
+                               href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] ?>"> Envoyé</a>
                         <?php else: ?>
                             <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1&p=1"> Envoyé</a>
                         <?php endif; ?>
 
                         <?php if ($_GET['s'] == 2): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] ?>"> Livré en
+                            <a id="btnf" class="btn btnf active"
+                               href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] ?>"> Livré en
                                 gars</a>
                         <?php else: ?>
                             <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2&p=1"> Livré en gars</a>
                         <?php endif; ?>
 
                         <?php if ($_GET['s'] == 3): ?>
-                            <a id="btnf" class="btn btnf active" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] ?>"> Livré à
+                            <a id="btnf" class="btn btnf active"
+                               href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] ?>"> Livré à
                                 domicile</a>
                         <?php else: ?>
-                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3&p=1"> Livré à domicile</a>
+                            <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3&p=1"> Livré à
+                                domicile</a>
+                        <?php endif; ?>
+
+                        <?php if ($_GET['s'] == 4): ?>
+                            <a id="btna" class="btn btna active"
+                               href="./index.php?page=parcel_list&s=4&p=<?php echo $_GET['p'] ?>"> Retour</a>
+                        <?php else: ?>
+                            <a id="btna" class="btn btna" href="./index.php?page=parcel_list&s=4&p=1"> Retour</a>
                         <?php endif; ?>
 
                     <?php else: ?>
@@ -64,6 +76,7 @@ $num_page = ($num_page - 1)*10;
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=1&p=1"> Envoyé</a>
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=2&p=1"> Livré en gars</a>
                         <a id="btnf" class="btn btnf" href="./index.php?page=parcel_list&s=3&p=1"> Livré à domicile</a>
+                        <a id="btna" class="btn btna" href="./index.php?page=parcel_list&s=4&p=1"> Retour</a>
 
                     <?php endif; ?>
                 </div>
@@ -74,12 +87,13 @@ $num_page = ($num_page - 1)*10;
             </div>
         </div>
         <!--        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
-        -->        <div class="card-body">
+        -->
+        <div class="card-body">
             <table class="table table-bordered table-striped" id="list">
 
                 <thead>
                 <tr>
-                    <th class="text-center bg-primary" style="width: 80px;font-size: small">Modifier</th>
+                    <th class="text-center bg-primary" style="width: 130px;font-size: small">Modifier</th>
                     <th class="text-center bg-primary" style="width: 60px;font-size: small">Réference</th>
 
                     <th class="text-center bg-info" style="width: 150px;font-size: medium">Expéditeur</th>
@@ -136,6 +150,19 @@ $num_page = ($num_page - 1)*10;
                                     </button>
                                 <?php endif; ?>
 
+                                <?php if ($row['status'] == 0 && $row['type'] == 1): ?>
+                                    <button type="button" class="btn btn-success btn-flat arrived_parcel_domicile"
+                                            data-id="<?php echo $row['id'] ?>">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                <?php endif; ?>
+                                <?php if ($row['status'] == 0 && $row['type'] == 2): ?>
+                                    <button type="button" class="btn btn-success btn-flat arrived_parcel_agence"
+                                            data-id="<?php echo $row['id'] ?>">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                <?php endif; ?>
+
                                 <?php if ($row['status'] == 1 && $row['type'] == 1): ?>
                                     <button type="button" class="btn btn-success btn-flat arrived_parcel_domicile"
                                             data-id="<?php echo $row['id'] ?>">
@@ -148,6 +175,13 @@ $num_page = ($num_page - 1)*10;
                                         <i class="fas fa-check"></i>
                                     </button>
                                 <?php endif; ?>
+
+                                <?php if ($row['status'] == 0): ?>
+                                    <button type="button" class="btn btn-danger btn-flat return_parcel"
+                                            data-id="<?php echo $row['id'] ?>">
+                                        <i class="fas fa-arrow-circle-left"></i>
+                                    </button>
+                                <?php endif; ?>
                         </td>
                         <td><b><?php echo($row['reference']) ?></b></td>
                         <td><b><?php echo ucwords($row['sender_name']) ?></b></td>
@@ -157,9 +191,9 @@ $num_page = ($num_page - 1)*10;
                         <td><b><?php echo ucwords($row['recipient_cin']) ?></b></td>
                         <td><b><?php echo ucwords($row['recipient_city']) ?></b></td>
                         <td class="text-center">
-                            <?php for ($i = 0 ; $i<=($num_page*10) ; $i++) ?>
+                            <?php for ($i = 0; $i <= ($num_page * 10); $i++) ?>
                                 <?php
-                            $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile");
+                            $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile","Retour");
                             switch ($row['status']) {
                                 case '1':
                                     echo "<span class='badge badge-pill badge-primary'> Envoyé</span>";
@@ -169,6 +203,9 @@ $num_page = ($num_page - 1)*10;
                                     break;
                                 case '3':
                                     echo "<span class='badge badge-pill badge-success'> Livré à domicile</span>";
+                                    break;
+                                case '4':
+                                    echo "<span class='badge badge-pill badge-danger'> Retour</span>";
                                     break;
                                 default:
                                     echo "<span class='badge badge-pill badge-info'> Enregistré</span>";
@@ -208,13 +245,26 @@ $num_page = ($num_page - 1)*10;
                 <?php if ($_GET['s'] == 0): ?>
                     <nav aria-label="page-buttons">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=1"><<</a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php if ($_GET['p'] > 1) {
-                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
-                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 1 ?>">> </a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=0&p=1"><<</a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=0&p=<?php if ($_GET['p'] > 1) {
+                                                         echo $_GET['p'] - 1;
+                                                     } else {
+                                                         echo 1;
+                                                     } ?>"><</a></li>
+                            <li class="page-item active"><a class="page-link"
+                                                            href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=0&p=<?php echo $_GET['p'] + 1 ?>">> </a>
+                            </li>
                         </ul>
                     </nav>
                 <?php endif; ?>
@@ -222,13 +272,26 @@ $num_page = ($num_page - 1)*10;
                 <?php if ($_GET['s'] == 1): ?>
                     <nav aria-label="page-buttons">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=1"><< </a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php if ($_GET['p'] > 1) {
-                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"> <</a></li>
-                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 1 ?>">> </a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=1&p=1"><< </a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=1&p=<?php if ($_GET['p'] > 1) {
+                                                         echo $_GET['p'] - 1;
+                                                     } else {
+                                                         echo 1;
+                                                     } ?>"> <</a></li>
+                            <li class="page-item active"><a class="page-link"
+                                                            href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=1&p=<?php echo $_GET['p'] + 1 ?>">> </a>
+                            </li>
                         </ul>
                     </nav>
                 <?php endif; ?>
@@ -236,13 +299,26 @@ $num_page = ($num_page - 1)*10;
                 <?php if ($_GET['s'] == 2): ?>
                     <nav aria-label="page-buttons">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=1"><< </a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php if ($_GET['p'] > 1) {
-                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
-                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=1"><?php echo $_GET['p'] ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 1 ?>">> </a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=2&p=1"><< </a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=2&p=<?php if ($_GET['p'] > 1) {
+                                                         echo $_GET['p'] - 1;
+                                                     } else {
+                                                         echo 1;
+                                                     } ?>"><</a></li>
+                            <li class="page-item active"><a class="page-link"
+                                                            href="./index.php?page=parcel_list&s=2&p=1"><?php echo $_GET['p'] ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=2&p=<?php echo $_GET['p'] + 1 ?>">> </a>
+                            </li>
                         </ul>
                     </nav>
                 <?php endif; ?>
@@ -250,13 +326,53 @@ $num_page = ($num_page - 1)*10;
                 <?php if ($_GET['s'] == 3): ?>
                     <nav aria-label="page-buttons">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=1"><<</a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php if ($_GET['p'] > 1) {
-                                    echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
-                            <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=1"><?php echo $_GET['p'] ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
-                            <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 1 ?>">></a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=3&p=1"><<</a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=3&p=<?php if ($_GET['p'] > 1) {
+                                                         echo $_GET['p'] - 1;
+                                                     } else {
+                                                         echo 1;
+                                                     } ?>"><</a></li>
+                            <li class="page-item active"><a class="page-link"
+                                                            href="./index.php?page=parcel_list&s=3&p=1"><?php echo $_GET['p'] ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=3&p=<?php echo $_GET['p'] + 1 ?>">></a>
+                            </li>
+                        </ul>
+                    </nav>
+                <?php endif; ?>
+
+                <?php if ($_GET['s'] == 4): ?>
+                    <nav aria-label="page-buttons">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=4&p=1"><<</a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=4&p=<?php if ($_GET['p'] > 1) {
+                                                         echo $_GET['p'] - 1;
+                                                     } else {
+                                                         echo 1;
+                                                     } ?>"><</a></li>
+                            <li class="page-item active"><a class="page-link"
+                                                            href="./index.php?page=parcel_list&s=4&p=1"><?php echo $_GET['p'] ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=4&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=4&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="./index.php?page=parcel_list&s=4&p=<?php echo $_GET['p'] + 1 ?>">></a>
+                            </li>
                         </ul>
                     </nav>
                 <?php endif; ?>
@@ -267,12 +383,24 @@ $num_page = ($num_page - 1)*10;
                 <nav aria-label="page-buttons">
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=1"><<</a></li>
-                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php if ($_GET['p'] > 1) {
-                                echo $_GET['p'] - 1;}else{ echo 1;} ?>"><</a></li>
-                        <li class="page-item active"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a></li>
-                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a></li>
-                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a></li>
-                        <li class="page-item"><a class="page-link" href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 1 ?>">></a></li>
+                        <li class="page-item"><a class="page-link"
+                                                 href="./index.php?page=parcel_list&p=<?php if ($_GET['p'] > 1) {
+                                                     echo $_GET['p'] - 1;
+                                                 } else {
+                                                     echo 1;
+                                                 } ?>"><</a></li>
+                        <li class="page-item active"><a class="page-link"
+                                                        href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] ?>"><?php echo $_GET['p'] ?></a>
+                        </li>
+                        <li class="page-item"><a class="page-link"
+                                                 href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 1 ?>"><?php echo $_GET['p'] + 1 ?></a>
+                        </li>
+                        <li class="page-item"><a class="page-link"
+                                                 href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 2 ?>"><?php echo $_GET['p'] + 2 ?></a>
+                        </li>
+                        <li class="page-item"><a class="page-link"
+                                                 href="./index.php?page=parcel_list&p=<?php echo $_GET['p'] + 1 ?>">></a>
+                        </li>
                     </ul>
                 </nav>
 
@@ -283,13 +411,14 @@ $num_page = ($num_page - 1)*10;
     </div>
 </div>
 <style>
-    td{
+    td {
         font-size: 15px;
     }
-    table
-    {
+
+    table {
         table-layout: fixed;
     }
+
     ::-webkit-input-placeholder {
         text-align: center;
     }
@@ -312,6 +441,10 @@ $num_page = ($num_page - 1)*10;
 
     #btnf.active {
         background-color: #0069D9;
+        color: white;
+    }
+    #btna.active {
+        background-color: #C82333;
         color: white;
     }
 </style>
@@ -343,6 +476,9 @@ $num_page = ($num_page - 1)*10;
         })
         $('.save_parcel_agence').click(function () {
             _conf("Le colis est-il arrivé à l'agence?", "save_parcel_agence", [$(this).attr('data-id')])
+        })
+        $('.return_parcel').click(function () {
+            _conf("Etes-vous sure de retourner le colis ?", "return_parcel", [$(this).attr('data-id')])
         })
     })
 
@@ -427,6 +563,24 @@ $num_page = ($num_page - 1)*10;
             success: function (resp) {
                 if (resp == 1) {
                     alert_toast("Colis enregistré", 'success')
+                    setTimeout(function () {
+                        location.reload()
+                    }, 1500)
+
+                }
+            }
+        })
+    }
+
+    function return_parcel($id) {
+        start_load()
+        $.ajax({
+            url: 'ajax.php?action=return_parcel',
+            method: 'POST',
+            data: {id: $id},
+            success: function (resp) {
+                if (resp == 1) {
+                    alert_toast("Colis mis-à retourner", 'success')
                     setTimeout(function () {
                         location.reload()
                     }, 1500)

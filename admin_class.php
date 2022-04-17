@@ -219,6 +219,7 @@ class Action
     function save_parcel()
     {
         extract($_POST);
+        $_POST['recipient_city'] = strtolower($_POST['recipient_city']);
         $user_id = ($_SESSION['login_id']);
         foreach ($price as $k => $v) {
             $data = "";
@@ -314,6 +315,16 @@ class Action
         $user_id = ($_SESSION['login_id']);
         $update = $this->db->query("UPDATE parcels set status=2 where id = $id");
         $save = $this->db->query("INSERT INTO parcel_tracks set status=2 , parcel_id = $id , user_id = $user_id ");
+        if ($update && $save)
+            return 1;
+    }
+
+    function return_parcel()
+    {
+        extract($_POST);
+        $user_id = ($_SESSION['login_id']);
+        $update = $this->db->query("UPDATE parcels set status=4 where id = $id");
+        $save = $this->db->query("INSERT INTO parcel_tracks set status=4 , parcel_id = $id , user_id = $user_id ");
         if ($update && $save)
             return 1;
     }
