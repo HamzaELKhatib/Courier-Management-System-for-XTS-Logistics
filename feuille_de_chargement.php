@@ -31,7 +31,7 @@
                                         <select name="recipient_city" id="recipient_city" class="form-control select2">
                                             <option value=""></option>
                                             <?php
-                                            $cities = $conn->query("SELECT recipient_city FROM parcels");
+                                            $cities = $conn->query("SELECT DISTINCT recipient_city FROM parcels");
                                             while ($row = $cities->fetch_assoc()):
                                                 ?>
                                                 <option value="<?php echo $row['recipient_city'] ?>" <?php echo isset($recipient_city) && $recipient_city == $row['recipient_city'] ? "selected" : '' ?>>

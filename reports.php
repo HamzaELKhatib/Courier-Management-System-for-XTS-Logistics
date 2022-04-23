@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="d-flex w-100 px-1 py-2 justify-content-center align-items-center">
                 <?php
-                $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile"); ?>
+                $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile","Retour"); ?>
                 <label for="date_from" class="mx-1">Status</label>
                 <select name="" id="status" class="custom-select custom-select-sm col-sm-3">
                     <option value="all" <?php echo $status == 'all' ? "selected" : '' ?>>Tout<br> </option>
@@ -53,6 +53,7 @@
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#00B050"><b><font face="Arial" color="#FFFFFF">DATE LIV.</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">COLIS</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">POIDS</font></b></th>
+                            <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">STATUS</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. PAY&Eacute;</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#002060"><b><font face="Arial" color="#FFFFFF">P. D&Ucirc;</font></b></th>
                             <th style="border-left: 1px solid #ffffff" align="center" valign=middle bgcolor="#385724"><b><font face="Arial" color="#FFFFFF">R. Fonds</font></b></th>
@@ -68,6 +69,7 @@
                         <th class="text-right">Total :</th>
                         <th id="nColis" class="text-right"></th>
                         <th id="cWeight" class="text-right"></th>
+                        <th></th>
                         <th id="tAmount" class="text-right"></th>
                         <th id="dAmount" class="text-right"></th>
                         <th id="Rfond" class="text-right"></th>
@@ -258,6 +260,19 @@
                             tr.append('<td>' + (resp[k].liv_date) + '</td>')
                             tr.append('<td>' + (resp[k].number) + '</td>')
                             tr.append('<td>' + (resp[k].weight) + '</td>')
+
+                            if ((resp[k].status) == 0){
+                                tr.append('<td>' + 'Enregistré' + '</td>')
+                            }if ((resp[k].status) == 1){
+                                tr.append('<td>' + 'Envoyé' + '</td>')
+                            }if ((resp[k].status) == 2){
+                                tr.append('<td>' + 'Livré en gars' + '</td>')
+                            }if ((resp[k].status) == 3){
+                                tr.append('<td>' + 'Livré à domicile' + '</td>')
+                            }if ((resp[k].status) == 4){
+                                tr.append('<td>' + 'Retour' + '</td>')
+                            }
+
                             tr.append('<td>' + (resp[k].price) + '</td>')
                             tr.append('<td>' + (resp[k].due_price) + '</td>')
                             tr.append('<td>' + (resp[k].price_retour_de_fond) + '</td>')

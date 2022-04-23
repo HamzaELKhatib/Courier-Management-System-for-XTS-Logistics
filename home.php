@@ -51,7 +51,7 @@ if($_SESSION['login_type'] != 1)
           </div>
           <hr>
           <?php
-          $status_arr = array("Enregistré","Envoyé","Livré en gars","Livré à domicile");
+          $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile","Retour");
                foreach($status_arr as $k =>$v):
           ?>
           <div class="col-12 col-sm-6 col-md-4">
@@ -82,7 +82,7 @@ if($_SESSION['login_type'] != 1)
 
 <!--BARCODE-->
 
-<script src="assets/JsBarcode.all.min.js"></script>
+<!--<script src="assets/JsBarcode.all.min.js"></script>
 <svg id="barcode"></svg>
 <script>
     JsBarcode("#barcode", "N BR/DEC", {
@@ -92,4 +92,4 @@ if($_SESSION['login_type'] != 1)
         height: 40,*/
         displayValue: true
     });
-</script>
+</script>-->

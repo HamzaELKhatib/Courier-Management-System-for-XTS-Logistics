@@ -12,9 +12,23 @@
             <form action="" id="manage-parcel">
                 <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
                 <div id="msg" class=""></div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label for="" class="control-label">N&deg; DEC/BR</label>
+                    <input type="text" name="br_dec" id="" class="form-control form-control-sm"
+                           value="<?php echo isset($br_dec) ? $br_dec : '' ?>" required>
+                    </div>
+                </div>
+                <hr style="display: block; height: 1px;
+    border: 0; border-top: 2px solid #0069D9;
+    margin: 1em 0; padding: 0;">
                 <div class="row">
+
                     <div class="col-md-6">
-                        <b>Informations sur l'expéditeur</b>
+                        <b style="color: #0069D9">Informations sur l'expéditeur</b>
+                        <hr style="display: block; height: 1px;
+    border: 0; border-top: 1px solid #0069D9;
+    margin: 1em 0; padding: 0;">
                         <div class="form-group">
                             <label for="" class="control-label">Nom</label>
                             <input type="text" name="sender_name" id="" class="form-control form-control-sm"
@@ -42,11 +56,14 @@
                         </div>
                     </div>
 
-              <!--==========================Destinataire===========================-->
+                    <!--==========================Destinataire===========================-->
 
 
                     <div class="col-md-6">
-                        <b>Informations sur le destinataire</b>
+                        <b style="color: #0069D9">Informations sur le destinataire</b>
+                        <hr style="display: block; height: 1px;
+    border: 0; border-top: 1px solid #0069D9;
+    margin: 1em 0; padding: 0;">
                         <div class="form-group">
                             <label for="" class="control-label">Nom</label>
                             <input type="text" name="recipient_name" id="" class="form-control form-control-sm"
@@ -74,7 +91,9 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <hr style="display: block; height: 1px;
+    border: 0; border-top: 2px solid #0069D9;
+    margin: 1em 0; padding: 0;">
                 <div class="row">
 
 
@@ -100,29 +119,39 @@
                             <!--<small>Express = ............</small>
                             <small>, Simple = ............</small>-->
                         </div>
+
+                        <div class="form-group">
+                            <label for="">Type de paiment    : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input type="checkbox" name="payment_type" id=""
+                                <?php echo isset($payment_type) && $payment_type == 1 ? 'checked' : '' ?>
+                                   data-bootstrap-switch data-toggle="toggle" data-on="Du" data-off="Payé"
+                                   class="switch-toggle status_chk"
+                                   data-size="xs" data-offstyle="info" data-width="6.5rem" data-height="2rem" value="1">
+                        </div>
                     </div>
 
 
                     <div class="col-md-6" id="">
-<!--                        <?php /*if ($_SESSION['login_branch_id'] <= 0): */?>
+                        <!--                        <?php /*if ($_SESSION['login_branch_id'] <= 0): */ ?>
                             <div class="form-group" id="fbi-field">
                                 <label for="" class="control-label">Branche qui a traité</label>
                                 <select name="from_branch_id" id="from_branch_id" class="form-control select2"
                                         required="">
                                     <option value=""></option>
                                     <?php
-/*                                    $branches = $conn->query("SELECT *,concat(street,', ',city,', ',state,', ',zip_code,', ',country) as address FROM branches");
-                                    while ($row = $branches->fetch_assoc()):
-                                        */?>
-                                        <option value="<?php /*echo $row['id'] */?>" <?php /*echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected" : '' */?>>
-                                            <?php /*echo(ucwords($row['address'])) */?></option>
-                                    <?php /*endwhile; */?>
+                        /*                                    $branches = $conn->query("SELECT *,concat(street,', ',city,', ',state,', ',zip_code,', ',country) as address FROM branches");
+                                                            while ($row = $branches->fetch_assoc()):
+                                                                */ ?>
+                                        <option value="<?php /*echo $row['id'] */ ?>" <?php /*echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected" : '' */ ?>>
+                                            <?php /*echo(ucwords($row['address'])) */ ?></option>
+                                    <?php /*endwhile; */ ?>
                                 </select>
                             </div>
-                        --><?php /*else: */?>
-                            <input type="hidden" name="from_branch_id"
-                                   value="<?php echo $_SESSION['login_branch_id'] ?>">
-<!--                        --><?php //endif; ?>
+                        --><?php /*else: */ ?>
+                        <input type="hidden" name="from_branch_id"
+                               value="<?php echo $_SESSION['login_branch_id'] ?>">
+                        <!--                        --><?php //endif; ?>
+
                         <div class="form-group" id="tbi-field">
                             <label for="" class="control-label">Branche de destination</label>
                             <select name="to_branch_id" id="to_branch_id" class="form-control select2">
@@ -136,49 +165,72 @@
                                 <?php endwhile; ?>
                             </select>
                         </div>
+                        <b>Retour de fond</b>
+                        <div class="form-group">
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="type_retour_de_fond1" value="1">
+                                <label class="form-check-label" for="inlineRadio1">Espèce</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="type_retour_de_fond2" value="2">
+                                <label class="form-check-label" for="inlineRadio2">Chèque</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="type_retour_de_fond3" value="3">
+                                <label class="form-check-label" for="inlineRadio3">Traite</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr>
+                <hr style="display: block; height: 1px;
+    border: 0; border-top: 2px solid #0069D9;
+    margin: 1em 0; padding: 0;">
                 <b>Informations sur Colis</b>
                 <table class="table table-bordered" id="parcel-items">
                     <thead>
                     <tr>
-                        <th>Poids</th>
                         <th>Numero</th>
-
+                        <th>Poids</th>
+                        <th>Longueur</th>
+                        <th>Largeur</th>
+                        <th>Hauteur</th>
                         <th>Prix</th>
-                        <?php if (!isset($id)): ?>
-                            <th></th>
-                        <?php endif; ?>
+
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td><input type="number" name='weight[]' value="<?php echo isset($weight) ? $weight : '' ?>"
-                                   required></td>
-                        <td><input type="number" name='number[]' value="<?php echo isset($number) ? $number : '' ?>"
-                                   required></td>
-
+                        <td><input type="number" name='number[]' value="<?php echo isset($number) ? $number : '' ?>">
+                        </td>
+                        <td><input type="number" name='weight[]' value="<?php echo isset($weight) ? $weight : '' ?>">
+                        </td>
+                        <td><input type="number" name='length[]' value="<?php echo isset($length) ? $length : '' ?>"></td>
+                        <td><input type="number" name='width[]' value="<?php echo isset($width) ? $width : '' ?>"></td>
+                        <td><input type="number" name='height[]' value="<?php echo isset($height) ? $height : '' ?>"></td>
                         <td><input type="number" class="text-right" name='price[]' step="any"
-                                   value="<?php echo isset($price) ? $price : '' ?>" required></td>
-                        <?php if (!isset($id)): ?>
-                            <td>
-                                <button class="btn btn-sm btn-danger" type="button"
-                                        onclick="$(this).closest('tr').remove() && calc()"><i class="fa fa-times"></i>
-                                </button>
-                            </td>
-                        <?php endif; ?>
+                                   value="<?php echo isset($price) ? $price : '' ?>"></td>
+
+                    </tr>
+                    <tr>
+                        <th class="text-right">R. BL</th>
+                        <th> <input type="number" name='price_retour_bl[]' value="<?php echo isset($price_retour_bl) ? $price_retour_bl : '' ?>"> </th>
+                        <th class="text-right">R. Fonds</th>
+                        <th> <input type="number" name='price_retour_de_fond[]' value="<?php echo isset($price_retour_de_fond) ? $price_retour_de_fond : '' ?>"> </th>
+                        <th colspan="" class="text-center">Note</th>
+                        <th colspan=""><input type="text" name="note[]" value="<?php echo isset($note) ? $note : '' ?>"
+                                               style='width:100%'></th>
                     </tr>
                     </tbody>
                     <?php if (!isset($id)): ?>
                         <tfoot>
-                        <th colspan="2" class="text-right">Total</th>
-                        <th class="text-right" id="tAmount">0.00</th>
-                        <th></th>
+                        <th colspan="5" class="text-right">Total</th>
+                        <th colspan="2" class="text-center" id="tAmount">0.00</th>
+
                         </tfoot>
                     <?php endif; ?>
                 </table>
-                <?php if (!isset($id)): ?>
+                <?php /*if (!isset($id)): */?><!--
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-end">
                             <button class="btn btn-sm btn-primary bg-gradient-primary" type="button" id="new_parcel"><i
@@ -186,7 +238,7 @@
                             </button>
                         </div>
                     </div>
-                <?php endif; ?>
+                --><?php /*endif; */?>
             </form>
         </div>
         <div class="card-footer border-top border-info">
@@ -200,14 +252,17 @@
 <div id="ptr_clone" class="d-none">
     <table>
         <tr>
-            <td><input type="number" name='weight[]' required></td>
-            <td><input type="number" name='number[]' required></td>
+            <td><input type="number" name='number[]'></td>
+            <td><input type="number" name='weight[]'></td>
+            <td><input type="text" name='length[]'></td>
+            <td><input type="text" name='width[]'></td>
+            <td><input type="text" name='height[]'></td>
+            <td><input type="number" class="text-right" name='price[]' step="any"></td>
 
-            <td><input type="number" class="text-right" name='price[]' step="any" required></td>
-            <td>
-                <button class="btn btn-sm btn-danger" type="button" onclick="$(this).closest('tr').remove() && calc()">
-                    <i class="fa fa-times"></i></button>
-            </td>
+        </tr>
+        <tr>
+            <th colspan="" class="text-center">Note</th>
+            <th colspan="5"><input type="text" name="note[]" style='width:100%'></th>
         </tr>
     </table>
 </div>

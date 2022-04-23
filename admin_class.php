@@ -224,7 +224,7 @@ class Action
         foreach ($price as $k => $v) {
             $data = "";
             foreach ($_POST as $key => $val) {
-                if (!in_array($key, array('id', 'weight', 'number', 'price')) && !is_numeric($key)) {
+                if (!in_array($key, array('id', 'weight', 'height','width','length', 'number', 'note', 'price', 'price_retour_bl', 'price_retour_de_fond', 'br_dec', 'type_retour_de_fond1','type_retour_de_fond2', 'type_retour_de_fond3')) && !is_numeric($key)) {
                     if (empty($data)) {
                         $data .= " $key='$val' ";
                     } else {
@@ -238,12 +238,32 @@ class Action
             if (!isset($type_expedition)) {
                 $data .= ", type_expedition='2' ";
             }
+            $price[$k] = str_replace(',', '', $price[$k]);
+            if (!isset($payment_type)) {
+                $data .= ", payment_type='2' ";
+                $data .= ", price='{$price[$k]}' ";
+            }else{
+                $data .= ", due_price='{$price[$k]}' ";
+            }
+            if (isset($type_retour_de_fond1)) {
+                $data .= ", type_retour_de_fond='1' ";
+            }if (isset($type_retour_de_fond2)) {
+                $data .= ", type_retour_de_fond='2' ";
+            }if (isset($type_retour_de_fond3)) {
+                $data .= ", type_retour_de_fond='3' ";
+            }
 
             $data .= ", number='{$number[$k]}' ";
-
+            $data .= ", height='{$height[$k]}' ";
+            $data .= ", width='{$width[$k]}' ";
+            $data .= ", length='{$length[$k]}' ";
             $data .= ", weight='{$weight[$k]}' ";
-            $price[$k] = str_replace(',', '', $price[$k]);
-            $data .= ", price='{$price[$k]}' ";
+            $data .= ", note='{$note[$k]}' ";
+            $data .= ", price_retour_bl='{$price_retour_bl[$k]}' ";
+            $data .= ", price_retour_de_fond='{$price_retour_de_fond[$k]}' ";
+            $data .= ", br_dec='{$br_dec[$k]}' ";
+
+
             if (empty($id)) {
                 $i = 0;
                 while ($i == 0) {

@@ -102,6 +102,8 @@ $arrive = $_POST['recipient_city'];
                         $new_feuille_id = $notemptyfeuille['feuille_id'] + 1;
                     }
 
+
+
                     for ($j = 0; $j < count($checked_array); $j++): ?>
                         <?php
                         $id = intval($checked_array[$j]);
@@ -109,6 +111,16 @@ $arrive = $_POST['recipient_city'];
 
                         $feuille_query = $conn->query("
 INSERT into feuille_chargement (feuille_id, parcel_id, chauffeur, depart, arrive, heure_vehicule)  VALUES ('$new_feuille_id', '$id', '$chauffeur', '$depart', '$arrive', '$heure')");
+
+
+                        $empty_expedition = $conn->query("SELECT * FROM parcels ");
+                        if ($empty_expedition->num_rows == 0) {
+                            $new_expedition_number = 2022000000;
+                        } else {
+                            $notemptyexpedition = $conn->query("SELECT expedition_number FROM parcels ORDER BY expedition_number DESC LIMIT 1")->fetch_assoc();
+                            $new_expedition_number = $notemptyexpedition['expedition_number'] + 1;
+                        }
+                        $expedition_query = $conn->query("UPDATE parcels SET expedition_number = $new_expedition_number WHERE id=$id");
 
                         $i = 1;
 
@@ -158,11 +170,11 @@ INSERT into feuille_chargement (feuille_id, parcel_id, chauffeur, depart, arrive
                     <td colspan="4"></td>
                     <td>Total:</td>
                     <td><b><?php echo $total_number ?></b></td>
-                    <td><b><?php echo $total_weight ?></b></td>
-                    <td><b><?php echo $total_price ?></b></td>
-                    <td><b><?php echo $total_due_price ?></b></td>
-                    <td><b><?php echo $total_price_retour_de_fond ?></b></td>
-                    <td><b><?php echo $total_price_retour_bl ?></b></td>
+                    <td><b><?php echo $total_weight.' kg' ?></b></td>
+                    <td><b><?php echo $total_price. ' dh' ?></b></td>
+                    <td><b><?php echo $total_due_price.' dh' ?></b></td>
+                    <td><b><?php echo $total_price_retour_de_fond.' dh' ?></b></td>
+                    <td><b><?php echo $total_price_retour_bl.' dh' ?></b></td>
                     </tbody>
                 </table>
             </div>
