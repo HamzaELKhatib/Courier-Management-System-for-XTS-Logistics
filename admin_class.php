@@ -224,7 +224,7 @@ class Action
         foreach ($price as $k => $v) {
             $data = "";
             foreach ($_POST as $key => $val) {
-                if (!in_array($key, array('id', 'weight', 'height','width','length', 'number', 'note', 'price', 'price_retour_bl', 'price_retour_de_fond', 'br_dec', 'type_retour_de_fond1','type_retour_de_fond2', 'type_retour_de_fond3')) && !is_numeric($key)) {
+                if (!in_array($key, array('id', 'weight', 'height','width','length', 'number', 'note', 'price', 'price_retour_bl', 'price_retour_de_fond', 'type_retour_de_fond1','type_retour_de_fond2', 'type_retour_de_fond3')) && !is_numeric($key)) {
                     if (empty($data)) {
                         $data .= " $key='$val' ";
                     } else {
@@ -238,6 +238,12 @@ class Action
             if (!isset($type_expedition)) {
                 $data .= ", type_expedition='2' ";
             }
+            if (!isset($type_client)) {
+                $data .= ", type_client='2' ";
+            }
+
+
+
             $price[$k] = str_replace(',', '', $price[$k]);
             if (!isset($payment_type)) {
                 $data .= ", payment_type='2' ";
@@ -261,7 +267,7 @@ class Action
             $data .= ", note='{$note[$k]}' ";
             $data .= ", price_retour_bl='{$price_retour_bl[$k]}' ";
             $data .= ", price_retour_de_fond='{$price_retour_de_fond[$k]}' ";
-            $data .= ", br_dec='{$br_dec[$k]}' ";
+
 
 
             if (empty($id)) {

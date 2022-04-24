@@ -128,8 +128,18 @@
                                    class="switch-toggle status_chk"
                                    data-size="xs" data-offstyle="info" data-width="6.5rem" data-height="2rem" value="1">
                         </div>
+
+                        <div class="form-group">
+                            <label for="">Type de client    : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input type="checkbox" name="type_client" id=""
+                                <?php echo isset($type_client) && $type_client == 1 ? 'checked' : '' ?>
+                                   data-bootstrap-switch data-toggle="toggle" data-on="Société" data-off="Particulier"
+                                   class="switch-toggle status_chk"
+                                   data-size="xs" data-offstyle="info" data-width="6.5rem" data-height="2rem" value="1">
+                        </div>
                     </div>
 
+<!--              ===========================================================================================================                  -->
 
                     <div class="col-md-6" id="">
                         <!--                        <?php /*if ($_SESSION['login_branch_id'] <= 0): */ ?>
@@ -215,7 +225,7 @@
 
                         <td><label>Hauteur</label><input type="number" name='height[]' value="<?php echo isset($height) ? $height : '' ?>" style='width:100%'></td>
 
-                        <td><label>Prix</label><input type="number" class="text-right" name='price[]' step="any"
+                        <td><label>Prix</label><input type="number" name='price[]' step="any"
                                    value="<?php echo isset($price) ? $price : '' ?>" style='width:100%'></td>
                     </tr>
 
