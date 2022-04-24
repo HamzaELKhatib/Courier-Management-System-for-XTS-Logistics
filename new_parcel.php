@@ -188,47 +188,51 @@
     margin: 1em 0; padding: 0;">
                 <b>Informations sur Colis</b>
                 <table class="table table-bordered" id="parcel-items">
-                    <thead>
-                    <tr>
-                        <th>Numero</th>
-                        <th>Poids</th>
-                        <th>Longueur</th>
-                        <th>Largeur</th>
-                        <th>Hauteur</th>
-                        <th>Prix</th>
 
-                    </tr>
-                    </thead>
                     <tbody>
+
                     <tr>
-                        <td><input type="number" name='number[]' value="<?php echo isset($number) ? $number : '' ?>">
+
+
+                        <td><label>Numero</label><input type="number" name='number[]' value="<?php echo isset($number) ? $number : '' ?>" style='width:100%'>
                         </td>
-                        <td><input type="number" name='weight[]' value="<?php echo isset($weight) ? $weight : '' ?>">
+
+
+                        <td><label>Poids</label><input type="number" name='weight[]' value="<?php echo isset($weight) ? $weight : '' ?>" style='width:100%'>
                         </td>
-                        <td><input type="number" name='length[]' value="<?php echo isset($length) ? $length : '' ?>"></td>
-                        <td><input type="number" name='width[]' value="<?php echo isset($width) ? $width : '' ?>"></td>
-                        <td><input type="number" name='height[]' value="<?php echo isset($height) ? $height : '' ?>"></td>
-                        <td><input type="number" class="text-right" name='price[]' step="any"
-                                   value="<?php echo isset($price) ? $price : '' ?>"></td>
 
                     </tr>
+
                     <tr>
-                        <th class="text-right">R. BL</th>
-                        <th> <input type="number" name='price_retour_bl[]' value="<?php echo isset($price_retour_bl) ? $price_retour_bl : '' ?>"> </th>
-                        <th class="text-right">R. Fonds</th>
-                        <th> <input type="number" name='price_retour_de_fond[]' value="<?php echo isset($price_retour_de_fond) ? $price_retour_de_fond : '' ?>"> </th>
-                        <th colspan="" class="text-center">Note</th>
-                        <th colspan=""><input type="text" name="note[]" value="<?php echo isset($note) ? $note : '' ?>"
-                                               style='width:100%'></th>
+
+                        <td><label>Longueur</label><input type="number" name='length[]' value="<?php echo isset($length) ? $length : '' ?>" style='width:100%'></td>
+
+
+                        <td><label>Largeur</label><input type="number" name='width[]' value="<?php echo isset($width) ? $width : '' ?>" style='width:100%'></td>
                     </tr>
+
+                    <tr>
+
+                        <td><label>Hauteur</label><input type="number" name='height[]' value="<?php echo isset($height) ? $height : '' ?>" style='width:100%'></td>
+
+                        <td><label>Prix</label><input type="number" class="text-right" name='price[]' step="any"
+                                   value="<?php echo isset($price) ? $price : '' ?>" style='width:100%'></td>
+                    </tr>
+
+
+                    <tr>
+
+                        <td> <label>R. BL</label><input type="number" name='price_retour_bl[]' value="<?php echo isset($price_retour_bl) ? $price_retour_bl : '' ?>" style='width:100%'> </td>
+
+                        <td> <label>R. Fonds</label><input type="number" name='price_retour_de_fond[]' value="<?php echo isset($price_retour_de_fond) ? $price_retour_de_fond : '' ?>" style='width:100%'> </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4"><label>Note : &nbsp; </label><input type="text" name="note[]" value="<?php echo isset($note) ? $note : '' ?>"
+                                              style='width:100%'></td>
+                    </tr>
+
                     </tbody>
-                    <?php if (!isset($id)): ?>
-                        <tfoot>
-                        <th colspan="5" class="text-right">Total</th>
-                        <th colspan="2" class="text-center" id="tAmount">0.00</th>
-
-                        </tfoot>
-                    <?php endif; ?>
                 </table>
                 <?php /*if (!isset($id)): */?><!--
                     <div class="row">
@@ -249,23 +253,6 @@
         </div>
     </div>
 </div>
-<div id="ptr_clone" class="d-none">
-    <table>
-        <tr>
-            <td><input type="number" name='number[]'></td>
-            <td><input type="number" name='weight[]'></td>
-            <td><input type="text" name='length[]'></td>
-            <td><input type="text" name='width[]'></td>
-            <td><input type="text" name='height[]'></td>
-            <td><input type="number" class="text-right" name='price[]' step="any"></td>
-
-        </tr>
-        <tr>
-            <th colspan="" class="text-center">Note</th>
-            <th colspan="5"><input type="text" name="note[]" style='width:100%'></th>
-        </tr>
-    </table>
-</div>
 <script>
     // $('#dtype').change(function () {
     //     if ($(this).prop('checked') == true) {
@@ -276,21 +263,6 @@
     // })
     $('[name="price[]"]').keyup(function () {
         calc()
-    })
-    $('#new_parcel').click(function () {
-        var tr = $('#ptr_clone tr').clone()
-        $('#parcel-items tbody').append(tr)
-        $('[name="price[]"]').keyup(function () {
-            calc()
-        })
-        $('.number').on('input keyup keypress', function () {
-            var val = $(this).val()
-            val = val.replace(/[^0-9]/, '');
-            val = val.replace(/,/g, '');
-            val = val > 0 ? parseFloat(val).toLocaleString("en-US") : 0;
-            $(this).val(val)
-        })
-
     })
     $('#manage-parcel').submit(function (e) {
         e.preventDefault()
@@ -320,22 +292,4 @@
             }
         })
     })
-
-
-    function calc() {
-
-        var total = 0;
-        $('#parcel-items [name="price[]"]').each(function () {
-            var p = $(this).val();
-            p = p.replace(/,/g, '')
-            p = p > 0 ? p : 0;
-            total = parseFloat(p) + parseFloat(total)
-        })
-        if ($('#tAmount').length > 0)
-            $('#tAmount').text(parseFloat(total).toLocaleString('en-US', {
-                style: 'decimal',
-                maximumFractionDigits: 2,
-                minimumFractionDigits: 2
-            }))
-    }
 </script>
