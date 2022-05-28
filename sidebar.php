@@ -26,7 +26,7 @@
                     <a href="./" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            Tableau de bord
                         </p>
                     </a>
                 </li>
@@ -43,7 +43,7 @@
                             <li class="nav-item">
                                 <a href="./index.php?page=new_branch" class="nav-link nav-new_branch tree-item">
                                     <i class="fas fa-angle-right nav-icon"></i>
-                                    <p>Ajouter Nouveau</p>
+                                    <p>Ajouter Nouvelle</p>
                                 </a>
                             </li>
                             <li class="nav-item">

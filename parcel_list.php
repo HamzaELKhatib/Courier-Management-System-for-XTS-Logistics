@@ -97,11 +97,11 @@ $num_page = ($num_page - 1) * 10;
                     <th class="text-center bg-primary" style="width: 60px;font-size: small">N&deg; DEC/BR</th>
 
                     <th class="text-center bg-info" style="width: 150px;font-size: medium">Expéditeur</th>
-                    <th class="text-center bg-info" style="width: 70px;font-size: medium">CIN E</th>
+                    <th class="text-center bg-info" style="width: 70px;font-size: medium">CIN EXP.</th>
                     <th class="text-center bg-info" style="width: 90px;font-size: medium">Ville</th>
 
                     <th class="text-center bg-success" style="width: 150px;font-size: medium">Destinataire</th>
-                    <th class="text-center bg-success" style="width: 70px;font-size: medium">CIN D</th>
+                    <th class="text-center bg-success" style="width: 70px;font-size: medium">CIN DEST.</th>
                     <th class="text-center bg-gradient-success" style="width: 90px;font-size: medium">Ville</th>
 
                     <th class="text-center bg-primary" style="width: 90px;font-size: small">Status</th>

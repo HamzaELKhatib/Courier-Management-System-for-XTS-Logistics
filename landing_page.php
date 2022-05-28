@@ -11,12 +11,12 @@ include 'header.php';
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
-        <a href=".php" style="text-decoration: none">
+        <!--<a href=".php" style="text-decoration: none">
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Suivre colis</button>
-        </a>
+        </a>-->
         &nbsp;&nbsp;&nbsp;
         <a href="login.php" style="text-decoration: none">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"> Espace employés</button>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit"> Espace employés</button>
         </a>
     </div>
 </nav>
