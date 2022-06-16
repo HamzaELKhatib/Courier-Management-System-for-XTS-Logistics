@@ -124,7 +124,7 @@
                                 $select_date = $conn->query("
 SELECT parcel_id  
 FROM parcel_tracks 
-WHERE DATE(`date_created`) = CURDATE()
+WHERE date_created >= CURDATE() && date_created < (CURDATE() + INTERVAL 1 DAY)
 AND status=1 ");
                                 while ($row1 = $select_date->fetch_assoc()):
                                     $parcel_id = $row1['parcel_id'];

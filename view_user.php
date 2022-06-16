@@ -39,4 +39,10 @@ foreach($qry as $k => $v){
 	#uni_modal .modal-footer.display{
 		display: flex
 	}
+    #tracking_modal .modal-footer{
+        display: none
+    }
+    #tracking_modal .modal-footer.display{
+        display: flex
+    }
 </style>

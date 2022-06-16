@@ -83,6 +83,18 @@ include 'header.php'
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="tracking_modal" role='dialog'>
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" style="border-radius: 50px">X</button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="uni_modal_right" role='dialog'>
             <div class="modal-dialog modal-full-height  modal-md" role="document">
                 <div class="modal-content">
