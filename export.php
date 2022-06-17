@@ -16,7 +16,7 @@ if(isset($_POST['export']))
         'Contact_destinataire', 'type', 'type_expedition', 'type_client', 'Gare_expedition',
         'Gare_destination', 'Poids', 'Longueur', 'Largeur', 'Hauteur', 'Nombre', 'Note', 'Type_RF',
         'Prix_RF', 'Prix_RB', 'Prix', 'Prix_due', 'Type_payment', 'Status', 'Date_creation'));
-    $query = "SELECT * from parcels ORDER BY id DESC";
+    $query = "SELECT * from parcels ORDER BY id";
     $result = $conn->query($query);
     while($row = mysqli_fetch_assoc($result))
     {
