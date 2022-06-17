@@ -81,10 +81,26 @@ $num_page = ($num_page - 1) * 10;
                     <?php endif; ?>
                 </div>
             </div>
+
             <div class="card-tools">
                 <a class="btn btn-primary"
                    href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Ajouter Nouveau</a>
             </div>
+
+            <div class="card-tools">
+                <form method="post" action="export.php" class="row">
+                    <div class="col-10"></div>
+                    <div class="col-10"><input class="btn btn-primary" type="submit" value="Exporter les données .csv" name="export" class="button" /></div>
+                </form>
+            </div>
+
+            <div class="card-tools">
+                <form method="post" action="empty_parcels.php" class="row">
+                    <div class="col-10"></div>
+                    <div class="col-10"><input class="btn btn-danger" type="submit" value="Effacer la base de données" name="empty_parcels" class="button" /></div>
+                </form>
+            </div>
+
         </div>
         <!--        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
         -->
