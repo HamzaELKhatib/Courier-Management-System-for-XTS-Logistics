@@ -76,7 +76,6 @@ if (isset($_SESSION['login_id'])) {
         })
     })
 </script>
-<?php include 'footer.php' ?>
 
 </body>
 </html>
