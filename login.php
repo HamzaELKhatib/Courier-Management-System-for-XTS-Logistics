@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 session_start();
 include('./db_connect.php');
 
-?>
-<?php
-if (isset($_SESSION['login_id']))
+if (isset($_SESSION['login_id'])) {
     header("location:index.php?page=home");
+}
 
+ include 'header.php'
 ?>
-<?php include 'header.php' ?>
+<!DOCTYPE html>
+<html lang="en">
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">

@@ -10,13 +10,13 @@
     <div class="card card-outline card-primary">
         <div class="card-body">
             <form action="" id="manage-parcel">
-                <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
+                <input type="hidden" name="id" value="<?php echo $id ?? '' ?>">
                 <div id="msg" class=""></div>
                 <div class="col-md-3">
                     <div class="form-group">
-                    <label for="" class="control-label">N&deg; DEC/BR</label>
-                    <input type="text" name="br_dec" id="" class="form-control form-control-sm"
-                           value="<?php echo isset($br_dec) ? $br_dec : '' ?>" required>
+                        <label for="" class="control-label">N&deg; DEC/BR</label>
+                        <input type="text" name="br_dec" id="" class="form-control form-control-sm"
+                               value="<?php echo $br_dec ?? '' ?>">
                     </div>
                 </div>
                 <hr style="display: block; height: 1px;
@@ -32,27 +32,27 @@
                         <div class="form-group">
                             <label for="" class="control-label">Nom</label>
                             <input type="text" name="sender_name" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($sender_name) ? $sender_name : '' ?>" required>
+                                   value="<?php echo $sender_name ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">N.CIN</label>
                             <input type="text" name="sender_id" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($sender_id) ? $sender_id : '' ?>" required>
+                                   value="<?php echo $sender_id ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Address</label>
                             <input type="text" name="sender_address" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($sender_address) ? $sender_address : '' ?>" required>
+                                   value="<?php echo $sender_address ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Ville</label>
                             <input type="text" name="sender_city" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($sender_city) ? $sender_city : '' ?>" required>
+                                   value="<?php echo $sender_city ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Contact #</label>
                             <input type="text" name="sender_contact" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($sender_contact) ? $sender_contact : '' ?>" required>
+                                   value="<?php echo $sender_contact ?? '' ?>">
                         </div>
                     </div>
 
@@ -67,27 +67,27 @@
                         <div class="form-group">
                             <label for="" class="control-label">Nom</label>
                             <input type="text" name="recipient_name" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($recipient_name) ? $recipient_name : '' ?>" required>
+                                   value="<?php echo $recipient_name ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">N.CIN</label>
                             <input type="text" name="recipient_cin" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($recipient_cin) ? $recipient_cin : '' ?>" required>
+                                   value="<?php echo $recipient_cin ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Address</label>
                             <input type="text" name="recipient_address" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($recipient_address) ? $recipient_address : '' ?>" required>
+                                   value="<?php echo $recipient_address ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Ville</label>
                             <input type="text" name="recipient_city" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($recipient_city) ? $recipient_city : '' ?>" required>
+                                   value="<?php echo $recipient_city ?? '' ?>">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Contact #</label>
                             <input type="text" name="recipient_contact" id="" class="form-control form-control-sm"
-                                   value="<?php echo isset($recipient_contact) ? $recipient_contact : '' ?>" required>
+                                   value="<?php echo $recipient_contact ?? '' ?>">
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Type de paiment    : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <label for="">Type de paiment : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input type="checkbox" name="payment_type" id=""
                                 <?php echo isset($payment_type) && $payment_type == 1 ? 'checked' : '' ?>
                                    data-bootstrap-switch data-toggle="toggle" data-on="Du" data-off="Payé"
@@ -130,7 +130,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Type de client    : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <label for="">Type de client : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input type="checkbox" name="type_client" id=""
                                 <?php echo isset($type_client) && $type_client == 1 ? 'checked' : '' ?>
                                    data-bootstrap-switch data-toggle="toggle" data-on="Société" data-off="Particulier"
@@ -139,7 +139,7 @@
                         </div>
                     </div>
 
-<!--              ===========================================================================================================                  -->
+                    <!--              ===========================================================================================================                  -->
 
                     <div class="col-md-6" id="">
                         <!--                        <?php /*if ($_SESSION['login_branch_id'] <= 0): */ ?>
@@ -204,47 +204,63 @@
                     <tr>
 
 
-                        <td><label>Numero</label><input type="number" name='number[]' value="<?php echo isset($number) ? $number : '' ?>" style='width:100%'>
+                        <td><label>Numero</label><input type="number" name='number[]'
+                                                        value="<?php echo $number ?? '' ?>"
+                                                        style='width:100%'>
                         </td>
 
 
-                        <td><label>Poids</label><input type="number" name='weight[]' value="<?php echo isset($weight) ? $weight : '' ?>" style='width:100%'>
+                        <td><label>Poids</label><input type="number" name='weight[]'
+                                                       value="<?php echo $weight ?? '' ?>"
+                                                       style='width:100%'>
                         </td>
 
                     </tr>
 
                     <tr>
 
-                        <td><label>Longueur</label><input type="number" name='length[]' value="<?php echo isset($length) ? $length : '' ?>" style='width:100%'></td>
+                        <td><label>Longueur</label><input type="number" name='length[]'
+                                                          value="<?php echo $length ?? '' ?>"
+                                                          style='width:100%'></td>
 
 
-                        <td><label>Largeur</label><input type="number" name='width[]' value="<?php echo isset($width) ? $width : '' ?>" style='width:100%'></td>
+                        <td><label>Largeur</label><input type="number" name='width[]'
+                                                         value="<?php echo $width ?? '' ?>"
+                                                         style='width:100%'></td>
                     </tr>
 
                     <tr>
 
-                        <td><label>Hauteur</label><input type="number" name='height[]' value="<?php echo isset($height) ? $height : '' ?>" style='width:100%'></td>
+                        <td><label>Hauteur</label><input type="number" name='height[]'
+                                                         value="<?php echo $height ?? '' ?>"
+                                                         style='width:100%'></td>
 
                         <td><label>Prix</label><input type="number" name='price[]' step="any"
-                                   value="<?php echo isset($price) ? $price : '' ?>" style='width:100%'></td>
+                                                      value="<?php echo $price ?? '' ?>"
+                                                      style='width:100%'></td>
                     </tr>
 
 
                     <tr>
 
-                        <td> <label>R. BL</label><input type="number" name='price_retour_bl[]' value="<?php echo isset($price_retour_bl) ? $price_retour_bl : '' ?>" style='width:100%'> </td>
+                        <td><label>R. BL</label><input type="number" name='price_retour_bl[]'
+                                                       value="<?php echo $price_retour_bl ?? '' ?>"
+                                                       style='width:100%'></td>
 
-                        <td> <label>R. Fonds</label><input type="number" name='price_retour_de_fond[]' value="<?php echo isset($price_retour_de_fond) ? $price_retour_de_fond : '' ?>" style='width:100%'> </td>
+                        <td><label>R. Fonds</label><input type="number" name='price_retour_de_fond[]'
+                                                          value="<?php echo $price_retour_de_fond ?? '' ?>"
+                                                          style='width:100%'></td>
                     </tr>
 
                     <tr>
-                        <td colspan="4"><label>Note : &nbsp; </label><input type="text" name="note[]" value="<?php echo isset($note) ? $note : '' ?>"
-                                              style='width:100%'></td>
+                        <td colspan="4"><label>Note : &nbsp; </label><input type="text" name="note[]"
+                                                                            value="<?php echo $note ?? '' ?>"
+                                                                            style='width:100%'></td>
                     </tr>
 
                     </tbody>
                 </table>
-                <?php /*if (!isset($id)): */?><!--
+                <?php /*if (!isset($id)): */ ?><!--
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-end">
                             <button class="btn btn-sm btn-primary bg-gradient-primary" type="button" id="new_parcel"><i
@@ -252,7 +268,7 @@
                             </button>
                         </div>
                     </div>
-                --><?php /*endif; */?>
+                --><?php /*endif; */ ?>
             </form>
         </div>
         <div class="card-footer border-top border-info">
