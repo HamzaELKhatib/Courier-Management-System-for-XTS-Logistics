@@ -264,16 +264,6 @@
     </div>
 </div>
 <script>
-    // $('#dtype').change(function () {
-    //     if ($(this).prop('checked') == true) {
-    //         $('#tbi-field').hide()
-    //     } else {
-    //         $('#tbi-field').show()
-    //     }
-    // })
-    $('[name="price[]"]').keyup(function () {
-        calc()
-    })
     $('#manage-parcel').submit(function (e) {
         e.preventDefault()
         start_load()
