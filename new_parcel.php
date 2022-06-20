@@ -264,21 +264,11 @@
     </div>
 </div>
 <script>
-    // $('#dtype').change(function () {
-    //     if ($(this).prop('checked') == true) {
-    //         $('#tbi-field').hide()
-    //     } else {
-    //         $('#tbi-field').show()
-    //     }
-    // })
-    $('[name="price[]"]').keyup(function () {
-        calc()
-    })
     $('#manage-parcel').submit(function (e) {
         e.preventDefault()
         start_load()
         if ($('#parcel-items tbody tr').length <= 0) {
-            alert_toast("Please add atleast 1 parcel information.", "error")
+            alert_toast("Please add at least 1 parcel information.", "error")
             end_load()
             return false;
         }
