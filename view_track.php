@@ -11,6 +11,7 @@ else:
 $parcel = $parcel->fetch_array();
 $history = $conn->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
 ?>
+<h1 style="color: white; font-family: Jost, sans-serif; font-size: 48px;text-align: center;margin-top: 15%">Le trajet de votre colis</h1>
 <ol class="progtrckr">
     <?php
     while ($row = $history->fetch_assoc()) :
@@ -42,11 +43,12 @@ $history = $conn->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel[
 <style>
     *{
         background-color: #37517E;
+        font-family: Jost, sans-serif;
     }
     ol.progtrckr {
-        margin: 0;
-        padding: 0;
-        list-style-type none;
+
+        text-align: center;
+        list-style-position: inside;
     }
 
     ol.progtrckr li {
