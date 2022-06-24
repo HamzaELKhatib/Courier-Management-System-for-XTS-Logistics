@@ -117,18 +117,21 @@ include('./db_connect.php');
             <div class="section-title">
                 <h2>Trouver votre colis</h2>
                 <p>Veuillez entrez le numero de référence de votre colis:</p>
-            </div>
-            <form action="view_track.php" method="get" >
-                <div class="form-group">
-                    <label for="reference">Référence</label>
-                    <input type="text" class="form-control track_parcel" id="reference" name="reference"
-                           aria-describedby=""
-                           placeholder="" value="">
+                <br>
+                <div class="row justify-content-md-center">
+                    <form action="view_track.php" method="get">
+                        <div class="form-group">
+                            <input type="text" class="form-control track_parcel" id="reference" name="reference"
+                                   aria-describedby=""
+                                   placeholder="Référence" value="">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-flat">Submit</button>
+
+                    </form>
                 </div>
+            </div>
 
-                <button type="submit" class="btn btn-primary btn-flat">Submit</button>
-
-            </form>
         </div>
 
     </section>
@@ -139,9 +142,8 @@ include('./db_connect.php');
 
             <div class="section-title">
                 <h2>Contact</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                    fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Si vous avez des doutes ou des questions, n'hésitez pas à nous contacter via notre numéro de
+                    téléphone ou à venir à notre local.</p>
             </div>
 
             <div class="row justify-content-md-center">
@@ -150,8 +152,8 @@ include('./db_connect.php');
                     <div class="info">
                         <div class="address">
                             <i class="bi bi-geo-alt"></i>
-                            <h4>Location:</h4>
-                            <p>A108 Adam Street, New York, NY 535022</p>
+                            <h4>Adresse:</h4>
+                            <p>Lotissement Attar 16 Avenue El Hajeb, Tétouan 93000, Maroc</p>
                         </div>
 
                         <div class="email">
@@ -162,12 +164,13 @@ include('./db_connect.php');
 
                         <div class="phone">
                             <i class="bi bi-phone"></i>
-                            <h4>Call:</h4>
-                            <p>+1 5589 55488 55s</p>
+                            <h4>Appelez:</h4>
+                            <p>+212 6 39 49 39 00</p>
                         </div>
 
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                                frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d202.8440436271618!2d-5.360720544140695!3d35.56593287264614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sLotissement%20Attar%2C%2016%20Avenue%20El%20Hajeb%2C%20T%C3%A9touan!5e0!3m2!1sen!2sma!4v1656080850767!5m2!1sen!2sma"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                 </div>
