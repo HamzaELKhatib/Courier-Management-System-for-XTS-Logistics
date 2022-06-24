@@ -28,7 +28,7 @@ $history = $conn->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel[
             Arrivé au gare de: <?php echo $row['city'] ?>, le: <?php echo $row['date_created'] ?>
         </li>
     <?php
-        elseif ($row['status'] == 3 ||$row['status'] == 4):
+        elseif ($row['status'] == 2 ||$row['status'] == 3):
     ?>
             <li class="progtrckr-done">
                 Collecté par le client à: <?php echo $row['city'] ?>, le: <?php echo $row['date_created'] ?>
