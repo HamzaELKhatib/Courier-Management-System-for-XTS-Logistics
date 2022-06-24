@@ -101,6 +101,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="./index.php?page=track" class="nav-link nav-track">
+                        <i class="nav-icon fas fa-search"></i>
+                        <p>
+                            Suivre Colis
+                        </p>
+                    </a>
+                </li>
                 <?php if ($_SESSION['login_type'] == 1): ?>
                 <li class="nav-item dropdown">
                     <a href="./index.php?page=reports" class="nav-link nav-reports">

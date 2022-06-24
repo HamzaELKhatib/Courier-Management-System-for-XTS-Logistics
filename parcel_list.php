@@ -231,10 +231,10 @@ $num_page = ($num_page - 1) * 10;
                             ?>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-primary btn-flat view_track"
-                                    data-id="<?php echo $row['br_dec'] ?>">
+                            <a href="./index.php?page=track_br&br=<?php echo $row['reference'] ?>"
+                               class="btn btn-primary btn-flat ">
                                 <i class="fas fa-map-marked"></i>
-                            </button>
+                            </a>
                             <button type="button" class="btn btn-primary btn-flat view_parcel"
                                     data-id="<?php echo $row['id'] ?>">
                                 <i class="fas fa-eye"></i>
@@ -474,8 +474,8 @@ $num_page = ($num_page - 1) * 10;
             "searching": true,
             "ordering": false,
         })
-        $('.view_track').click(function () {
-            tracking_modal("Trajet du colis", "view_track.php?br=" + $(this).attr('data-id'), "large")
+        $('.view_parcel').click(function () {
+            uni_modal("Détails du colis", "view_parcel.php?id=" + $(this).attr('data-id'), "large")
             console.log($(this).attr('data-id'))
         })
         $('.view_parcel').click(function () {

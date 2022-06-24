@@ -118,7 +118,7 @@ include('./db_connect.php');
                 <h2>Trouver votre colis</h2>
                 <p>Veuillez entrez le numero de référence de votre colis:</p>
             </div>
-            <form action="view_track_user.php" method="get" >
+            <form action="view_track.php" method="get" >
                 <div class="form-group">
                     <label for="reference">Référence</label>
                     <input type="text" class="form-control track_parcel" id="reference" name="reference"
@@ -200,7 +200,66 @@ include('./db_connect.php');
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+<script>
+    function track_now() {
+        start_load()
+        var tracking_num = $('#ref_no').val()
+        if (tracking_num == '') {
+            $('#parcel_history').html('')
+            end_load()
+        } else {
+            $.ajax({
+                url: 'ajax.php?action=get_parcel_history',
+                method: 'POST',
+                data: {ref_no: tracking_num},
+                error: err => {
+                    console.log(err)
+                    alert_toast("Une erreur s'est produite", 'error')
+                    end_load()
+                },
+                success: function (resp) {
+                    if (typeof resp === 'object' || Array.isArray(resp) || typeof JSON.parse(resp) === 'object') {
+                        resp = JSON.parse(resp)
+                        if (Object.keys(resp).length > 0) {
+                            $('#parcel_history').html('')
+                            Object.keys(resp).map(function (k) {
+                                var tl = $('#clone_timeline-item .iitem').clone()
+                                tl.find('.dtime').text(resp[k].date_created)
+                                tl.find('.timeline-body').text(resp[k].status)
+                                tl.find('.uname').text(resp[k].username)
+                                tl.find('.city').text(resp[k].city)
+                                $('#parcel_history').append(tl)
+                            })
+                        }
+                    } else if (resp == 2) {
+                        alert_toast('Numéro de suivi inconnu.', "error")
+                    }
+                }
+                , complete: function () {
+                    end_load()
+                }
+            })
+        }
+    }
 
+    $('#track-btn').click(function () {
+        track_now()
+    })
+    $('#ref_no').on('search', function () {
+        track_now()
+    })
+</script>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
 
 
 </body>
