@@ -1,8 +1,8 @@
 <?php
 include 'db_connect.php';
-$num = $_GET['br'];
+$ref = $_GET['reference'];
 
-$parcel = $conn->query("SELECT * FROM parcels where br_dec = '$num'");
+$parcel = $conn->query("SELECT * FROM parcels where reference = '$ref'");
 
 
 if ($parcel->num_rows <= 0) :
@@ -10,9 +10,8 @@ if ($parcel->num_rows <= 0) :
 else:
 $parcel = $parcel->fetch_array();
 $history = $conn->query("SELECT * FROM parcel_tracks where parcel_id = {$parcel['id']}");
-
-$status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile"); ?>
-<ol class="progtrckr" data-progtrckr-steps="5">
+?>
+<ol class="progtrckr">
     <?php
     while ($row = $history->fetch_assoc()) :
         $username = $conn->query("SELECT concat(firstname,' ',lastname) as name FROM users where id = {$row['user_id']}");
@@ -21,35 +20,29 @@ $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domic
         $branchid = mysqli_fetch_row($branchid);
         $city = $conn->query("SELECT city FROM branches where id = $branchid[0]");
         $city = mysqli_fetch_array($city);
-        $row['date_created'] = date("M d, Y h:i A", strtotime($row['date_created']));
-        $row['status'] = $status_arr[$row['status']];
-        $row['username'] = ($username[0]);
+        $row['date_created'] = date("d M, h:i A", strtotime($row['date_created']));
         $row['city'] = ($city[0]);
+        if ($row['status'] == 0):
         ?>
-        <li class="progtrckr">
-            <div class="widget-user-header bg-dark">
-                <h3 class="widget-user-username"><?php echo $row['username'] ?></h3>
-                <h5 class="widget-user-desc"><?php echo $row['city'] ?></h5>
-            </div>
-            <div class="card-footer">
-                <div class="container-fluid">
-                    <dl>
-                        <dt>Date</dt>
-                        <dd><?php echo $row['date_created'] ?></dd>
-                    </dl>
-                    <dl>
-                        <dt>Status</dt>
-                        <dd><?php echo $row['status'] ?></dd>
-                    </dl>
-                </div>
-            </div>
+        <li class="progtrckr-done">
+            Arrivé au gare de: <?php echo $row['city'] ?>, le: <?php echo $row['date_created'] ?>
         </li>
     <?php
+        elseif ($row['status'] == 3 ||$row['status'] == 4):
+    ?>
+            <li class="progtrckr-done">
+                Collecté par le client à: <?php echo $row['city'] ?>, le: <?php echo $row['date_created'] ?>
+            </li>
+    <?php
+        endif;
     endwhile;
     endif; ?>
 </ol>
 
 <style>
+    *{
+        background-color: #37517E;
+    }
     ol.progtrckr {
         margin: 0;
         padding: 0;
@@ -95,8 +88,8 @@ $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domic
     }
 
     ol.progtrckr li.progtrckr-done {
-        color: black;
-        border-bottom: 4px solid yellowgreen;
+        color: white;
+        border-bottom: 4px solid #47B2E4;
     }
 
     ol.progtrckr li.progtrckr-todo {
@@ -119,7 +112,7 @@ $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domic
     ol.progtrckr li.progtrckr-done:before {
         content: "\2713";
         color: white;
-        background-color: yellowgreen;
+        background-color: #47B2E4;
         height: 2.2em;
         width: 2.2em;
         line-height: 2.2em;
