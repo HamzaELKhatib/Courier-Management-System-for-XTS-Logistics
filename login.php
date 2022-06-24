@@ -6,47 +6,109 @@ if (isset($_SESSION['login_id'])) {
     header("location:index.php?page=home");
 }
 
- include 'header.php'
+include 'header.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="#">XTS Logistics - Login</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-            <form action="" id="login-form">
-                <div class="input-group mb-3">
-                    <input type="email" class="form-control" name="email" required placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" required placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block float-right">Sign In</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap Simple Login Form with Blue Background</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <style>
+        body {
+            color: #fff;
+            background: #37517E;
+        }
+
+        .form-control {
+            min-height: 41px;
+            background: #f2f2f2;
+            box-shadow: none !important;
+            border: transparent;
+        }
+
+        .form-control:focus {
+            background: #e2e2e2;
+        }
+
+        .form-control, .btn {
+            border-radius: 2px;
+        }
+
+        .login-form {
+            width: 350px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .login-form h2 {
+            margin: 10px 0 25px;
+        }
+
+        .login-form form {
+            color: #7a7a7a;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            background: #fff;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .login-form .btn {
+            font-size: 16px;
+            font-weight: bold;
+            background: #3598dc;
+            border: none;
+            outline: none !important;
+        }
+
+        .login-form .btn:hover, .login-form .btn:focus {
+            background: #2389cd;
+        }
+
+        .login-form a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .login-form a:hover {
+            text-decoration: none;
+        }
+
+        .login-form form a {
+            color: #7a7a7a;
+            text-decoration: none;
+        }
+
+        .login-form form a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="login-form">
+
+    <form action="" id="login-form">
+        <h2 class="text-center">Login</h2>
+        <div class="form-group has-error">
+            <input type="text" class="form-control" name="email" placeholder="Username" required="required">
         </div>
-        <!-- /.login-card-body -->
-    </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+        </div>
+
+    </form>
+
 </div>
+
 <!-- /.login-box -->
 <script>
     $(document).ready(function () {
@@ -76,6 +138,6 @@ if (isset($_SESSION['login_id'])) {
         })
     })
 </script>
-
+<?php include 'footer.php' ?>
 </body>
 </html>

@@ -106,6 +106,34 @@
             }
         })
     }
+    window.user_tracking_modal = function($title = '' , $url='',$size=""){
+        start_load()
+        $.ajax({
+            url:$url,
+            error:err=>{
+                console.log()
+                alert("An error occured")
+            },
+            success:function(resp){
+                if(resp){
+                    $('#tracking_modal .modal-title').html($title)
+                    $('#tracking_modal .modal-body').html(resp)
+                    if($size != ''){
+                        $('#tracking_modal .modal-dialog').addClass($size)
+                    }else{
+                        $('#tracking_modal .modal-dialog').removeAttr("class").addClass("modal-dialog modal-md")
+                    }
+                    $('#tracking_modal').modal({
+                        show:true,
+                        backdrop:'static',
+                        keyboard:false,
+                        focus:true
+                    })
+                    end_load()
+                }
+            }
+        })
+    }
 	  window._conf = function($msg='',$func='',$params = []){
 	     $('#confirm_modal #confirm').attr('onclick',$func+"("+$params.join(',')+")")
 	     $('#confirm_modal .modal-body').html($msg)
@@ -183,6 +211,17 @@ $('.number').on('input keyup keypress',function(){
 <script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="assets/JsBarcode.all.min.js"></script>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
 
 
 
