@@ -1,5 +1,5 @@
 <?php include 'db_connect.php' ?>
-
+<?php if ($_SESSION['login_type'] == 1): ?>
 <div class="col-lg-12">
     <div class="card card-outline card-primary">
         <div class="card-body">
@@ -190,3 +190,6 @@ order by unix_timestamp(date_created) desc");
         }
 
     </script>
+<?php
+endif;
+?>

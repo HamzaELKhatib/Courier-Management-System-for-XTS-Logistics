@@ -86,21 +86,25 @@ $num_page = ($num_page - 1) * 10;
                 <a class="btn btn-primary"
                    href="./index.php?page=new_parcel"><i class="fa fa-plus"></i> Ajouter Nouveau</a>
             </div>
+            <?php if ($_SESSION['login_type'] == 1): ?>
+                <div class="card-tools">
+                    <form method="post" action="export.php" class="row">
+                        <div class="col-10"></div>
+                        <div class="col-10"><input class="btn btn-primary" type="submit"
+                                                   value="Exporter les données .csv" name="export" class="button"/>
+                        </div>
+                    </form>
+                </div>
 
-            <div class="card-tools">
-                <form method="post" action="export.php" class="row">
-                    <div class="col-10"></div>
-                    <div class="col-10"><input class="btn btn-primary" type="submit" value="Exporter les données .csv" name="export" class="button" /></div>
-                </form>
-            </div>
-
-            <div class="card-tools">
-                <form method="post" action="empty_parcels.php" class="row">
-                    <div class="col-10"></div>
-                    <div class="col-10"><input class="btn btn-danger" type="submit" value="Effacer la base de données" name="empty_parcels" class="button" /></div>
-                </form>
-            </div>
-
+                <div class="card-tools">
+                    <form method="post" action="empty_parcels.php" class="row">
+                        <div class="col-10"></div>
+                        <div class="col-10"><input class="btn btn-danger" type="submit"
+                                                   value="Effacer la base de données" name="empty_parcels"
+                                                   class="button"/></div>
+                    </form>
+                </div>
+            <?php endif; ?>
         </div>
         <!--        <input class="form-control me-2" type="text" id="search" placeholder="Trouver">
         -->
@@ -151,6 +155,7 @@ $num_page = ($num_page - 1) * 10;
                     <tr>
 
                         <td class="text-center">
+                            <?php if ($_SESSION['login_type'] == 1): ?>
                             <div class="btn-group fixed">
                                 <?php if ($row['status'] == 0): ?>
                                     <button type="button" class="btn btn-primary btn-flat send_parcel"
@@ -198,6 +203,7 @@ $num_page = ($num_page - 1) * 10;
                                         <i class="fas fa-arrow-circle-left"></i>
                                     </button>
                                 <?php endif; ?>
+                                <?php endif; ?>
                         </td>
                         <td><b><?php echo($row['br_dec']) ?></b></td>
                         <td><b><?php echo ucwords($row['sender_name']) ?></b></td>
@@ -209,7 +215,7 @@ $num_page = ($num_page - 1) * 10;
                         <td class="text-center">
                             <?php for ($i = 0; $i <= ($num_page * 10); $i++) ?>
                                 <?php
-                            $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile","Retour");
+                            $status_arr = array("Enregistré", "Envoyé", "Livré en gars", "Livré à domicile", "Retour");
                             switch ($row['status']) {
                                 case '1':
                                     echo "<span class='badge badge-pill badge-primary'> Envoyé</span>";
@@ -459,6 +465,7 @@ $num_page = ($num_page - 1) * 10;
         background-color: #0069D9;
         color: white;
     }
+
     #btna.active {
         background-color: #C82333;
         color: white;
