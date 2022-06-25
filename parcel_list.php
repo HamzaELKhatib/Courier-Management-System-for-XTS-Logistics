@@ -478,10 +478,6 @@ $num_page = ($num_page - 1) * 10;
             uni_modal("Détails du colis", "view_parcel.php?id=" + $(this).attr('data-id'), "large")
             console.log($(this).attr('data-id'))
         })
-        $('.view_parcel').click(function () {
-            uni_modal("Détails du colis", "view_parcel.php?id=" + $(this).attr('data-id'), "large")
-            console.log($(this).attr('data-id'))
-        })
         $('.delete_parcel').click(function () {
             _conf("Êtes-vous sûr de supprimer ce colis?", "delete_parcel", [$(this).attr('data-id')])
         })
