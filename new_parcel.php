@@ -1,5 +1,5 @@
 <?php if (!isset($conn)) {
-    include 'db_connect.php';
+    include 'database/db_connect.php';
 } ?>
 <style>
     textarea {
@@ -260,15 +260,6 @@
 
                     </tbody>
                 </table>
-                <?php /*if (!isset($id)): */ ?><!--
-                    <div class="row">
-                        <div class="col-md-12 d-flex justify-content-end">
-                            <button class="btn btn-sm btn-primary bg-gradient-primary" type="button" id="new_parcel"><i
-                                        class="fa fa-item"></i> Ajouter un article
-                            </button>
-                        </div>
-                    </div>
-                --><?php /*endif; */ ?>
             </form>
         </div>
         <div class="card-footer border-top border-info">

@@ -1,4 +1,4 @@
-<?php include 'db_connect.php';
+<?php include 'database/db_connect.php';
 $num_page = $_GET['p'];
 $num_page = ($num_page - 1) * 10;
 

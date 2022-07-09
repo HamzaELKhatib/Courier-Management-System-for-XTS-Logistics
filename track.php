@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php' ;
+include 'database/db_connect.php';
 
 ?>
 <div class="col-lg-12">

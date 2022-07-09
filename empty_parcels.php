@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include 'database/db_connect.php';
 if(isset($_POST['empty_parcels'])){
 
     $conn->query("TRUNCATE TABLE parcels");

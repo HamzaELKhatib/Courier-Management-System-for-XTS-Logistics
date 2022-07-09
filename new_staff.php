@@ -1,4 +1,4 @@
-<?php if(!isset($conn)){ include 'db_connect.php'; } ?>
+<?php if(!isset($conn)){ include 'database/db_connect.php'; } ?>
 <style>
   textarea{
     resize: none;
@@ -82,7 +82,7 @@
 		    type: 'POST',
 			success:function(resp){
 				if(resp == 1){
-					alert_toast('Data successfully saved',"success");
+					alert_toast('Données enregistrées avec succès',"success");
 					setTimeout(function(){
               location.href = 'index.php?page=staff_list'
 					},2000)

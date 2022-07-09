@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('./db_connect.php');
+include('./database/db_connect.php');
 
 if (isset($_SESSION['login_id'])) {
     header("location:index.php?page=home");

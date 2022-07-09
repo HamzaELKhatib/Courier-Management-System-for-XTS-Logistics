@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-include('./db_connect.php');
+include('./database/db_connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
