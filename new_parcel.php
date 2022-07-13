@@ -212,7 +212,6 @@
                                                        style='width:100%'>
                         </td>
                     </tr>
-
                     <tr>
                         <td><label>Longueur</label><input type="number" name='length[]'
                                                           value="<?php echo $length ?? '' ?>"
