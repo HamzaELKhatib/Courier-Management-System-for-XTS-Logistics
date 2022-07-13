@@ -200,10 +200,7 @@
                 <table class="table table-bordered" id="parcel-items">
 
                     <tbody>
-
                     <tr>
-
-
                         <td><label>Numero</label><input type="number" name='number[]'
                                                         value="<?php echo $number ?? '' ?>"
                                                         style='width:100%'>
@@ -214,11 +211,9 @@
                                                        value="<?php echo $weight ?? '' ?>"
                                                        style='width:100%'>
                         </td>
-
                     </tr>
 
                     <tr>
-
                         <td><label>Longueur</label><input type="number" name='length[]'
                                                           value="<?php echo $length ?? '' ?>"
                                                           style='width:100%'></td>
@@ -240,9 +235,7 @@
                                                       style='width:100%'></td>
                     </tr>
 
-
                     <tr>
-
                         <td><label>R. BL</label><input type="number" name='price_retour_bl[]'
                                                        value="<?php echo $price_retour_bl ?? '' ?>"
                                                        style='width:100%'></td>
