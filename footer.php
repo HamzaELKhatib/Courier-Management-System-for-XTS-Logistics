@@ -78,6 +78,34 @@
 	          }
 	      })
 	  }
+    window.tracking_modal = function($title = '' , $url='',$size=""){
+        start_load()
+        $.ajax({
+            url:$url,
+            error:err=>{
+                console.log()
+                alert("An error occured")
+            },
+            success:function(resp){
+                if(resp){
+                    $('#tracking_modal .modal-title').html($title)
+                    $('#tracking_modal .modal-body').html(resp)
+                    if($size != ''){
+                        $('#tracking_modal .modal-dialog').addClass($size)
+                    }else{
+                        $('#tracking_modal .modal-dialog').removeAttr("class").addClass("modal-dialog modal-md")
+                    }
+                    $('#tracking_modal').modal({
+                        show:true,
+                        backdrop:'static',
+                        keyboard:false,
+                        focus:true
+                    })
+                    end_load()
+                }
+            }
+        })
+    }
 	  window._conf = function($msg='',$func='',$params = []){
 	     $('#confirm_modal #confirm').attr('onclick',$func+"("+$params.join(',')+")")
 	     $('#confirm_modal .modal-body').html($msg)
@@ -155,6 +183,7 @@ $('.number').on('input keyup keypress',function(){
 <script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="assets/JsBarcode.all.min.js"></script>
+
 
 
 

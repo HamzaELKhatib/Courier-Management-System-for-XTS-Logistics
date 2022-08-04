@@ -1,4 +1,4 @@
-<?php if(!isset($conn)){ include 'db_connect.php'; } ?>
+<?php if(!isset($conn)){ include 'database/db_connect.php'; } ?>
 <style>
   textarea{
     resize: none;

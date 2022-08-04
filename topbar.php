@@ -8,7 +8,7 @@
       </li>
     <?php endif; ?>
       <li>
-        <a class="nav-link text-white"  href="./" role="button">
+        <a class="nav-link text-white"  href="landing_page.php" role="button">
             <large><b>XTS Logistics</b></large></a>
       </li>
     </ul>

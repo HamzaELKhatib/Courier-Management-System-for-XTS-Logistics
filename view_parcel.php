@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include 'database/db_connect.php';
 $qry = $conn->query("SELECT * FROM parcels where id = " . $_GET['id'])->fetch_array();
 foreach ($qry as $k => $v) {
     $$k = $v;
@@ -84,7 +84,7 @@ if ($to_branch_id > 0 || $from_branch_id > 0) {
                                         <dt>Longueur:</dt>
                                         <dd><?php echo $length . ' cm' ?></dd>
                                         <dt>Prix:</dt>
-                                        <dd><?php echo number_format($price, 2) . ' dh' ?></dd>
+                                        <dd><?php echo number_format($price? $price : $due_price, 2) . ' dh' ?></dd>
                                     </dl>
                                 </div>
                                 <div class="col-sm-6">

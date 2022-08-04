@@ -1,4 +1,4 @@
-<?php include 'db_connect.php' ;
+<?php include 'database/db_connect.php';
 $num = $_GET['br'];
 ?>
 <div>

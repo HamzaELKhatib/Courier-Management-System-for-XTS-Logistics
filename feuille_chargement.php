@@ -1,4 +1,5 @@
-<?php include 'db_connect.php'?>
+<?php include 'database/db_connect.php' ?>
+<?php if ($_SESSION['login_type'] == 1): ?>
 <?php
 $checked_array = array();
 if (isset($_POST['submit'])) {
@@ -316,3 +317,6 @@ INSERT into feuille_chargement (feuille_id, parcel_id, chauffeur, depart, arrive
 
 
 </script>
+<?php
+endif;
+?>

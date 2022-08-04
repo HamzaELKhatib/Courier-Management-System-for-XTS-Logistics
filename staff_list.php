@@ -1,4 +1,4 @@
-<?php include'db_connect.php' ?>
+<?php include 'database/db_connect.php' ?>
 <div class="col-lg-12">
 	<div class="card card-outline card-primary">
 		<div class="card-header">
@@ -26,7 +26,7 @@
 					<tr>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="index.php?page=edit_staff&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
+                                <a href="index.php?page=Controller/edit_staff&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat ">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <button type="button" class="btn btn-danger btn-flat delete_user" data-id="<?php echo $row['id'] ?>">

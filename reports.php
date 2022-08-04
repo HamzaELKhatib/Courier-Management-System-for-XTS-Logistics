@@ -1,5 +1,6 @@
-<?php include 'db_connect.php' ?>
+<?php include 'database/db_connect.php' ?>
 <?php $status = isset($_GET['status']) ? $_GET['status'] : 'all' ?>
+<?php if ($_SESSION['login_type'] == 1): ?>
 <div class="col-lg-12">
     <div class="card card-outline card-primary">
         <div class="card-body">
@@ -361,3 +362,6 @@
 
 </script>
 
+<?php
+endif;
+?>

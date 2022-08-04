@@ -1,5 +1,5 @@
-<?php include 'db_connect.php' ?>
-
+<?php include 'database/db_connect.php' ?>
+<?php if ($_SESSION['login_type'] == 1): ?>
 <div class="col-lg-12">
     <div class="card card-outline card-primary">
         <div class="card-body">
@@ -124,7 +124,7 @@
                                 $select_date = $conn->query("
 SELECT parcel_id  
 FROM parcel_tracks 
-WHERE DATE(`date_created`) = CURDATE()
+WHERE date_created >= CURDATE() && date_created < (CURDATE() + INTERVAL 1 DAY)
 AND status=1 ");
                                 while ($row1 = $select_date->fetch_assoc()):
                                     $parcel_id = $row1['parcel_id'];
@@ -190,3 +190,6 @@ order by unix_timestamp(date_created) desc");
         }
 
     </script>
+<?php
+endif;
+?>
